@@ -12,7 +12,7 @@ function add(req, res) {
 exports.add = add;
 ;
 function index(req, res) {
-    res.render('./index');
+    res.render('./index', { title: 'cool' });
 }
 exports.index = index;
 ;

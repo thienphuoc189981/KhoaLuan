@@ -4,6 +4,19 @@
 const database_1 = require("./database");
 let api = new database_1.Project.api();
 let async = require("async");
+var request = require('request');
+var jsdom = require("jsdom");
+var http = require('http');
+//var $ = require('jquery'),
+//    XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+//$.support.cors = true;
+//$.ajaxSettings.xhr = function () {
+//    return new XMLHttpRequest();
+//};
+//$('body').append("<div class='testing'>Hello World</div>");
+//console.log($(".testing").text()); // outputs Hello World
+//});
+//require("jsdom").jsdom;
 //-------begin function check cached with input keyword-----//
 //-------req: handle request
 //-------res: handle response
@@ -72,7 +85,7 @@ function checkCached(req, res) {
         },
         //Get JSON jobs
         function (idTemps, callback) {
-            api.getMultipleData(idTemps).then(function (result) {
+            api.getMultipleData(idTemps, "jobsById").then(function (result) {
                 result.status = true;
                 callback(null, result);
             });
@@ -91,4 +104,103 @@ function checkCached(req, res) {
     });
 }
 exports.checkCached = checkCached;
+function dbSearch(req, res) {
+    let q = req.query.q;
+    q = q.toLowerCase();
+    let arrKey = [];
+    let obj = new Object();
+    let rows = [];
+    let json = {
+        rows: []
+    };
+    let i, j;
+    if (q.indexOf(' ') !== -1) {
+        arrKey = (q.split(' '));
+        api.searchView('byTitleAndDescription').then(function (result) {
+            for (j = 0; j < result.rows.length; j++) {
+                for (i = 0; i < arrKey.length; i++) {
+                    if (result.rows[j].key.indexOf(arrKey[i]) !== -1) {
+                        rows.push(result.rows[j]);
+                        break;
+                    }
+                }
+            }
+            json['status'] = true;
+            json.rows = rows;
+            res.json(json);
+            res.end();
+        }).catch(function (err) {
+            console.log(err);
+        });
+    }
+    else {
+        api.searchView('byTitleAndDescription').then(function (result) {
+            result.rows.forEach(function (r) {
+                if (r.key.indexOf(q) !== -1) {
+                    rows.push(r);
+                }
+            });
+            json['status'] = true;
+            json.rows = rows;
+            res.json(json);
+            res.end();
+        }).catch(function (err) {
+            console.log(err);
+        });
+    }
+}
+exports.dbSearch = dbSearch;
+function solrSearch(req, res) {
+    var data = req.body.rows;
+    var json = { rows: [] };
+    var q = req.body.q;
+    var source = "";
+    var i;
+    for (i = 0; i < data.length; i++) {
+        json.rows.push(data[i].doc);
+    }
+    //----Handle index----//
+    async.waterfall([
+        function (callback) {
+            for (i = 0; i < json.rows.length; i++) {
+                console.log(json.rows[i].title);
+                var updateQuery = "<add><doc><field name='id'>" + (json.rows[i]._id) +
+                    "</field><field name='title'>" + (json.rows[i].title) +
+                    "</field><field name='description'>" + (json.rows[i].description) +
+                    "</field><field name='company'>" + (json.rows[i].company) +
+                    "</field><field name='salary'>" + (json.rows[i].salary) +
+                    "</field><field name='location'>" + (json.rows[i].location) +
+                    "</field><field name='link'>" + (json.rows[i].link) +
+                    "</field><field name='source'>" + (source) + "</field></doc></add>";
+                updateQuery = encodeURIComponent(updateQuery);
+                request.get("http://localhost:8983/solr/jobSearch/update?commit=true&stream.body=" + updateQuery + "&wt=json");
+            }
+            console.log("Index thanh cong !");
+            callback(null, true);
+        },
+        //----Handle search----//
+        function (data, callback) {
+            if (data == true) {
+                if (q.length == 0 || q == '') {
+                    q = '*:*';
+                }
+                request.get('http://localhost:8983/solr/jobSearch/select/?q='
+                    + q + '&indent=on&rows=999&wt=json&callback=?&sort=score desc&fl=*,score', function (error, response, body) {
+                    //body = body.replace(/[]/, "");
+                    body = JSON.parse(body);
+                    //console.log(body.response.docs[0]);
+                    callback(null, body.response.docs);
+                });
+            }
+        }
+    ], function (err, data) {
+        res.json(data);
+        res.end();
+    });
+}
+exports.solrSearch = solrSearch;
+function createDoc() {
+    api.createDdoc();
+}
+exports.createDoc = createDoc;
 //# sourceMappingURL=api.js.map

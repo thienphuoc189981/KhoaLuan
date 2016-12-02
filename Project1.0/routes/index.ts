@@ -11,6 +11,6 @@ export function add(req: express.Request, res: express.Response) {
 };
 
 export function index(req: express.Request, res: express.Response) {
-    res.render('./index');
+    res.render('./index', {title:'cool'});
 };
 

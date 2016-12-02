@@ -23,8 +23,9 @@ var apiRoutes = express.Router();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
+app.engine('hbs', hbs({ extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname+'/views/layout' }));
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('view engine', 'hbs');
 //app.use(favicon(path.join(__dirname, '/public/favicon.ico')));
 app.use(logger('dev'));
 app.use(methodOverride());
@@ -39,7 +40,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 // development only
 
-
+app.get('/', routes.index);
 //apiRoutes.get('/', routes.index);
 //apiRoutes.get('/add', routes.add);
 //apiRoutes.get('/api/name/:name', api.name);
@@ -143,6 +144,10 @@ apiRoutes.get('/jobs', function (req, res) {
     //res.send(responseText);
 });
 apiRoutes.get('/checkCached', api.checkCached);
+apiRoutes.get('/dbSearch', api.dbSearch);
+apiRoutes.post('/solrSearch', api.solrSearch);
+apiRoutes.get('/createDoc', api.createDoc);
+
 app.use('/api', apiRoutes);
 if (app.get('env') === 'development') {
     app.use(errorHandler())

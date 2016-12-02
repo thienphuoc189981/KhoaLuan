@@ -1,4 +1,5 @@
 ﻿var PouchDB = require('pouchdb');
+PouchDB.plugin(require('pouchdb-quick-search'));
 declare var index_solr: any;
 export module Project {
     // fuction check null parameter
@@ -19,6 +20,34 @@ export module Project {
         constructor(dbName?: string) {
             this.host = 'http://127.0.0.1:5984/';// set server CouchDB
             this.dbName = 'project';
+        }
+
+        //Create Design document
+        createDdoc(dbName?: string) {
+            //check database name
+            if (checkNull(dbName) == true)
+                var db = new PouchDB('http://username:password@127.0.0.1:5984/project');
+            else
+                var db = new PouchDB('http://username:password@127.0.0.1:5984/project');
+            var ddoc = {
+                _id: '_design/search',
+                views: {
+                    byTitleAndDescription: {
+                        map: function (doc) {
+                            if (doc.type == 'jobs' && doc.status=='post'){
+                                emit((doc.title + ' ' + doc.description).toLowerCase());
+                            }
+                        }.toString()
+                    }
+                }
+            }
+            db.put(ddoc, function (err) {
+                if (err && err.status !== 409) {
+                    return console.log(err);
+                }
+            });
+            var opts = { live: true };
+            db.sync('http://username:password@127.0.0.1:5984/project', opts);
         }
 
         //call query
@@ -75,13 +104,15 @@ export module Project {
 
             return db.get(item);
         }
-        getMultipleData(arrKey:any, dbName?: string): any {
+
+        //Get multiple data with key
+        getMultipleData(arrKey:any, view:string, dbName?: string): any {
             if (checkNull(dbName) == true)
                 var db = new PouchDB(this.host + this.dbName);
             else
                 var db = new PouchDB(this.host + dbName);
 
-            return db.allDocs({ keys: arrKey, include_docs: true });
+            return db.query("index/" + view, { keys: arrKey, include_docs: true });
         }
 
 
@@ -103,5 +134,60 @@ export module Project {
             db.sync(this.host + dbName, { live: true });//sync localStorage to CouchDB server
         }
 
+        searchView(view:string, dbName?: string):any {
+            if (checkNull(dbName) == true)
+                var db = new PouchDB(this.host + this.dbName);
+            else
+                var db = new PouchDB(this.host + dbName);
+            return db.query('search/' + view, {include_docs: true});
+        }
+        searchQuery(query:string, dbName?: string): any {
+            console.log('Im in');
+            //var db = new PouchDB('http://username:password@127.0.0.1:5984/project');
+            var pouch = new PouchDB('http://username:password@127.0.0.1:5984/project');
+            //var doc = { _id: 'mydoczzz', title: "Guess who?", text: "It's-a me, Mario!" };
+
+            //return pouch.put(doc).then(function () {
+                return pouch.search({
+                    query: 'mario',
+                    fields: ['title', 'text'],
+                    include_docs: true,
+                    highlighting: true
+                });
+            //});
+            //return db.search({
+            //    query: query,
+            //    fields: 'title',
+            //    include_docs: true
+            //});
+            //console.log('end searching');
+        }
+        createIndex() {
+            var db = new PouchDB('http://username:password@127.0.0.1:5984/project');
+            db.createIndex({
+                index: {
+                    fields: ['title', 'discription'],
+                    name: 'search',
+                    ddoc: 'byTitleAndDis'
+                }
+            });
+        }
+        find(query: string, dbName?: string) {
+            if (checkNull(dbName) == true)
+                var db = new PouchDB(this.host + this.dbName);
+            else
+                var db = new PouchDB(this.host + dbName);
+
+            return db.find({
+                selector: {
+                    $and: [
+                        { title: query },
+                        { discription: query }
+                    ]
+                }
+            });
+        }
+
     }
 }
+

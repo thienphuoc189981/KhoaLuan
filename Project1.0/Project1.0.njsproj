@@ -19,7 +19,7 @@
     <OutputPath>.</OutputPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
     <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
@@ -33,8 +33,105 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="public\assets\.DS_Store" />
+    <Content Include="public\assets\css\.DS_Store" />
+    <Content Include="public\assets\css\blogpage.css" />
+    <Content Include="public\assets\css\bootstrap-select.min.css" />
+    <Content Include="public\assets\css\bootstrap.min.css" />
+    <Content Include="public\assets\css\contacts.css" />
+    <Content Include="public\assets\css\custom-components.css" />
+    <Content Include="public\assets\css\font-awesome.min.css" />
+    <Content Include="public\assets\css\global.css" />
+    <Content Include="public\assets\css\jasny-bootstrap.min.css" />
+    <Content Include="public\assets\css\main.css" />
+    <Content Include="public\assets\css\material-kit.css" />
+    <Content Include="public\assets\css\nav-menu.css" />
+    <Content Include="public\assets\css\presets.css" />
+    <Content Include="public\assets\css\responsive.css" />
+    <Content Include="public\assets\css\slicknav.css" />
+    <Content Include="public\assets\extras\.DS_Store" />
+    <Content Include="public\assets\extras\animate.css" />
+    <Content Include="public\assets\extras\owl.carousel.css" />
+    <Content Include="public\assets\extras\owl.theme.css" />
+    <Content Include="public\assets\extras\settings.css" />
+    <Content Include="public\assets\fonts\.DS_Store" />
+    <Content Include="public\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="public\assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="public\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="public\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="public\assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="public\assets\fonts\FontAwesome.otf" />
+    <Content Include="public\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="public\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="public\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="public\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="public\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="public\assets\fonts\line-icons\.DS_Store" />
+    <Content Include="public\assets\fonts\line-icons\demo-files\.DS_Store" />
+    <Content Include="public\assets\fonts\line-icons\demo-files\demo.css" />
+    <Content Include="public\assets\fonts\line-icons\demo.html" />
+    <Content Include="public\assets\fonts\line-icons\fonts\.DS_Store" />
+    <Content Include="public\assets\fonts\line-icons\fonts\Linearicons-Free.eot" />
+    <Content Include="public\assets\fonts\line-icons\fonts\Linearicons-Free.svg" />
+    <Content Include="public\assets\fonts\line-icons\fonts\Linearicons-Free.ttf" />
+    <Content Include="public\assets\fonts\line-icons\fonts\Linearicons-Free.woff" />
+    <Content Include="public\assets\fonts\line-icons\fonts\Linearicons-Free.woff2" />
+    <Content Include="public\assets\fonts\line-icons\line-icons.css" />
+    <Content Include="public\assets\fonts\line-icons\Read Me.txt" />
+    <Content Include="public\assets\fonts\line-icons\selection.json" />
+    <Content Include="public\assets\img\.DS_Store" />
+    <Content Include="public\assets\img\about.jpg" />
+    <Content Include="public\assets\img\banner1.jpg" />
+    <Content Include="public\assets\img\banner2.jpg" />
+    <Content Include="public\assets\img\banner3.jpg" />
+    <Content Include="public\assets\img\bg\.DS_Store" />
+    <Content Include="public\assets\img\bg\app-bg.jpg" />
+    <Content Include="public\assets\img\bg\app-bg.png" />
+    <Content Include="public\assets\img\bg\bg-intro.png" />
+    <Content Include="public\assets\img\bg\bg-overlay.png" />
+    <Content Include="public\assets\img\bg\bg.jpg" />
+    <Content Include="public\assets\img\bg\counter-bg.jpg" />
+    <Content Include="public\assets\img\dummy.png" />
+    <Content Include="public\assets\img\featured\.DS_Store" />
+    <Content Include="public\assets\img\featured\img1.jpg" />
+    <Content Include="public\assets\img\featured\img2.jpg" />
+    <Content Include="public\assets\img\featured\img3.jpg" />
+    <Content Include="public\assets\img\featured\img4.jpg" />
+    <Content Include="public\assets\img\featured\img5.jpg" />
+    <Content Include="public\assets\img\featured\img6.jpg" />
+    <Content Include="public\assets\img\img1.jpg" />
+    <Content Include="public\assets\img\item\.DS_Store" />
+    <Content Include="public\assets\img\item\img-1.jpg" />
+    <Content Include="public\assets\img\item\img-2.jpg" />
+    <Content Include="public\assets\img\item\img-3.jpg" />
+    <Content Include="public\assets\img\item\img-35.jpg" />
+    <Content Include="public\assets\img\item\img-4.jpg" />
+    <Content Include="public\assets\img\item\img-5.jpg" />
+    <Content Include="public\assets\img\item\img-6.jpg" />
+    <Content Include="public\assets\img\logo.png" />
+    <Content Include="public\assets\img\map-marker.png" />
+    <Content Include="public\assets\img\post\.DS_Store" />
+    <Content Include="public\assets\img\post\thumb1.jpg" />
+    <Content Include="public\assets\img\post\thumb2.jpg" />
+    <Content Include="public\assets\img\post\thumb3.jpg" />
+    <Content Include="public\assets\img\product\.DS_Store" />
+    <Content Include="public\assets\img\product\img1.jpg" />
+    <Content Include="public\assets\img\product\img10.jpg" />
+    <Content Include="public\assets\img\product\img11.jpg" />
+    <Content Include="public\assets\img\product\img12.jpg" />
+    <Content Include="public\assets\img\product\img13.jpg" />
+    <Content Include="public\assets\img\product\img14.jpg" />
+    <Content Include="public\assets\img\product\img2.jpg" />
+    <Content Include="public\assets\img\product\img3.jpg" />
+    <Content Include="public\assets\img\product\img4.jpg" />
+    <Content Include="public\assets\img\product\img5.jpg" />
+    <Content Include="public\assets\img\product\img6.jpg" />
+    <Content Include="public\assets\img\product\img7.jpg" />
+    <Content Include="public\assets\img\product\img8.jpg" />
+    <Content Include="public\assets\img\product\img9.jpg" />
+    <Content Include="public\assets\img\user.jpg" />
+    <Content Include="public\assets\js\.DS_Store" />
     <Content Include="jobs.json" />
-    <Content Include="views\api.html" />
     <Content Include="views\index.hbs" />
     <Content Include="views\layout\layout.hbs" />
     <Content Include="views\view.hbs" />
@@ -51,9 +148,22 @@
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="public\assets\" />
+    <Folder Include="public\assets\css\" />
+    <Folder Include="public\assets\extras\" />
+    <Folder Include="public\assets\fonts\" />
+    <Folder Include="public\assets\fonts\line-icons\" />
+    <Folder Include="public\assets\fonts\line-icons\demo-files\" />
+    <Folder Include="public\assets\fonts\line-icons\fonts\" />
+    <Folder Include="public\assets\img\" />
+    <Folder Include="public\assets\img\bg\" />
+    <Folder Include="public\assets\img\featured\" />
+    <Folder Include="public\assets\img\item\" />
+    <Folder Include="public\assets\img\post\" />
+    <Folder Include="public\assets\img\product\" />
+    <Folder Include="public\assets\js\" />
     <Folder Include="public\" />
-    <Folder Include="public\images\" />
-    <Folder Include="public\javascripts\" />
+    <Folder Include="public\js\" />
     <Folder Include="public\stylesheets\" />
     <Folder Include="routes\" />
     <Folder Include="Scripts\" />
@@ -64,6 +174,22 @@
     <Folder Include="Scripts\typings\stylus\" />
     <Folder Include="views\" />
     <Folder Include="views\layout\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="public\assets\fonts\line-icons\demo-files\demo.js" />
+    <Compile Include="public\assets\js\bootstrap-select.min.js" />
+    <Compile Include="public\assets\js\bootstrap.min.js" />
+    <Compile Include="public\assets\js\jasny-bootstrap.min.js" />
+    <Compile Include="public\assets\js\jquery-min.js" />
+    <Compile Include="public\assets\js\jquery.counterup.min.js" />
+    <Compile Include="public\assets\js\jquery.parallax.js" />
+    <Compile Include="public\assets\js\main.js" />
+    <Compile Include="public\assets\js\material-kit.js" />
+    <Compile Include="public\assets\js\material.min.js" />
+    <Compile Include="public\assets\js\owl.carousel.min.js" />
+    <Compile Include="public\assets\js\waypoints.min.js" />
+    <Compile Include="public\assets\js\wow.js" />
+    <Compile Include="public\js\jquery-3.1.1.min.js" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
