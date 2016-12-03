@@ -11,6 +11,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var multer = require('multer');
 var errorHandler = require('errorhandler');
+var passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
 var jwt = require('jsonwebtoken');
 var hbs = require('express-handlebars');
 var app = express();
@@ -26,16 +27,42 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use(methodOverride());
 app.use(session({
-    resave: true,
+    resave: false,
     saveUninitialized: true,
     secret: 'uwotm8'
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-//app.use(multer());
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, __dirname + '/uploads');
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + "-" + file.originalname);
+    }
+});
+var upload = multer({ storage: storage });
+//app.use(multer({ dest: './uploads/' }).single('photo'));
 app.use(express.static(path.join(__dirname, 'public')));
 // development only
+app.get('/setsession', function (req, res) {
+    var sess = req.session;
+    sess.sessdata = {};
+    sess.sessdata.email = "inaam";
+    sess.sessdata.pass = "inaam1234";
+    var data = {
+        "Data": ""
+    };
+    data["Data"] = 'Session set';
+    console.log(sess.sessdata);
+    res.json(data);
+});
 app.get('/', routes.index);
+app.get('/login', routes.loginPage);
+app.post('/login-authen', routes.login);
+app.get('/signup', routes.signup);
+app.get('/post-ads', routes.indexAds);
+app.post('/post-ads-method', upload.single('photo'), routes.postAds);
 //apiRoutes.get('/', routes.index);
 //apiRoutes.get('/add', routes.add);
 //apiRoutes.get('/api/name/:name', api.name);

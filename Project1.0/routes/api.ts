@@ -4,20 +4,8 @@ import {Project} from "./database";
 let api = new Project.api();
 let async = require("async");
 var request = require('request');
-var jsdom = require("jsdom");
 var http = require('http');
-//var $ = require('jquery'),
-//    XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
-//$.support.cors = true;
-//$.ajaxSettings.xhr = function () {
-//    return new XMLHttpRequest();
-//};
-
-    //$('body').append("<div class='testing'>Hello World</div>");
-    //console.log($(".testing").text()); // outputs Hello World
-//});
-//require("jsdom").jsdom;
 
 //-------begin function check cached with input keyword-----//
 //-------req: handle request
@@ -30,7 +18,7 @@ export function checkCached(req, res) {
 
         //Get all keyword from database
         function (callback) {
-            api.callQuery('keywordAll')
+            api.indexView('keywordAll')
                 .then(function (result) {
                     result["rows"].forEach(function (item) {
                         arrKeyword.push(item);
@@ -116,6 +104,7 @@ export function dbSearch(req, res) {
     let json = {
         rows: []
     };
+  
     let i,j: number;
 
     if (q.indexOf(' ') !== -1) {
@@ -177,7 +166,7 @@ export function solrSearch(req, res) {
                     "</field><field name='link'>" + (json.rows[i].link) +
                     "</field><field name='source'>" + (source) + "</field></doc></add>";
                 updateQuery = encodeURIComponent(updateQuery);
-                request.get("http://localhost:8983/solr/jobSearch/update?commit=true&stream.body=" + updateQuery + "&wt=json");
+                request.get("http://localhost:8983/solr/search/update?commit=true&stream.body=" + updateQuery + "&wt=json");
             }
             console.log("Index thanh cong !");
             callback(null, true);
@@ -190,7 +179,7 @@ export function solrSearch(req, res) {
                     q = '*:*';
                 }
 
-                request.get('http://localhost:8983/solr/jobSearch/select/?q='
+                request.get('http://localhost:8983/solr/search/select/?q='
                     + q + '&indent=on&rows=999&wt=json&callback=?&sort=score desc&fl=*,score', function (error, response, body) {
                         //body = body.replace(/[]/, "");
                         body = JSON.parse(body);
@@ -203,6 +192,12 @@ export function solrSearch(req, res) {
 
         //----Handle result----//
     ], function (err, data) {
+        let result = [];
+        var z;
+        for ( z = 0; z < data.length; z++) {
+            data[z].rank = z + 1;
+            result.push(data[z])
+        }
         res.json(data);
         res.end();
         });
