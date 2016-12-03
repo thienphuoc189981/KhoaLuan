@@ -24,18 +24,119 @@ var Project;
                 var db = new PouchDB('http://username:password@127.0.0.1:5984/project');
             else
                 var db = new PouchDB('http://username:password@127.0.0.1:5984/project');
-            var ddoc = {
-                _id: '_design/search',
-                views: {
-                    byTitleAndDescription: {
-                        map: function (doc) {
-                            if (doc.type == 'jobs' && doc.status == 'post') {
-                                emit((doc.title + ' ' + doc.description).toLowerCase());
-                            }
-                        }.toString()
+            function createDoc(dbName) {
+                let db = new PouchDB(dbName);
+                let remoteCouch = 'http://username:password@127.0.0.1:5984/' + dbName;
+                var ddoc = {
+                    _id: '_design/index',
+                    views: {
+                        jobsByUsers: {
+                            map: function (doc) {
+                                if (doc.type === 'jobs') {
+                                    if (doc.users.idUsers) {
+                                        emit(doc.users.idUsers);
+                                    }
+                                }
+                            }.toString()
+                        },
+                        jobsByStatus: {
+                            map: function (doc) {
+                                if (doc.type === 'jobs') {
+                                    if (doc.status) {
+                                        emit(doc.status);
+                                    }
+                                }
+                            }.toString()
+                        },
+                        usersByEmail: {
+                            map: function (doc) {
+                                if (doc.type === 'users') {
+                                    if (doc.email) {
+                                        emit(doc.email);
+                                    }
+                                }
+                            }.toString()
+                        },
+                        usersByPhone: {
+                            map: function (doc) {
+                                if (doc.type === 'users') {
+                                    if (doc.phone) {
+                                        emit(doc.phone);
+                                    }
+                                }
+                            }.toString()
+                        },
+                        searchDataAll: {
+                            map: function (doc) {
+                                if (doc.type === 'searchData') {
+                                    if (doc.jobs.idJobs) {
+                                        emit(doc.jobs.idJobs, doc.categories.name);
+                                    }
+                                }
+                            }.toString()
+                        },
+                        keywordAll: {
+                            map: function (doc) {
+                                if (doc.type === 'keyword') {
+                                    emit(doc.content);
+                                }
+                            }.toString()
+                        },
+                        cacheByKeyword: {
+                            map: function (doc, idKeyword) {
+                                if (doc.type === 'cache') {
+                                    if (doc.keyword.idKeyword === idKeyword) {
+                                        emit(doc.jobs);
+                                    }
+                                }
+                            }.toString()
+                        },
+                        cacheByCacheAt: {
+                            map: function (doc) {
+                                if (doc.type === 'cache') {
+                                    if (doc.cacheAt) {
+                                        emit(doc.cacheAt);
+                                    }
+                                }
+                            }.toString()
+                        },
+                        categoriesAll: {
+                            map: function (doc) {
+                                if (doc.type === 'categories') {
+                                    if (doc.name) {
+                                        emit(doc.name);
+                                    }
+                                }
+                            }.toString()
+                        }
                     }
-                }
-            };
+                };
+                var ddoc2 = {
+                    _id: '_design/search',
+                    views: {
+                        byTitleAndDescription: {
+                            map: function (doc) {
+                                if (doc.type == 'jobs' && doc.status == 'post') {
+                                    emit((doc.title + ' ' + doc.description).toLowerCase());
+                                }
+                            }.toString()
+                        }
+                    }
+                };
+                //save it
+                db.put(ddoc, function (err) {
+                    if (err && err.status !== 409) {
+                        return console.log(err);
+                    }
+                });
+                db.put(ddoc2, function (err) {
+                    if (err && err.status !== 409) {
+                        return console.log(err);
+                    }
+                });
+                var opts = { live: true };
+                db.sync(remoteCouch, opts);
+            }
         }
         //call query
         indexView(view, dbName) {
@@ -93,12 +194,12 @@ var Project;
             return db.query("index/" + view, { keys: arrKey, include_docs: true });
         }
         //Get multiple data with key
-        findData(arrKey, view, dbName) {
+        findData(email, view, dbName) {
             if (checkNull(dbName) == true)
                 var db = new PouchDB(this.host + this.dbName);
             else
                 var db = new PouchDB(this.host + dbName);
-            return db.query("index/" + view, { keys: arrKey, include_docs: true });
+            return db.query("index/" + view, { key: email, include_docs: true });
         }
         //-------function insert data to database------//
         //-------data: insert data

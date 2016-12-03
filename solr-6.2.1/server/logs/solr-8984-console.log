@@ -1,0 +1,576 @@
+0    INFO  (main) [   ] o.e.j.u.log Logging initialized @7113ms
+2760 INFO  (main) [   ] o.e.j.s.Server jetty-9.3.8.v20160314
+2901 INFO  (main) [   ] o.e.j.d.p.ScanningAppProvider Deployment monitor [file:///E:/solr-6.2.1/server/contexts/] at interval 0
+3823 INFO  (main) [   ] o.e.j.w.StandardDescriptorProcessor NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+3916 WARN  (main) [   ] o.e.j.s.SecurityHandler ServletContext@o.e.j.w.WebAppContext@a67c67e{/solr,file:///E:/solr-6.2.1/server/solr-webapp/webapp/,STARTING}{E:\solr-6.2.1\server/solr-webapp/webapp} has uncovered http methods for path: /
+3979 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter SolrDispatchFilter.init(): WebAppClassLoader=1815546035@6c3708b3
+4229 INFO  (main) [   ] o.a.s.c.SolrResourceLoader JNDI not configured for solr (NoInitialContextEx)
+4229 INFO  (main) [   ] o.a.s.c.SolrResourceLoader using system property solr.solr.home: E:\solr-6.2.1\server\solr
+4229 INFO  (main) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: 'E:\solr-6.2.1\server\solr'
+4229 INFO  (main) [   ] o.a.s.c.SolrResourceLoader JNDI not configured for solr (NoInitialContextEx)
+4229 INFO  (main) [   ] o.a.s.c.SolrResourceLoader using system property solr.solr.home: E:\solr-6.2.1\server\solr
+4245 INFO  (main) [   ] o.a.s.c.SolrXmlConfig Loading container configuration from E:\solr-6.2.1\server\solr\solr.xml
+5013 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Config-defined core root directory: E:\solr-6.2.1\server\solr
+5294 INFO  (main) [   ] o.a.s.c.CoreContainer New CoreContainer 1300393335
+5294 INFO  (main) [   ] o.a.s.c.CoreContainer Loading cores into CoreContainer [instanceDir=E:\solr-6.2.1\server\solr]
+5294 WARN  (main) [   ] o.a.s.c.CoreContainer Couldn't add files from E:\solr-6.2.1\server\solr\lib to classpath: E:\solr-6.2.1\server\solr\lib
+5421 INFO  (main) [   ] o.a.s.h.c.HttpShardHandlerFactory created with socketTimeout : 600000,connTimeout : 60000,maxConnectionsPerHost : 20,maxConnections : 10000,corePoolSize : 0,maximumPoolSize : 2147483647,maxThreadIdleTime : 5,sizeOfQueue : -1,fairnessPolicy : false,useRetries : false,connectionsEvictorSleepDelay : 5000,maxConnectionIdleTime : 40000,
+5635 INFO  (main) [   ] o.a.s.u.UpdateShardHandler Creating UpdateShardHandler HTTP client with params: socketTimeout=600000&connTimeout=60000&retry=true
+5635 INFO  (main) [   ] o.a.s.l.LogWatcher SLF4J impl is org.slf4j.impl.Log4jLoggerFactory
+5635 INFO  (main) [   ] o.a.s.l.LogWatcher Registering Log Listener [Log4j (org.slf4j.impl.Log4jLoggerFactory)]
+5667 INFO  (main) [   ] o.a.s.c.CoreContainer Security conf doesn't exist. Skipping setup for authorization module.
+5667 INFO  (main) [   ] o.a.s.c.CoreContainer No authentication plugin used.
+10669 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Looking for core definitions underneath E:\solr-6.2.1\server\solr
+10822 INFO  (main) [   ] o.a.s.c.CoreDescriptor Created CoreDescriptor: {name=test, config=solrconfig.xml, loadOnStartup=true, schema=schema.xml, configSetProperties=configsetprops.json, transient=false, dataDir=data\}
+10822 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Found core test in E:\solr-6.2.1\server\solr\test
+10869 INFO  (main) [   ] o.a.s.c.CoreDescriptor Created CoreDescriptor: {name=wiki, config=solrconfig.xml, loadOnStartup=true, schema=schema.xml, configSetProperties=configsetprops.json, transient=false, dataDir=data\}
+10869 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Found core wiki in E:\solr-6.2.1\server\solr\wiki
+10869 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Found 2 core definitions
+10916 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter user.dir=E:\solr-6.2.1\server
+10916 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter SolrDispatchFilter.init() done
+10963 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: 'E:\solr-6.2.1\server\solr\wiki'
+10963 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: 'E:\solr-6.2.1\server\solr\test'
+10963 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader JNDI not configured for solr (NoInitialContextEx)
+10963 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader JNDI not configured for solr (NoInitialContextEx)
+10963 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader using system property solr.solr.home: E:\solr-6.2.1\server\solr
+10963 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader using system property solr.solr.home: E:\solr-6.2.1\server\solr
+11041 INFO  (main) [   ] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@a67c67e{/solr,file:///E:/solr-6.2.1/server/solr-webapp/webapp/,AVAILABLE}{E:\solr-6.2.1\server/solr-webapp/webapp}
+11291 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrConfig current version of requestparams : 0
+11291 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrConfig current version of requestparams : 0
+11306 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrConfig Adding specified lib dirs to ClassLoader
+11306 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrConfig Adding specified lib dirs to ClassLoader
+11369 INFO  (main) [   ] o.e.j.s.ServerConnector Started ServerConnector@1f2586d6{HTTP/1.1,[http/1.1]}{0.0.0.0:8984}
+11369 INFO  (main) [   ] o.e.j.s.Server Started @18496ms
+11795 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/apache-mime4j-core-0.7.2.jar' to classloader
+11795 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/apache-mime4j-dom-0.7.2.jar' to classloader
+11795 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/aspectjrt-1.8.0.jar' to classloader
+11795 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/bcmail-jdk15-1.45.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/bcprov-jdk15-1.45.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/boilerpipe-1.1.0.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/commons-compress-1.11.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/fontbox-2.0.1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/icu4j-56.1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/isoparser-1.1.18.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/jackcess-2.1.3.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/java-libpst-0.8.1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/jdom-1.0.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/jempbox-1.8.12.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/jmatio-1.0.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/juniversalchardet-1.0.3.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/metadata-extractor-2.8.1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/pdfbox-2.0.1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/pdfbox-tools-2.0.1.jar' to classloader
+11795 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/apache-mime4j-core-0.7.2.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/poi-3.15-beta1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/apache-mime4j-dom-0.7.2.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/poi-ooxml-3.15-beta1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/aspectjrt-1.8.0.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/bcmail-jdk15-1.45.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/bcprov-jdk15-1.45.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/boilerpipe-1.1.0.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/commons-compress-1.11.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/fontbox-2.0.1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/poi-ooxml-schemas-3.15-beta1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/icu4j-56.1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/poi-scratchpad-3.15-beta1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/isoparser-1.1.18.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/rome-1.0.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/jackcess-2.1.3.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tagsoup-1.2.1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/java-libpst-0.8.1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tika-core-1.13.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/jdom-1.0.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tika-java7-1.13.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/jempbox-1.8.12.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tika-parsers-1.13.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/jmatio-1.0.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tika-xmp-1.13.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/juniversalchardet-1.0.3.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/vorbis-java-core-0.8.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/metadata-extractor-2.8.1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/vorbis-java-tika-0.8.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/pdfbox-2.0.1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/xercesImpl-2.9.1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/pdfbox-tools-2.0.1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/xmlbeans-2.6.0.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/poi-3.15-beta1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/xmpcore-5.1.2.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/poi-ooxml-3.15-beta1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/xz-1.5.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/poi-ooxml-schemas-3.15-beta1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/dist/solr-cell-6.2.1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/poi-scratchpad-3.15-beta1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/attributes-binder-1.3.1.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/rome-1.0.jar' to classloader
+11810 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/carrot2-guava-18.0.jar' to classloader
+11826 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tagsoup-1.2.1.jar' to classloader
+11826 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/carrot2-mini-3.12.0.jar' to classloader
+11826 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tika-core-1.13.jar' to classloader
+11826 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/jackson-annotations-2.5.4.jar' to classloader
+11826 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tika-java7-1.13.jar' to classloader
+11826 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/jackson-databind-2.5.4.jar' to classloader
+11826 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tika-parsers-1.13.jar' to classloader
+11826 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/simple-xml-2.7.1.jar' to classloader
+11828 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tika-xmp-1.13.jar' to classloader
+11828 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/dist/solr-clustering-6.2.1.jar' to classloader
+11828 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/vorbis-java-core-0.8.jar' to classloader
+11828 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/langid/lib/jsonic-1.2.7.jar' to classloader
+11828 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/vorbis-java-tika-0.8.jar' to classloader
+11829 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/langid/lib/langdetect-1.1-20120112.jar' to classloader
+11829 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/xercesImpl-2.9.1.jar' to classloader
+11829 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/dist/solr-langid-6.2.1.jar' to classloader
+11829 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/xmlbeans-2.6.0.jar' to classloader
+11829 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/velocity/lib/commons-beanutils-1.8.3.jar' to classloader
+11830 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/xmpcore-5.1.2.jar' to classloader
+11830 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/velocity/lib/commons-collections-3.2.2.jar' to classloader
+11830 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/xz-1.5.jar' to classloader
+11830 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/velocity/lib/velocity-1.7.jar' to classloader
+11830 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/dist/solr-cell-6.2.1.jar' to classloader
+11831 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/velocity/lib/velocity-tools-2.0.jar' to classloader
+11831 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/attributes-binder-1.3.1.jar' to classloader
+11831 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/dist/solr-velocity-6.2.1.jar' to classloader
+11831 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/carrot2-guava-18.0.jar' to classloader
+11832 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/carrot2-mini-3.12.0.jar' to classloader
+11832 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/jackson-annotations-2.5.4.jar' to classloader
+11835 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/jackson-databind-2.5.4.jar' to classloader
+11835 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/simple-xml-2.7.1.jar' to classloader
+11836 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/dist/solr-clustering-6.2.1.jar' to classloader
+11836 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/langid/lib/jsonic-1.2.7.jar' to classloader
+11836 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/langid/lib/langdetect-1.1-20120112.jar' to classloader
+11836 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/dist/solr-langid-6.2.1.jar' to classloader
+11836 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/velocity/lib/commons-beanutils-1.8.3.jar' to classloader
+11837 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/velocity/lib/commons-collections-3.2.2.jar' to classloader
+11837 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/velocity/lib/velocity-1.7.jar' to classloader
+11837 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/velocity/lib/velocity-tools-2.0.jar' to classloader
+11837 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/dist/solr-velocity-6.2.1.jar' to classloader
+17914 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrConfig Using Lucene MatchVersion: 6.2.1
+17930 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrConfig Using Lucene MatchVersion: 6.2.1
+18461 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrConfig Loaded SolrConfig: solrconfig.xml
+18461 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrConfig Loaded SolrConfig: solrconfig.xml
+18672 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema [test] Schema name=example-data-driven-schema
+18688 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema [wiki] Schema name=example-data-driven-schema
+21738 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema unique key field: id
+21738 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema unique key field: id
+25489 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1475819540367} status=0 QTime=65
+26333 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.FileExchangeRateProvider Reloading exchange rates from file currency.xml
+26333 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.FileExchangeRateProvider Reloading exchange rates from file currency.xml
+26384 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.FileExchangeRateProvider Reloading exchange rates from file currency.xml
+26422 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.FileExchangeRateProvider Reloading exchange rates from file currency.xml
+26458 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.ConfigSetProperties Did not find ConfigSet properties, assuming default properties: Can't find resource 'configsetprops.json' in classpath or 'E:\solr-6.2.1\server\solr\test'
+26459 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.CoreContainer Creating SolrCore 'test' using configuration from instancedir E:\solr-6.2.1\server\solr\test
+26460 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.SolrCore solr.NRTCachingDirectoryFactory
+26559 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.ConfigSetProperties Did not find ConfigSet properties, assuming default properties: Can't find resource 'configsetprops.json' in classpath or 'E:\solr-6.2.1\server\solr\wiki'
+26560 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.CoreContainer Creating SolrCore 'wiki' using configuration from instancedir E:\solr-6.2.1\server\solr\wiki
+26561 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SolrCore solr.NRTCachingDirectoryFactory
+26978 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.SolrCore [[test] ] Opening new SolrCore at [E:\solr-6.2.1\server\solr\test], dataDir=[E:\solr-6.2.1\server\solr\test\data\]
+26978 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SolrCore [[wiki] ] Opening new SolrCore at [E:\solr-6.2.1\server\solr\wiki], dataDir=[E:\solr-6.2.1\server\solr\wiki\data\]
+27011 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.JmxMonitoredMap No JMX servers found, not exposing Solr information with JMX.
+27011 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.JmxMonitoredMap No JMX servers found, not exposing Solr information with JMX.
+27041 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.SolrCore [[test] ] Added SolrEventListener for newSearcher: [org.apache.solr.core.QuerySenderListener{queries=[]}]
+27041 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.SolrCore [[test] ] Added SolrEventListener for firstSearcher: [org.apache.solr.core.QuerySenderListener{queries=[]}]
+27042 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SolrCore [[wiki] ] Added SolrEventListener for newSearcher: [org.apache.solr.core.QuerySenderListener{queries=[]}]
+27042 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SolrCore [[wiki] ] Added SolrEventListener for firstSearcher: [org.apache.solr.core.QuerySenderListener{queries=[]}]
+27419 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.CachingDirectoryFactory return new directory for E:\solr-6.2.1\server\solr\test\data\snapshot_metadata
+27419 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.CachingDirectoryFactory return new directory for E:\solr-6.2.1\server\solr\wiki\data\snapshot_metadata
+27423 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.s.SolrSnapshotMetaDataManager Loading from snapshot metadata file...
+27423 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.s.SolrSnapshotMetaDataManager Loading from snapshot metadata file...
+27432 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.SchemaCodecFactory Using default compressionMode: BEST_SPEED
+27432 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SchemaCodecFactory Using default compressionMode: BEST_SPEED
+27439 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.CachingDirectoryFactory return new directory for E:\solr-6.2.1\server\solr\wiki\data
+27439 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.CachingDirectoryFactory return new directory for E:\solr-6.2.1\server\solr\test\data
+27439 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SolrCore New index directory detected: old=null new=E:\solr-6.2.1\server\solr\wiki\data\index/
+27439 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.SolrCore New index directory detected: old=null new=E:\solr-6.2.1\server\solr\test\data\index/
+27490 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.CachingDirectoryFactory return new directory for E:\solr-6.2.1\server\solr\wiki\data\index
+27515 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.CachingDirectoryFactory return new directory for E:\solr-6.2.1\server\solr\test\data\index
+27689 INFO  (OldIndexDirectoryCleanupThreadForCore-test) [   x:test] o.a.s.c.SolrCore Looking for old index directories to cleanup for core test in E:\solr-6.2.1\server\solr\test\data\
+27689 INFO  (OldIndexDirectoryCleanupThreadForCore-wiki) [   x:wiki] o.a.s.c.SolrCore Looking for old index directories to cleanup for core wiki in E:\solr-6.2.1\server\solr\wiki\data\
+27695 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.PluginBag queryResponseWriter : 'velocity' created with startup=lazy 
+27695 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.PluginBag queryResponseWriter : 'velocity' created with startup=lazy 
+27765 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.r.XSLTResponseWriter xsltCacheLifetimeSeconds=5
+27765 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.r.XSLTResponseWriter xsltCacheLifetimeSeconds=5
+29288 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.u.p.UpdateRequestProcessorChain creating updateRequestProcessorChain "add-unknown-fields-to-the-schema"
+29288 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.u.p.UpdateRequestProcessorChain creating updateRequestProcessorChain "add-unknown-fields-to-the-schema"
+29712 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SolrCore no updateRequestProcessorChain defined as default, creating implicit default
+29712 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.SolrCore no updateRequestProcessorChain defined as default, creating implicit default
+30139 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+30139 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+30196 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+30196 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+30197 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+30198 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+30199 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+30201 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+30273 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json} status=0 QTime=18262
+30275 INFO  (qtp1514322932-35) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1475819540368} status=0 QTime=4848
+30430 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1475819540368} status=0 QTime=8
+32440 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1475819540367} status=0 QTime=0
+32446 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={wt=json&_=1475819540367} status=0 QTime=0
+32452 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1475819540368} status=0 QTime=11
+35023 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.PluginBag requestHandler : '/terms' created with startup=lazy 
+35023 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.PluginBag requestHandler : '/terms' created with startup=lazy 
+35039 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.PluginBag requestHandler : '/update/extract' created with startup=lazy 
+35039 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.PluginBag requestHandler : '/update/extract' created with startup=lazy 
+35039 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.PluginBag requestHandler : '/analysis/field' created with startup=lazy 
+35039 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.PluginBag requestHandler : '/analysis/field' created with startup=lazy 
+35039 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.PluginBag requestHandler : '/analysis/document' created with startup=lazy 
+35039 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.PluginBag requestHandler : '/analysis/document' created with startup=lazy 
+35039 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.PluginBag requestHandler : '/spell' created with startup=lazy 
+35039 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.PluginBag requestHandler : '/spell' created with startup=lazy 
+35039 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.PluginBag requestHandler : '/tvrh' created with startup=lazy 
+35039 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.PluginBag requestHandler : '/tvrh' created with startup=lazy 
+35039 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.PluginBag requestHandler : '/elevate' created with startup=lazy 
+35039 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.PluginBag requestHandler : '/elevate' created with startup=lazy 
+35039 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.RequestHandlers Registered paths: /admin/mbeans,/browse,/update/json/docs,/admin/luke,/export,/get,/admin/properties,/elevate,/update/json,/admin/threads,/query,/analysis/field,/analysis/document,/spell,/update/csv,/sql,/graph,/tvrh,/select,/admin/segments,/admin/system,/replication,/config,/stream,/schema,/admin/plugins,/admin/logging,/admin/ping,/update,/admin/file,/terms,/debug/dump,/update/extract
+35039 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SolrCore Using default statsCache cache: org.apache.solr.search.stats.LocalStatsCache
+35039 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.RequestHandlers Registered paths: /admin/mbeans,/browse,/update/json/docs,/admin/luke,/export,/get,/admin/properties,/elevate,/update/json,/admin/threads,/query,/analysis/field,/analysis/document,/spell,/update/csv,/sql,/graph,/tvrh,/select,/admin/segments,/admin/system,/replication,/config,/stream,/schema,/admin/plugins,/admin/logging,/admin/ping,/update,/admin/file,/terms,/debug/dump,/update/extract
+35039 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.SolrCore Using default statsCache cache: org.apache.solr.search.stats.LocalStatsCache
+35088 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+35088 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+35088 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+35088 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+35244 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.u.CommitTracker Hard AutoCommit: if uncommited for 15000ms; 
+35244 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.u.CommitTracker Soft AutoCommit: disabled
+35260 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.u.CommitTracker Hard AutoCommit: if uncommited for 15000ms; 
+35260 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.u.CommitTracker Soft AutoCommit: disabled
+35432 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.SolrDeletionPolicy SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(MMapDirectory@E:\solr-6.2.1\server\solr\test\data\index lockFactory=org.apache.lucene.store.NativeFSLockFactory@2851166c; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_2,generation=2}
+35432 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SolrDeletionPolicy SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(MMapDirectory@E:\solr-6.2.1\server\solr\wiki\data\index lockFactory=org.apache.lucene.store.NativeFSLockFactory@2851166c; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_4,generation=4}
+35432 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.SolrDeletionPolicy newest commit generation = 2
+35432 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SolrDeletionPolicy newest commit generation = 4
+35745 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.s.SolrIndexSearcher Opening [Searcher@44fbdcd6[wiki] main]
+35745 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.s.SolrIndexSearcher Opening [Searcher@162c381c[test] main]
+35776 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: E:\solr-6.2.1\server\solr\test\conf
+35776 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: E:\solr-6.2.1\server\solr\wiki\conf
+35776 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.r.RestManager Initializing RestManager with initArgs: {storageDir=E:\solr-6.2.1\server\solr\test\conf}
+35776 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.r.RestManager Initializing RestManager with initArgs: {storageDir=E:\solr-6.2.1\server\solr\wiki\conf}
+35807 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.r.ManagedResourceStorage Reading _rest_managed.json using file:dir=E:\solr-6.2.1\server\solr\wiki\conf
+35807 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.r.ManagedResourceStorage Reading _rest_managed.json using file:dir=E:\solr-6.2.1\server\solr\test\conf
+35807 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.r.RestManager Initializing 0 registered ManagedResources
+35807 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.r.RestManager Initializing 0 registered ManagedResources
+35828 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+35828 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+35838 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.s.DirectSolrSpellChecker init: {name=default,field=_text_,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+35838 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.s.DirectSolrSpellChecker init: {name=default,field=_text_,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+35854 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.h.c.SpellCheckComponent No queryConverter defined, using default converter
+35854 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.h.c.SpellCheckComponent No queryConverter defined, using default converter
+35854 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.h.c.QueryElevationComponent Loading QueryElevation from: E:\solr-6.2.1\server\solr\wiki\conf\elevate.xml
+35854 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.h.c.QueryElevationComponent Loading QueryElevation from: E:\solr-6.2.1\server\solr\test\conf\elevate.xml
+35907 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.h.ReplicationHandler Commits will be reserved for  10000
+35985 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.h.ReplicationHandler Commits will be reserved for  10000
+36132 INFO  (searcherExecutor-7-thread-1-processing-x:test) [   x:test] o.a.s.c.QuerySenderListener QuerySenderListener sending requests to Searcher@162c381c[test] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_0(6.2.1):C32)))}
+36132 INFO  (searcherExecutor-8-thread-1-processing-x:wiki) [   x:wiki] o.a.s.c.QuerySenderListener QuerySenderListener sending requests to Searcher@44fbdcd6[wiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_2(6.2.1):C12)))}
+36132 INFO  (searcherExecutor-7-thread-1-processing-x:test) [   x:test] o.a.s.c.QuerySenderListener QuerySenderListener done.
+36132 INFO  (searcherExecutor-7-thread-1-processing-x:test) [   x:test] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+36132 INFO  (searcherExecutor-7-thread-1-processing-x:test) [   x:test] o.a.s.c.SolrCore [test] Registered new searcher Searcher@162c381c[test] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_0(6.2.1):C32)))}
+36132 INFO  (searcherExecutor-8-thread-1-processing-x:wiki) [   x:wiki] o.a.s.c.QuerySenderListener QuerySenderListener done.
+36132 INFO  (searcherExecutor-8-thread-1-processing-x:wiki) [   x:wiki] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+36132 INFO  (searcherExecutor-8-thread-1-processing-x:wiki) [   x:wiki] o.a.s.c.SolrCore [wiki] Registered new searcher Searcher@44fbdcd6[wiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_2(6.2.1):C12)))}
+36132 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.u.UpdateLog Looking up max value of version field to seed version buckets
+36132 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.u.UpdateLog Looking up max value of version field to seed version buckets
+36132 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.u.VersionInfo Refreshing highest value of _version_ for 65536 version buckets from index
+36132 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.u.VersionInfo Refreshing highest value of _version_ for 65536 version buckets from index
+36169 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.u.VersionInfo Found MAX value 1547270814802378752 from Terms for _version_ in index
+36170 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.u.VersionInfo Found MAX value 1547263843016638464 from Terms for _version_ in index
+36177 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.u.UpdateLog Took 38.0ms to seed version buckets with highest version 1547270814802378752
+36177 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.u.UpdateLog Took 38.0ms to seed version buckets with highest version 1547263843016638464
+36178 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.CoreContainer registering core: wiki
+36178 INFO  (coreLoadExecutor-6-thread-1) [   x:test] o.a.s.c.CoreContainer registering core: test
+38305 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1475819553560} status=0 QTime=0
+38342 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1475819553561} status=0 QTime=36
+38345 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={wt=json&_=1475819553560} status=0 QTime=38
+38427 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1475819553560} status=0 QTime=0
+38437 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={wt=json&_=1475819553560} status=0 QTime=3
+38438 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1475819553561} status=0 QTime=9
+40906 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1475819553560} status=0 QTime=0
+40916 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1475819553561} status=0 QTime=8
+40951 INFO  (qtp1514322932-17) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/admin/luke params={numTerms=0&show=index&wt=json&_=1475819556378} status=0 QTime=33
+40959 INFO  (qtp1514322932-22) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/replication params={wt=json&command=details&_=1475819556378} status=0 QTime=39
+40969 INFO  (qtp1514322932-18) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/admin/system params={wt=json&_=1475819556378} status=0 QTime=49
+40970 INFO  (qtp1514322932-16) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/admin/ping params={action=status&wt=json&_=1475819553561&ts=1475819553561} status=503 QTime=33
+74071 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1475819553560} status=0 QTime=0
+74078 INFO  (qtp1514322932-20) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/replication params={wt=json&command=details&_=1475819556378} status=0 QTime=2
+74082 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1475819553561} status=0 QTime=8
+78259 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1475819553560} status=0 QTime=0
+78268 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1475819553561} status=0 QTime=8
+78273 INFO  (qtp1514322932-13) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/admin/segments params={wt=json&_=1475819593738} status=0 QTime=11
+82016 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1475819553560} status=0 QTime=0
+82026 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1475819553561} status=0 QTime=8
+82035 INFO  (qtp1514322932-17) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/admin/luke params={show=schema&wt=json&_=1475819556378} status=0 QTime=7
+82066 INFO  (qtp1514322932-22) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/config params={wt=json&_=1475819597472} status=0 QTime=32
+82207 INFO  (qtp1514322932-16) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/admin/luke params={numTerms=0&wt=json&_=1475819556378} status=0 QTime=17
+84093 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1475819553560} status=0 QTime=0
+84105 INFO  (qtp1514322932-17) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/admin/segments params={wt=json&_=1475819593738} status=0 QTime=6
+84106 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1475819553561} status=0 QTime=9
+100075 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1475819553560} status=0 QTime=0
+100080 INFO  (qtp1514322932-22) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/replication params={wt=json&command=details&_=1475819556378} status=0 QTime=1
+100084 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1475819553561} status=0 QTime=8
+116355 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1475819553560} status=0 QTime=0
+116366 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1475819553561} status=0 QTime=8
+116366 INFO  (qtp1514322932-18) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/admin/mbeans params={cat=QUERYHANDLER&wt=json&_=1475819631823} status=0 QTime=4
+116417 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1475819553560} status=0 QTime=0
+116427 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1475819553561} status=0 QTime=7
+116428 INFO  (qtp1514322932-22) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/admin/mbeans params={cat=QUERYHANDLER&wt=json&_=1475819631823} status=0 QTime=0
+121856 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1475819553560} status=0 QTime=0
+121872 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1475819553561} status=0 QTime=12
+121874 INFO  (qtp1514322932-18) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/admin/luke params={show=schema&wt=json&_=1475819556378} status=0 QTime=8
+133876 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1475819553560} status=0 QTime=0
+133888 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1475819553561} status=0 QTime=9
+133955 INFO  (qtp1514322932-15) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/admin/mbeans params={stats=true&wt=json&_=1475819631823} status=0 QTime=74
+201270 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1475819553560} status=0 QTime=0
+201276 INFO  (qtp1514322932-21) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/admin/luke params={numTerms=0&show=index&wt=json&_=1475819556378} status=0 QTime=0
+201279 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1475819553561} status=0 QTime=8
+201281 INFO  (qtp1514322932-18) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/replication params={wt=json&command=details&_=1475819556378} status=0 QTime=2
+201287 INFO  (qtp1514322932-15) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/admin/ping params={action=status&wt=json&_=1475819553561&ts=1475819553561} status=503 QTime=0
+201291 INFO  (qtp1514322932-21) [   x:test] o.a.s.c.S.Request [test]  webapp=/solr path=/admin/system params={wt=json&_=1475819556378} status=0 QTime=7
+230377 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1475819553560} status=0 QTime=0
+230382 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=1
+230387 INFO  (qtp1514322932-34) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1475819553561} status=0 QTime=8
+241233 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+252232 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+262231 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+273232 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+284234 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+295244 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+306238 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+317235 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+328233 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+339233 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+350244 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+361234 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+372251 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+383232 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+393250 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+404235 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+414243 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+425238 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+435246 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+446233 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+457233 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+468232 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+479231 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+490233 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+501250 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+512250 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+523237 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+533242 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+544235 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+555233 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+566228 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+577232 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+587232 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+598232 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+609233 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+620250 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+631250 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+642235 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+652240 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+663234 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+673248 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+684234 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+695233 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+706232 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+717233 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+728234 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+738242 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+749229 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+760235 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+770240 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+781233 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+791234 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+802235 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+813249 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+824235 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+834236 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+844251 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+855249 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+866235 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+877235 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+888232 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+898229 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+909234 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+920243 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+931230 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+942239 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+953242 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+964238 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+975232 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+986233 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+997233 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1007233 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1018233 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1029230 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1040247 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1051235 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1062233 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1073232 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1083238 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1093242 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1104241 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1114249 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1125233 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1135242 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1145250 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1156251 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1167233 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1177238 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1187242 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1198246 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1209237 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1220236 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1231235 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1241237 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1252235 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1263233 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1273233 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1283238 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1294239 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1305236 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1315246 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1326242 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1337232 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1347240 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1357241 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1368239 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1379227 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1389235 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1399236 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1410231 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1420239 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1431242 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1442238 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1452234 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1463226 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1473245 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1483240 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1494231 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1505230 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1515241 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1525241 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1536239 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1547244 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1558237 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1569243 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1580224 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1590235 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1600239 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1610242 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1621240 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1632230 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1643236 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1654231 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1664241 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1675234 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1685234 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1696231 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1706237 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1717240 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1727242 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1738228 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1749229 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1760243 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1771231 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1781250 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1792236 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1802232 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1813237 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1824229 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1834239 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1845237 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1855242 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1866239 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1877245 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1887241 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1898231 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1908235 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1919233 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1930236 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1940247 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1951229 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1961239 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1972243 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1983247 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+1994237 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2004240 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2015225 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2025237 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2036236 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2047233 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2057238 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2067250 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2078247 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2089238 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2099243 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2110232 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2121234 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2132237 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2143240 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2153237 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2164245 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2175236 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2186239 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2197243 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2207416 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2218231 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2229231 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2239233 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2249240 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2259241 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2270239 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2281239 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2291238 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2302232 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2312232 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2323234 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2334234 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2345229 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2355242 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2366235 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=1
+2376246 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2387242 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2398238 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2409234 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2420236 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2431239 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2441243 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2452233 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2462241 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2472243 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2483232 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2493232 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2504240 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2515233 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2525239 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2536238 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2547238 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2557239 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2568232 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2578232 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2589242 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2600238 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2611230 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2622235 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2633232 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2643232 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2654228 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2664234 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2675232 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2686233 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2697233 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2708234 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2719232 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2730235 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2741235 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2752233 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2762239 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2773232 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2784232 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2794225 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2804236 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2815236 INFO  (qtp1514322932-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2826231 INFO  (qtp1514322932-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2836246 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2847245 INFO  (qtp1514322932-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2858237 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2868233 INFO  (qtp1514322932-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0
+2879233 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/logging params={wt=json&_=1475819745856&since=0} status=0 QTime=0

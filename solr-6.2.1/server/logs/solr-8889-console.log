@@ -1,0 +1,286 @@
+0    INFO  (main) [   ] o.e.j.u.log Logging initialized @679ms
+255  INFO  (main) [   ] o.e.j.s.Server jetty-9.3.8.v20160314
+276  INFO  (main) [   ] o.e.j.d.p.ScanningAppProvider Deployment monitor [file:///E:/solr-6.2.1/server/contexts/] at interval 0
+774  INFO  (main) [   ] o.e.j.w.StandardDescriptorProcessor NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+788  WARN  (main) [   ] o.e.j.s.SecurityHandler ServletContext@o.e.j.w.WebAppContext@a67c67e{/solr,file:///E:/solr-6.2.1/server/solr-webapp/webapp/,STARTING}{E:\solr-6.2.1\server/solr-webapp/webapp} has uncovered http methods for path: /
+803  INFO  (main) [   ] o.a.s.s.SolrDispatchFilter SolrDispatchFilter.init(): WebAppClassLoader=1815546035@6c3708b3
+822  INFO  (main) [   ] o.a.s.c.SolrResourceLoader JNDI not configured for solr (NoInitialContextEx)
+824  INFO  (main) [   ] o.a.s.c.SolrResourceLoader using system property solr.solr.home: E:\solr-6.2.1\server\solr
+824  INFO  (main) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: 'E:\solr-6.2.1\server\solr'
+824  INFO  (main) [   ] o.a.s.c.SolrResourceLoader JNDI not configured for solr (NoInitialContextEx)
+825  INFO  (main) [   ] o.a.s.c.SolrResourceLoader using system property solr.solr.home: E:\solr-6.2.1\server\solr
+830  INFO  (main) [   ] o.a.s.c.SolrXmlConfig Loading container configuration from E:\solr-6.2.1\server\solr\solr.xml
+902  INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Config-defined core root directory: E:\solr-6.2.1\server\solr
+931  INFO  (main) [   ] o.a.s.c.CoreContainer New CoreContainer 1300393335
+931  INFO  (main) [   ] o.a.s.c.CoreContainer Loading cores into CoreContainer [instanceDir=E:\solr-6.2.1\server\solr]
+931  WARN  (main) [   ] o.a.s.c.CoreContainer Couldn't add files from E:\solr-6.2.1\server\solr\lib to classpath: E:\solr-6.2.1\server\solr\lib
+944  INFO  (main) [   ] o.a.s.h.c.HttpShardHandlerFactory created with socketTimeout : 600000,connTimeout : 60000,maxConnectionsPerHost : 20,maxConnections : 10000,corePoolSize : 0,maximumPoolSize : 2147483647,maxThreadIdleTime : 5,sizeOfQueue : -1,fairnessPolicy : false,useRetries : false,connectionsEvictorSleepDelay : 5000,maxConnectionIdleTime : 40000,
+1156 INFO  (main) [   ] o.a.s.u.UpdateShardHandler Creating UpdateShardHandler HTTP client with params: socketTimeout=600000&connTimeout=60000&retry=true
+1159 INFO  (main) [   ] o.a.s.l.LogWatcher SLF4J impl is org.slf4j.impl.Log4jLoggerFactory
+1160 INFO  (main) [   ] o.a.s.l.LogWatcher Registering Log Listener [Log4j (org.slf4j.impl.Log4jLoggerFactory)]
+1162 INFO  (main) [   ] o.a.s.c.CoreContainer Security conf doesn't exist. Skipping setup for authorization module.
+1162 INFO  (main) [   ] o.a.s.c.CoreContainer No authentication plugin used.
+5816 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Looking for core definitions underneath E:\solr-6.2.1\server\solr
+5831 INFO  (main) [   ] o.a.s.c.CoreDescriptor Created CoreDescriptor: {name=test, config=solrconfig.xml, loadOnStartup=true, schema=schema.xml, configSetProperties=configsetprops.json, transient=false, dataDir=data\}
+5832 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Found core test in E:\solr-6.2.1\server\solr\test
+5834 INFO  (main) [   ] o.a.s.c.CoreDescriptor Created CoreDescriptor: {name=wiki, config=solrconfig.xml, loadOnStartup=true, schema=schema.xml, configSetProperties=configsetprops.json, transient=false, dataDir=data\}
+5834 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Found core wiki in E:\solr-6.2.1\server\solr\wiki
+5834 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Found 2 core definitions
+5846 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter user.dir=E:\solr-6.2.1\server
+5847 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter SolrDispatchFilter.init() done
+5848 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: 'E:\solr-6.2.1\server\solr\wiki'
+5848 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: 'E:\solr-6.2.1\server\solr\test'
+5848 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader JNDI not configured for solr (NoInitialContextEx)
+5848 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader using system property solr.solr.home: E:\solr-6.2.1\server\solr
+5851 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader JNDI not configured for solr (NoInitialContextEx)
+5851 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader using system property solr.solr.home: E:\solr-6.2.1\server\solr
+5958 INFO  (main) [   ] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@a67c67e{/solr,file:///E:/solr-6.2.1/server/solr-webapp/webapp/,AVAILABLE}{E:\solr-6.2.1\server/solr-webapp/webapp}
+5966 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrConfig current version of requestparams : 0
+5971 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrConfig Adding specified lib dirs to ClassLoader
+5980 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrConfig current version of requestparams : 0
+5984 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrConfig Adding specified lib dirs to ClassLoader
+5998 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/apache-mime4j-core-0.7.2.jar' to classloader
+5999 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/apache-mime4j-dom-0.7.2.jar' to classloader
+5999 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/aspectjrt-1.8.0.jar' to classloader
+5999 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/bcmail-jdk15-1.45.jar' to classloader
+5999 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/bcprov-jdk15-1.45.jar' to classloader
+5999 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/boilerpipe-1.1.0.jar' to classloader
+5999 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/commons-compress-1.11.jar' to classloader
+6001 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/fontbox-2.0.1.jar' to classloader
+6002 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/icu4j-56.1.jar' to classloader
+6002 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/isoparser-1.1.18.jar' to classloader
+6002 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/jackcess-2.1.3.jar' to classloader
+6002 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/java-libpst-0.8.1.jar' to classloader
+6002 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/jdom-1.0.jar' to classloader
+6002 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/jempbox-1.8.12.jar' to classloader
+6002 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/jmatio-1.0.jar' to classloader
+6003 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/juniversalchardet-1.0.3.jar' to classloader
+6003 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/metadata-extractor-2.8.1.jar' to classloader
+6003 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/pdfbox-2.0.1.jar' to classloader
+6003 INFO  (main) [   ] o.e.j.s.ServerConnector Started ServerConnector@1f2586d6{HTTP/1.1,[http/1.1]}{0.0.0.0:8889}
+6003 INFO  (main) [   ] o.e.j.s.Server Started @6686ms
+6003 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/pdfbox-tools-2.0.1.jar' to classloader
+6004 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/poi-3.15-beta1.jar' to classloader
+6004 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/poi-ooxml-3.15-beta1.jar' to classloader
+6004 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/poi-ooxml-schemas-3.15-beta1.jar' to classloader
+6005 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/poi-scratchpad-3.15-beta1.jar' to classloader
+6005 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/rome-1.0.jar' to classloader
+6005 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tagsoup-1.2.1.jar' to classloader
+6005 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tika-core-1.13.jar' to classloader
+6005 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tika-java7-1.13.jar' to classloader
+6005 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tika-parsers-1.13.jar' to classloader
+6005 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tika-xmp-1.13.jar' to classloader
+6005 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/vorbis-java-core-0.8.jar' to classloader
+6005 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/vorbis-java-tika-0.8.jar' to classloader
+6005 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/xercesImpl-2.9.1.jar' to classloader
+6006 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/xmlbeans-2.6.0.jar' to classloader
+6006 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/xmpcore-5.1.2.jar' to classloader
+6006 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/xz-1.5.jar' to classloader
+6006 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/dist/solr-cell-6.2.1.jar' to classloader
+6006 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/attributes-binder-1.3.1.jar' to classloader
+6006 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/carrot2-guava-18.0.jar' to classloader
+6006 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/carrot2-mini-3.12.0.jar' to classloader
+6006 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/jackson-annotations-2.5.4.jar' to classloader
+6006 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/jackson-databind-2.5.4.jar' to classloader
+6006 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/simple-xml-2.7.1.jar' to classloader
+6007 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/dist/solr-clustering-6.2.1.jar' to classloader
+6007 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/langid/lib/jsonic-1.2.7.jar' to classloader
+6007 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/langid/lib/langdetect-1.1-20120112.jar' to classloader
+6007 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/dist/solr-langid-6.2.1.jar' to classloader
+6007 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/velocity/lib/commons-beanutils-1.8.3.jar' to classloader
+6007 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/velocity/lib/commons-collections-3.2.2.jar' to classloader
+6007 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/velocity/lib/velocity-1.7.jar' to classloader
+6007 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/velocity/lib/velocity-tools-2.0.jar' to classloader
+6007 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/dist/solr-velocity-6.2.1.jar' to classloader
+6009 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/apache-mime4j-core-0.7.2.jar' to classloader
+6010 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/apache-mime4j-dom-0.7.2.jar' to classloader
+6010 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/aspectjrt-1.8.0.jar' to classloader
+6010 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/bcmail-jdk15-1.45.jar' to classloader
+6010 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/bcprov-jdk15-1.45.jar' to classloader
+6010 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/boilerpipe-1.1.0.jar' to classloader
+6010 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/commons-compress-1.11.jar' to classloader
+6010 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/fontbox-2.0.1.jar' to classloader
+6010 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/icu4j-56.1.jar' to classloader
+6010 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/isoparser-1.1.18.jar' to classloader
+6010 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/jackcess-2.1.3.jar' to classloader
+6011 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/java-libpst-0.8.1.jar' to classloader
+6011 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/jdom-1.0.jar' to classloader
+6011 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/jempbox-1.8.12.jar' to classloader
+6011 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/jmatio-1.0.jar' to classloader
+6011 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/juniversalchardet-1.0.3.jar' to classloader
+6011 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/metadata-extractor-2.8.1.jar' to classloader
+6011 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/pdfbox-2.0.1.jar' to classloader
+6011 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/pdfbox-tools-2.0.1.jar' to classloader
+6011 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/poi-3.15-beta1.jar' to classloader
+6011 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/poi-ooxml-3.15-beta1.jar' to classloader
+6011 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/poi-ooxml-schemas-3.15-beta1.jar' to classloader
+6011 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/poi-scratchpad-3.15-beta1.jar' to classloader
+6011 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/rome-1.0.jar' to classloader
+6012 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tagsoup-1.2.1.jar' to classloader
+6012 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tika-core-1.13.jar' to classloader
+6012 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tika-java7-1.13.jar' to classloader
+6012 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tika-parsers-1.13.jar' to classloader
+6012 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/tika-xmp-1.13.jar' to classloader
+6012 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/vorbis-java-core-0.8.jar' to classloader
+6012 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/vorbis-java-tika-0.8.jar' to classloader
+6012 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/xercesImpl-2.9.1.jar' to classloader
+6012 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/xmlbeans-2.6.0.jar' to classloader
+6012 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/xmpcore-5.1.2.jar' to classloader
+6013 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/extraction/lib/xz-1.5.jar' to classloader
+6013 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/dist/solr-cell-6.2.1.jar' to classloader
+6013 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/attributes-binder-1.3.1.jar' to classloader
+6013 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/carrot2-guava-18.0.jar' to classloader
+6013 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/carrot2-mini-3.12.0.jar' to classloader
+6013 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/jackson-annotations-2.5.4.jar' to classloader
+6013 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/jackson-databind-2.5.4.jar' to classloader
+6013 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/clustering/lib/simple-xml-2.7.1.jar' to classloader
+6013 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/dist/solr-clustering-6.2.1.jar' to classloader
+6013 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/langid/lib/jsonic-1.2.7.jar' to classloader
+6013 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/langid/lib/langdetect-1.1-20120112.jar' to classloader
+6013 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/dist/solr-langid-6.2.1.jar' to classloader
+6013 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/velocity/lib/commons-beanutils-1.8.3.jar' to classloader
+6013 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/velocity/lib/commons-collections-3.2.2.jar' to classloader
+6013 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/velocity/lib/velocity-1.7.jar' to classloader
+6014 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/contrib/velocity/lib/velocity-tools-2.0.jar' to classloader
+6014 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/E:/solr-6.2.1/dist/solr-velocity-6.2.1.jar' to classloader
+6276 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrConfig Using Lucene MatchVersion: 6.2.1
+6284 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrConfig Using Lucene MatchVersion: 6.2.1
+6599 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrConfig Loaded SolrConfig: solrconfig.xml
+6602 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrConfig Loaded SolrConfig: solrconfig.xml
+6611 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.ManagedIndexSchemaFactory The schema is configured as managed, but managed schema resource managed-schema not found - loading non-managed schema schema.xml instead
+6797 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema [wiki] Schema name=example-data-driven-schema
+6809 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema [test] Schema name=example-data-driven-schema
+7685 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema unique key field: id
+7692 ERROR (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.CoreContainer Error creating core [test]: Could not load conf for core test: Can't load schema E:\solr-6.2.1\server\solr\test\conf\schema.xml: copyField dest :'_text_' is not an explicit field and doesn't match a dynamicField.
+org.apache.solr.common.SolrException: Could not load conf for core test: Can't load schema E:\solr-6.2.1\server\solr\test\conf\schema.xml: copyField dest :'_text_' is not an explicit field and doesn't match a dynamicField.
+	at org.apache.solr.core.ConfigSetService.getConfig(ConfigSetService.java:85)
+	at org.apache.solr.core.CoreContainer.create(CoreContainer.java:836)
+	at org.apache.solr.core.CoreContainer.lambda$load$0(CoreContainer.java:494)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at org.apache.solr.common.util.ExecutorUtil$MDCAwareThreadPoolExecutor.lambda$execute$0(ExecutorUtil.java:229)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.apache.solr.common.SolrException: Can't load schema E:\solr-6.2.1\server\solr\test\conf\schema.xml: copyField dest :'_text_' is not an explicit field and doesn't match a dynamicField.
+	at org.apache.solr.schema.IndexSchema.readSchema(IndexSchema.java:600)
+	at org.apache.solr.schema.IndexSchema.<init>(IndexSchema.java:183)
+	at org.apache.solr.schema.ManagedIndexSchema.<init>(ManagedIndexSchema.java:104)
+	at org.apache.solr.schema.ManagedIndexSchemaFactory.create(ManagedIndexSchemaFactory.java:172)
+	at org.apache.solr.schema.ManagedIndexSchemaFactory.create(ManagedIndexSchemaFactory.java:45)
+	at org.apache.solr.schema.IndexSchemaFactory.buildIndexSchema(IndexSchemaFactory.java:75)
+	at org.apache.solr.core.ConfigSetService.createIndexSchema(ConfigSetService.java:107)
+	at org.apache.solr.core.ConfigSetService.getConfig(ConfigSetService.java:78)
+	... 7 more
+Caused by: org.apache.solr.common.SolrException: copyField dest :'_text_' is not an explicit field and doesn't match a dynamicField.
+	at org.apache.solr.schema.IndexSchema.registerCopyField(IndexSchema.java:910)
+	at org.apache.solr.schema.IndexSchema.loadCopyFields(IndexSchema.java:742)
+	at org.apache.solr.schema.IndexSchema.readSchema(IndexSchema.java:594)
+	... 14 more
+7697 ERROR (coreContainerWorkExecutor-2-thread-1) [   ] o.a.s.c.CoreContainer Error waiting for SolrCore to be created
+java.util.concurrent.ExecutionException: org.apache.solr.common.SolrException: Unable to create core [test]
+	at java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.util.concurrent.FutureTask.get(FutureTask.java:192)
+	at org.apache.solr.core.CoreContainer.lambda$load$1(CoreContainer.java:522)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at org.apache.solr.common.util.ExecutorUtil$MDCAwareThreadPoolExecutor.lambda$execute$0(ExecutorUtil.java:229)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.apache.solr.common.SolrException: Unable to create core [test]
+	at org.apache.solr.core.CoreContainer.create(CoreContainer.java:851)
+	at org.apache.solr.core.CoreContainer.lambda$load$0(CoreContainer.java:494)
+	... 5 more
+Caused by: org.apache.solr.common.SolrException: Could not load conf for core test: Can't load schema E:\solr-6.2.1\server\solr\test\conf\schema.xml: copyField dest :'_text_' is not an explicit field and doesn't match a dynamicField.
+	at org.apache.solr.core.ConfigSetService.getConfig(ConfigSetService.java:85)
+	at org.apache.solr.core.CoreContainer.create(CoreContainer.java:836)
+	... 6 more
+Caused by: org.apache.solr.common.SolrException: Can't load schema E:\solr-6.2.1\server\solr\test\conf\schema.xml: copyField dest :'_text_' is not an explicit field and doesn't match a dynamicField.
+	at org.apache.solr.schema.IndexSchema.readSchema(IndexSchema.java:600)
+	at org.apache.solr.schema.IndexSchema.<init>(IndexSchema.java:183)
+	at org.apache.solr.schema.ManagedIndexSchema.<init>(ManagedIndexSchema.java:104)
+	at org.apache.solr.schema.ManagedIndexSchemaFactory.create(ManagedIndexSchemaFactory.java:172)
+	at org.apache.solr.schema.ManagedIndexSchemaFactory.create(ManagedIndexSchemaFactory.java:45)
+	at org.apache.solr.schema.IndexSchemaFactory.buildIndexSchema(IndexSchemaFactory.java:75)
+	at org.apache.solr.core.ConfigSetService.createIndexSchema(ConfigSetService.java:107)
+	at org.apache.solr.core.ConfigSetService.getConfig(ConfigSetService.java:78)
+	... 7 more
+Caused by: org.apache.solr.common.SolrException: copyField dest :'_text_' is not an explicit field and doesn't match a dynamicField.
+	at org.apache.solr.schema.IndexSchema.registerCopyField(IndexSchema.java:910)
+	at org.apache.solr.schema.IndexSchema.loadCopyFields(IndexSchema.java:742)
+	at org.apache.solr.schema.IndexSchema.readSchema(IndexSchema.java:594)
+	... 14 more
+7700 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema unique key field: id
+7806 INFO  (qtp1514322932-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json} status=0 QTime=432
+8048 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.FileExchangeRateProvider Reloading exchange rates from file currency.xml
+8055 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.FileExchangeRateProvider Reloading exchange rates from file currency.xml
+8137 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.ConfigSetProperties Did not find ConfigSet properties, assuming default properties: Can't find resource 'configsetprops.json' in classpath or 'E:\solr-6.2.1\server\solr\wiki'
+8139 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.CoreContainer Creating SolrCore 'wiki' using configuration from instancedir E:\solr-6.2.1\server\solr\wiki
+8140 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SolrCore solr.NRTCachingDirectoryFactory
+8162 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SolrCore [[wiki] ] Opening new SolrCore at [E:\solr-6.2.1\server\solr\wiki], dataDir=[E:\solr-6.2.1\server\solr\wiki\data\]
+8165 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.JmxMonitoredMap No JMX servers found, not exposing Solr information with JMX.
+8171 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SolrCore [[wiki] ] Added SolrEventListener for newSearcher: [org.apache.solr.core.QuerySenderListener{queries=[]}]
+8171 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SolrCore [[wiki] ] Added SolrEventListener for firstSearcher: [org.apache.solr.core.QuerySenderListener{queries=[]}]
+8195 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.CachingDirectoryFactory return new directory for E:\solr-6.2.1\server\solr\wiki\data\snapshot_metadata
+8198 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.s.SolrSnapshotMetaDataManager Loading from snapshot metadata file...
+8203 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SchemaCodecFactory Using default compressionMode: BEST_SPEED
+8206 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.CachingDirectoryFactory return new directory for E:\solr-6.2.1\server\solr\wiki\data
+8207 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SolrCore New index directory detected: old=null new=E:\solr-6.2.1\server\solr\wiki\data\index/
+8208 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.CachingDirectoryFactory return new directory for E:\solr-6.2.1\server\solr\wiki\data\index
+8228 ERROR (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SolrCore [wiki] Solr index directory 'E:\solr-6.2.1\server\solr\wiki\data\index/' is locked (lockType=native).  Throwing exception.
+8228 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SolrCore [wiki]  CLOSING SolrCore org.apache.solr.core.SolrCore@5ed2e666
+8228 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.u.SolrCoreState Closing SolrCoreState
+8228 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.u.DefaultSolrCoreState SolrCoreState ref count has reached 0 - closing IndexWriter
+8229 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.SolrCore [wiki] Closing main searcher on request.
+8229 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.CachingDirectoryFactory Closing NRTCachingDirectoryFactory - 3 directories currently being tracked
+8230 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.CachingDirectoryFactory looking to close E:\solr-6.2.1\server\solr\wiki\data\index [CachedDir<<refCount=0;path=E:\solr-6.2.1\server\solr\wiki\data\index;done=false>>]
+8230 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.CachingDirectoryFactory Closing directory, CoreContainer#isShutdown=false
+8230 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.CachingDirectoryFactory Closing directory: E:\solr-6.2.1\server\solr\wiki\data\index
+8230 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.CachingDirectoryFactory looking to close E:\solr-6.2.1\server\solr\wiki\data [CachedDir<<refCount=0;path=E:\solr-6.2.1\server\solr\wiki\data;done=false>>]
+8230 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.CachingDirectoryFactory Closing directory, CoreContainer#isShutdown=false
+8231 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.CachingDirectoryFactory Closing directory: E:\solr-6.2.1\server\solr\wiki\data
+8231 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.CachingDirectoryFactory looking to close E:\solr-6.2.1\server\solr\wiki\data\snapshot_metadata [CachedDir<<refCount=0;path=E:\solr-6.2.1\server\solr\wiki\data\snapshot_metadata;done=false>>]
+8231 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.CachingDirectoryFactory Closing directory, CoreContainer#isShutdown=false
+8231 INFO  (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.CachingDirectoryFactory Closing directory: E:\solr-6.2.1\server\solr\wiki\data\snapshot_metadata
+8232 ERROR (coreLoadExecutor-6-thread-2) [   x:wiki] o.a.s.c.CoreContainer Error creating core [wiki]: Index dir 'E:\solr-6.2.1\server\solr\wiki\data\index/' of core 'wiki' is already locked. The most likely cause is another Solr server (or another solr core in this server) also configured to use this directory; other possible causes may be specific to lockType: native
+org.apache.solr.common.SolrException: Index dir 'E:\solr-6.2.1\server\solr\wiki\data\index/' of core 'wiki' is already locked. The most likely cause is another Solr server (or another solr core in this server) also configured to use this directory; other possible causes may be specific to lockType: native
+	at org.apache.solr.core.SolrCore.<init>(SolrCore.java:815)
+	at org.apache.solr.core.SolrCore.<init>(SolrCore.java:688)
+	at org.apache.solr.core.CoreContainer.create(CoreContainer.java:838)
+	at org.apache.solr.core.CoreContainer.lambda$load$0(CoreContainer.java:494)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at org.apache.solr.common.util.ExecutorUtil$MDCAwareThreadPoolExecutor.lambda$execute$0(ExecutorUtil.java:229)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.apache.lucene.store.LockObtainFailedException: Index dir 'E:\solr-6.2.1\server\solr\wiki\data\index/' of core 'wiki' is already locked. The most likely cause is another Solr server (or another solr core in this server) also configured to use this directory; other possible causes may be specific to lockType: native
+	at org.apache.solr.core.SolrCore.initIndex(SolrCore.java:570)
+	at org.apache.solr.core.SolrCore.<init>(SolrCore.java:762)
+	... 8 more
+8232 ERROR (coreContainerWorkExecutor-2-thread-1) [   ] o.a.s.c.CoreContainer Error waiting for SolrCore to be created
+java.util.concurrent.ExecutionException: org.apache.solr.common.SolrException: Unable to create core [wiki]
+	at java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.util.concurrent.FutureTask.get(FutureTask.java:192)
+	at org.apache.solr.core.CoreContainer.lambda$load$1(CoreContainer.java:522)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at org.apache.solr.common.util.ExecutorUtil$MDCAwareThreadPoolExecutor.lambda$execute$0(ExecutorUtil.java:229)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.apache.solr.common.SolrException: Unable to create core [wiki]
+	at org.apache.solr.core.CoreContainer.create(CoreContainer.java:851)
+	at org.apache.solr.core.CoreContainer.lambda$load$0(CoreContainer.java:494)
+	... 5 more
+Caused by: org.apache.solr.common.SolrException: Index dir 'E:\solr-6.2.1\server\solr\wiki\data\index/' of core 'wiki' is already locked. The most likely cause is another Solr server (or another solr core in this server) also configured to use this directory; other possible causes may be specific to lockType: native
+	at org.apache.solr.core.SolrCore.<init>(SolrCore.java:815)
+	at org.apache.solr.core.SolrCore.<init>(SolrCore.java:688)
+	at org.apache.solr.core.CoreContainer.create(CoreContainer.java:838)
+	... 6 more
+Caused by: org.apache.lucene.store.LockObtainFailedException: Index dir 'E:\solr-6.2.1\server\solr\wiki\data\index/' of core 'wiki' is already locked. The most likely cause is another Solr server (or another solr core in this server) also configured to use this directory; other possible causes may be specific to lockType: native
+	at org.apache.solr.core.SolrCore.initIndex(SolrCore.java:570)
+	at org.apache.solr.core.SolrCore.<init>(SolrCore.java:762)
+	... 8 more
+8786 INFO  (qtp1514322932-18) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1480575350017} status=0 QTime=11
+8926 INFO  (qtp1514322932-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={wt=json&_=1480575350016} status=0 QTime=1
+8926 INFO  (qtp1514322932-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1480575350016} status=0 QTime=1

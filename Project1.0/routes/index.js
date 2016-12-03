@@ -53,21 +53,22 @@ function login(req, res) {
     var val = req.body;
     var mess;
     var sess = req.session;
-    if (val.username == 'phuoc') {
-        if (val.password == '123') {
-            sess.username = "phuoc";
-            sess.password = "123";
-            mess = 'login success !';
-        }
-        else {
-            mess = 'invalid password !';
-        }
-    }
-    else {
-        mess = 'invalid username !';
-    }
-    console.log(sess.username);
-    res.redirect('/post-ads');
+    api.findData(val.email, "usersByEmail").then(function (result) {
+        console.log(result);
+    });
+    //if (val.username == 'phuoc') {
+    //    if (val.password == '123') {
+    //        sess.username = "phuoc";
+    //        sess.password = "123";
+    //        mess = 'login success !';
+    //    } else {
+    //        mess = 'invalid password !';
+    //    }
+    //} else {
+    //    mess = 'invalid username !';
+    //}
+    //console.log(sess.username);
+    //res.redirect('/post-ads');
 }
 exports.login = login;
 function signup(req, res) {
