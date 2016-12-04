@@ -3,6 +3,8 @@ import express = require('express');
 import routes = require('./routes/index');
 import user = require('./routes/user');
 import api = require('./routes/api');
+import vnTokenizer = require('./routes/vnTokenizer');
+
 import http = require('http');
 import path = require('path');
 
@@ -178,6 +180,7 @@ apiRoutes.get('/checkCached', api.checkCached);
 apiRoutes.get('/dbSearch', api.dbSearch);
 apiRoutes.post('/solrSearch', api.solrSearch);
 apiRoutes.get('/createDoc', api.createDoc);
+apiRoutes.post('/vnTokenizer', vnTokenizer.analyzeData);
 
 app.use('/api', apiRoutes);
 if (app.get('env') === 'development') {

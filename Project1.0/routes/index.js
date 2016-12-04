@@ -47,28 +47,33 @@ function postAds(req, res) {
 exports.postAds = postAds;
 ;
 function loginPage(req, res) {
+    res.render('./login');
 }
 exports.loginPage = loginPage;
 function login(req, res) {
+    console.log(req.body);
     var val = req.body;
     var mess;
     var sess = req.session;
     api.findData(val.email, "usersByEmail").then(function (result) {
-        console.log(result);
+        console.log(result.rows.email);
+        if (result.rows.email) {
+            if (result.rows.password) {
+                sess.email = result.rows.doc.email;
+                sess.password = result.rows.doc.password;
+                sess.name = result.rows.doc.name;
+                res.redirect(val.nextlink);
+            }
+            else {
+                mess = "invalid password!";
+                res.render('./login', { mess: mess });
+            }
+        }
+        else {
+            mess = "invalid email !";
+            res.render('./login', { mess: mess });
+        }
     });
-    //if (val.username == 'phuoc') {
-    //    if (val.password == '123') {
-    //        sess.username = "phuoc";
-    //        sess.password = "123";
-    //        mess = 'login success !';
-    //    } else {
-    //        mess = 'invalid password !';
-    //    }
-    //} else {
-    //    mess = 'invalid username !';
-    //}
-    //console.log(sess.username);
-    //res.redirect('/post-ads');
 }
 exports.login = login;
 function signup(req, res) {

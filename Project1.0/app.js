@@ -2,6 +2,7 @@
 const express = require('express');
 const routes = require('./routes/index');
 const api = require('./routes/api');
+const vnTokenizer = require('./routes/vnTokenizer');
 const http = require('http');
 const path = require('path');
 var favicon = require('serve-favicon');
@@ -161,6 +162,7 @@ apiRoutes.get('/checkCached', api.checkCached);
 apiRoutes.get('/dbSearch', api.dbSearch);
 apiRoutes.post('/solrSearch', api.solrSearch);
 apiRoutes.get('/createDoc', api.createDoc);
+apiRoutes.post('/vnTokenizer', vnTokenizer.analyzeData);
 app.use('/api', apiRoutes);
 if (app.get('env') === 'development') {
     app.use(errorHandler());

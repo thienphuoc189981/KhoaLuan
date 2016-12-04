@@ -47,30 +47,32 @@ export function postAds(req: express.Request, res: express.Response) {
 };
 
 export function loginPage(req: express.Request, res: express.Response) {
-
+    res.render('./login');
 }
 
 export function login(req: express.Request, res: express.Response) {
-    var val = req.body;
-    var mess: string;
-    var sess = req.session;
-    api.findData(val.email, "usersByEmail").then(function (result) {
-        console.log(result);
-    });
-    //if (val.username == 'phuoc') {
-    //    if (val.password == '123') {
-    //        sess.username = "phuoc";
-    //        sess.password = "123";
-
-    //        mess = 'login success !';
-    //    } else {
-    //        mess = 'invalid password !';
-    //    }
-    //} else {
-    //    mess = 'invalid username !';
-    //}
-    //console.log(sess.username);
-    //res.redirect('/post-ads');
+    console.log(req.body);
+        var val = req.body;
+        var mess: string;
+        var sess = req.session;
+        api.findData(val.email, "usersByEmail").then(function (result) {
+            console.log(result.rows.email);
+            if (result.rows.email) {
+                if (result.rows.password) {
+                    sess.email = result.rows.doc.email;
+                    sess.password = result.rows.doc.password;
+                    sess.name = result.rows.doc.name;
+                    res.redirect(val.nextlink);
+                } else {
+                    mess = "invalid password!";
+                    res.render('./login', { mess: mess });
+                }
+            } else {
+                mess = "invalid email !";
+                res.render('./login', { mess: mess });
+            }
+        });
+    
 }
 
 export function signup(req: express.Request, res: express.Response) {

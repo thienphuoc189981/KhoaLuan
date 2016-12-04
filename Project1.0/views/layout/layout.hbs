@@ -50,8 +50,14 @@
             <!-- Navbar Start -->
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="login.html"><i class="lnr lnr-enter"></i> Login</a></li>
-                    <li><a href="signup.html"><i class="lnr lnr-user"></i> Signup</a></li>
+                    {{#if session.data.name}}
+                    <li><a href="#"><i class="lnr lnr-enter"></i> {{session.data.name}}</a></li>
+                    {{else}}
+                    <li><a href="/login"><i class="lnr lnr-enter"></i> Login</a></li>
+                    <li><a href="/signup"><i class="lnr lnr-user"></i> Signup</a></li>
+                    {{/if}}
+                    
+                   
                     <li class="postadd">
                         <a class="btn btn-danger btn-post" href="post-ads.html"><span class="fa fa-plus-circle"></span> Post an Ad</a>
                     </li>

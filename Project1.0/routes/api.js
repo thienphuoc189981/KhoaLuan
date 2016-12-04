@@ -141,25 +141,28 @@ function dbSearch(req, res) {
 exports.dbSearch = dbSearch;
 function solrSearch(req, res) {
     var data = req.body.rows;
-    var json = { rows: [] };
-    var q = req.body.q;
+    console.log(data);
+    //var json = { rows: [] };
+    var q = req.query.q;
+    //var q = "developer";
     var source = "";
     var i;
-    for (i = 0; i < data.length; i++) {
-        json.rows.push(data[i].doc);
-    }
+    //for (i = 0; i < data.length; i++) {
+    //    json.rows.push(data[i].doc);
+    //}
+    console.log(data.length);
     //----Handle index----//
     async.waterfall([
         function (callback) {
-            for (i = 0; i < json.rows.length; i++) {
-                console.log(json.rows[i].title);
-                var updateQuery = "<add><doc><field name='id'>" + (json.rows[i]._id) +
-                    "</field><field name='title'>" + (json.rows[i].title) +
-                    "</field><field name='description'>" + (json.rows[i].description) +
-                    "</field><field name='company'>" + (json.rows[i].company) +
-                    "</field><field name='salary'>" + (json.rows[i].salary) +
-                    "</field><field name='location'>" + (json.rows[i].location) +
-                    "</field><field name='link'>" + (json.rows[i].link) +
+            for (i = 0; i < data.length; i++) {
+                //console.log(json.rows[i].title);
+                var updateQuery = "<add><doc><field name='id'>" + (data[i]._id) +
+                    "</field><field name='title'>" + (data[i].title) +
+                    "</field><field name='description'>" + (data[i].description) +
+                    "</field><field name='company'>" + (data[i].company) +
+                    "</field><field name='salary'>" + (data[i].salary) +
+                    "</field><field name='location'>" + (data[i].location) +
+                    "</field><field name='link'>" + (data[i].link) +
                     "</field><field name='source'>" + (source) + "</field></doc></add>";
                 updateQuery = encodeURIComponent(updateQuery);
                 request.get("http://localhost:8983/solr/search/update?commit=true&stream.body=" + updateQuery + "&wt=json");
