@@ -18,9 +18,9 @@ export function index(req: express.Request, res: express.Response) {
         res.render('./index');
 };
 
-export function indexAds(req: express.Request, res: express.Response) {
-    console.log("ads " + req.session.username);
-    if (req.session.username) {
+export function postAds(req: express.Request, res: express.Response) {
+    console.log("ads " + req.session.email);
+    if (req.session.email) {
         let json = [];
         api.indexView("categoriesAll").then(function (data) {
             data.rows.forEach(function (item) {
@@ -30,11 +30,11 @@ export function indexAds(req: express.Request, res: express.Response) {
             res.render('./postAds', { cats: json });
         });
     } else {
-        res.render('./login', {nextlink:'./postAds'});
+        res.render('./login', { nextlink:'/post-ads'});
     }
 };
 
-export function postAds(req: express.Request, res: express.Response) {
+export function insertAds(req: express.Request, res: express.Response) {
     var val = req.body;
     val.attachment = req.file.path;
     val.type = "jobs";
@@ -50,29 +50,42 @@ export function loginPage(req: express.Request, res: express.Response) {
     res.render('./login');
 }
 
-export function login(req: express.Request, res: express.Response) {
+export function loginAuthen(req: express.Request, res: express.Response) {
     console.log(req.body);
-        var val = req.body;
-        var mess: string;
-        var sess = req.session;
+        let val = req.body;
+        let mess = '';
+        let render = '';
+        let nextlink = '';
+        let sess = req.session;
+        let redirect = val.nextlink;
+
         api.findData(val.email, "usersByEmail").then(function (result) {
-            console.log(result.rows.email);
-            if (result.rows.email) {
-                if (result.rows.password) {
-                    sess.email = result.rows.doc.email;
-                    sess.password = result.rows.doc.password;
-                    sess.name = result.rows.doc.name;
-                    res.redirect(val.nextlink);
+            if (result.rows[0] != null) {
+                if (result.rows[0].doc.password == val.password) {
+                    sess.email = result.rows[0].doc.email;
+                    sess.password = result.rows[0].doc.password;
+                    sess.name = result.rows[0].doc.name;
+                    //redirect = val.nextlink;
+                    console.log('login success');
+                    //res.redirect('/post-ads');
+                    //res.end();
                 } else {
                     mess = "invalid password!";
-                    res.render('./login', { mess: mess });
+                    render = './login';
                 }
             } else {
                 mess = "invalid email !";
-                res.render('./login', { mess: mess });
+                render = './login';
+            }
+
+            if (render !== '') {
+                console.log("render");
+                res.render(render, { mess: mess, nextlink: redirect });
+            } else {
+                console.log("redirect");
+                res.redirect(redirect);
             }
         });
-    
 }
 
 export function signup(req: express.Request, res: express.Response) {

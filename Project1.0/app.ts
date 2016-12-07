@@ -70,10 +70,10 @@ app.get('/setsession', function (req, res) {
 
 app.get('/', routes.index);
 app.get('/login', routes.loginPage);
-app.post('/login-authen', routes.login);
+app.post('/login-authen', routes.loginAuthen);
 app.get('/signup', routes.signup);
-app.get('/post-ads', routes.indexAds);
-app.post('/post-ads-method', upload.single('photo'), routes.postAds);
+app.get('/post-ads', routes.postAds);
+app.post('/post-ads-method', upload.single('photo'), routes.insertAds);
 //apiRoutes.get('/', routes.index);
 //apiRoutes.get('/add', routes.add);
 //apiRoutes.get('/api/name/:name', api.name);
