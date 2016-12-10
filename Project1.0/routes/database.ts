@@ -1,5 +1,6 @@
 ﻿var PouchDB = require('pouchdb');
 declare var index_solr: any;
+
 export module Project {
     // fuction check null parameter
     function checkNull(content: any | string): boolean {
@@ -38,8 +39,8 @@ export module Project {
                         jobsByUsers: {
                             map: function (doc) {
                                 if (doc.type === 'jobs') {
-                                    if (doc.users.idUsers) {
-                                        emit(doc.users.idUsers);
+                                    if (doc.users.postId) {
+                                        emit(doc.users.postId);
                                     }
                                 }
                             }.toString()
@@ -212,32 +213,44 @@ export module Project {
         }
 
         //Get multiple data with key
-        findData(email: any, view: string, dbName?: string): any {
+        findData(key: any, view: string, dbName?: string): any {
             if (checkNull(dbName) == true)
                 var db = new PouchDB(this.host + this.dbName);
             else
                 var db = new PouchDB(this.host + dbName);
 
-            return db.query("index/" + view, { key: email, include_docs: true });
+            return db.query("index/" + view, { key: key, include_docs: true });
         }
 
 
         //-------function insert data to database------//
         //-------data: insert data
         //-------dbName: database name (can be null)
-        insertData(data: any, dbName?: string) {
+        insertData(data: any, dbName?: string): any {
             if (checkNull(dbName) == true)
                 var db = new PouchDB(this.host + this.dbName);
             else
                 var db = new PouchDB(this.host + dbName);
 
-            db.post(data, function callback(err, result) {
-                if (!err) {
-                    console.log('Successfully putted a project!');
-                }
-            });
+            return db.post(data);
+        }
 
-            db.sync(this.host + dbName, { live: true });//sync localStorage to CouchDB server
+        updateData(data: any, dbName?: string): any {
+            if (checkNull(dbName) == true)
+            var db = new PouchDB(this.host + this.dbName);
+            else
+                var db = new PouchDB(this.host + dbName);
+
+            return db.put(data);
+        }
+
+        deleteData(_id: string, _rev: string, dbName?: string): any {
+            if (checkNull(dbName) == true)
+                var db = new PouchDB(this.host + this.dbName);
+            else
+                var db = new PouchDB(this.host + dbName);
+            return db.remove(_id, _rev);
+            
         }
 
         searchView(view:string, dbName?: string):any {
@@ -247,7 +260,13 @@ export module Project {
                 var db = new PouchDB(this.host + dbName);
             return db.query('search/' + view, {include_docs: true});
         }
-        
+        syncDB(dbName?: string) {
+            if (checkNull(dbName) == true)
+                var db = new PouchDB(this.host + this.dbName);
+            else
+                var db = new PouchDB(this.host + dbName);
+            db.sync(this.host + dbName, { live: true });//sync localStorage to CouchDB server
+        }
    
 
     }

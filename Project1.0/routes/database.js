@@ -33,8 +33,8 @@ var Project;
                         jobsByUsers: {
                             map: function (doc) {
                                 if (doc.type === 'jobs') {
-                                    if (doc.users.idUsers) {
-                                        emit(doc.users.idUsers);
+                                    if (doc.users.postId) {
+                                        emit(doc.users.postId);
                                     }
                                 }
                             }.toString()
@@ -194,12 +194,12 @@ var Project;
             return db.query("index/" + view, { keys: arrKey, include_docs: true });
         }
         //Get multiple data with key
-        findData(email, view, dbName) {
+        findData(key, view, dbName) {
             if (checkNull(dbName) == true)
                 var db = new PouchDB(this.host + this.dbName);
             else
                 var db = new PouchDB(this.host + dbName);
-            return db.query("index/" + view, { key: email, include_docs: true });
+            return db.query("index/" + view, { key: key, include_docs: true });
         }
         //-------function insert data to database------//
         //-------data: insert data
@@ -209,12 +209,21 @@ var Project;
                 var db = new PouchDB(this.host + this.dbName);
             else
                 var db = new PouchDB(this.host + dbName);
-            db.post(data, function callback(err, result) {
-                if (!err) {
-                    console.log('Successfully putted a project!');
-                }
-            });
-            db.sync(this.host + dbName, { live: true }); //sync localStorage to CouchDB server
+            return db.post(data);
+        }
+        updateData(data, dbName) {
+            if (checkNull(dbName) == true)
+                var db = new PouchDB(this.host + this.dbName);
+            else
+                var db = new PouchDB(this.host + dbName);
+            return db.put(data);
+        }
+        deleteData(_id, _rev, dbName) {
+            if (checkNull(dbName) == true)
+                var db = new PouchDB(this.host + this.dbName);
+            else
+                var db = new PouchDB(this.host + dbName);
+            return db.remove(_id, _rev);
         }
         searchView(view, dbName) {
             if (checkNull(dbName) == true)
@@ -222,6 +231,13 @@ var Project;
             else
                 var db = new PouchDB(this.host + dbName);
             return db.query('search/' + view, { include_docs: true });
+        }
+        syncDB(dbName) {
+            if (checkNull(dbName) == true)
+                var db = new PouchDB(this.host + this.dbName);
+            else
+                var db = new PouchDB(this.host + dbName);
+            db.sync(this.host + dbName, { live: true }); //sync localStorage to CouchDB server
         }
     }
     Project.api = api;

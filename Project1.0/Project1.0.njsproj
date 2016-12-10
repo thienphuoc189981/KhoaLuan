@@ -19,7 +19,7 @@
     <OutputPath>.</OutputPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
     <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
@@ -135,12 +135,14 @@
     <Content Include="views\index.hbs" />
     <Content Include="views\layout\layout.hbs" />
     <Content Include="views\login.hbs" />
-    <Content Include="views\postAds.hbs" />
+    <Content Include="views\manageJobs.hbs" />
+    <Content Include="views\postJob.hbs" />
+    <Content Include="views\updateJob.hbs" />
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="routes\api.ts" />
     <TypeScriptCompile Include="routes\database.ts" />
     <TypeScriptCompile Include="routes\index.ts" />
-    <TypeScriptCompile Include="routes\user.ts" />
+    <TypeScriptCompile Include="routes\manage.ts" />
     <TypeScriptCompile Include="routes\vnTokenizer.ts" />
     <TypeScriptCompile Include="Scripts\typings\express\express.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
@@ -192,6 +194,7 @@
     <Compile Include="public\assets\js\waypoints.min.js" />
     <Compile Include="public\assets\js\wow.js" />
     <Compile Include="public\js\jquery-3.1.1.min.js" />
+    <Compile Include="public\js\myJs.js" />
     <Compile Include="views\postingSuccess.hbs" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->

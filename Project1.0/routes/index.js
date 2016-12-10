@@ -4,52 +4,68 @@
 "use strict";
 const database_1 = require("./database");
 let api = new database_1.Project.api();
-const express = require('express');
-var app = express();
-var fs = require('fs');
-var http = require("http");
-function add(req, res) {
-}
-exports.add = add;
-;
+var datetime = require('node-datetime');
+//export function add(req: express.Request, res: express.Response) {
+//};
 function index(req, res) {
-    res.render('./index');
+    res.render('./index', { session: req.session });
 }
 exports.index = index;
 ;
-function postAds(req, res) {
-    console.log("ads " + req.session.email);
+//--------app.get('/post-job', routes.postJob);'/post-job'
+function postJob(req, res) {
+    //console.log("ads " + req.session.email);
     if (req.session.email) {
         let json = [];
         api.indexView("categoriesAll").then(function (data) {
             data.rows.forEach(function (item) {
                 json.push(item.key);
             });
-            console.log(json);
-            res.render('./postAds', { cats: json });
+            //console.log(json);
+            res.render('./postJob', { cats: json, session: req.session });
         });
     }
     else {
-        res.render('./login', { nextlink: '/post-ads' });
+        res.render('./login', { nextlink: '/post-job' });
     }
 }
-exports.postAds = postAds;
+exports.postJob = postJob;
 ;
+//--------app.post('/post-job-submit', upload.single('photo'), routes.insertAds);
 function insertAds(req, res) {
-    var val = req.body;
-    val.attachment = req.file.path;
-    val.type = "jobs";
-    val.status = "post";
-    api.insertData(val);
-    console.log(val);
-    res.render('./postingSuccess');
+    let json = req.body;
+    let postId = req.body.userId;
+    let dt = datetime.create();
+    let fomratted = dt.format('d/m/Y');
+    delete json["userId"];
+    let users = {
+        "postId": postId,
+        "applyId": ""
+    };
+    console.log(req.file);
+    if (req.file) {
+        json.attachment = '/uploads/' + req.file.filename;
+    }
+    else {
+        json.attachment = "";
+    }
+    json.datetime = fomratted;
+    json.type = "jobs";
+    json.status = "post";
+    json.users = users;
+    api.insertData(json).then(function () {
+        req.flash('success', 'You are successfully posting !');
+        res.redirect('/manage-jobs');
+    });
 }
 exports.insertAds = insertAds;
 ;
+//-------app.get('/login', routes.loginPage);
 function loginPage(req, res) {
-    res.render('./login');
+    res.render('./login', { nextlink: '/' });
 }
 exports.loginPage = loginPage;
+//-------app.post('/login-authen', routes.loginAuthen);
 function loginAuthen(req, res) {
     console.log(req.body);
     let val = req.body;
@@ -64,7 +80,7 @@ function loginAuthen(req, res) {
                 sess.email = result.rows[0].doc.email;
                 sess.password = result.rows[0].doc.password;
                 sess.name = result.rows[0].doc.name;
-                //redirect = val.nextlink;
+                sess.userId = result.rows[0].doc._id;
                 console.log('login success');
             }
             else {

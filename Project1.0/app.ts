@@ -1,7 +1,7 @@
 ﻿
 import express = require('express');
 import routes = require('./routes/index');
-import user = require('./routes/user');
+import manage = require('./routes/manage');
 import api = require('./routes/api');
 import vnTokenizer = require('./routes/vnTokenizer');
 
@@ -15,17 +15,21 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var multer = require('multer');
 var errorHandler = require('errorhandler');
+var flash = require('req-flash');
 
-var passport = require('passport')
-    , LocalStrategy = require('passport-local').Strategy;
+//var passport = require('passport')
+//    , LocalStrategy = require('passport-local').Strategy;
 
 var jwt = require('jsonwebtoken');
 var hbs = require('express-handlebars');
 var app = express();
 var apiRoutes = express.Router();
-//get router
-//var apiRoutes = express.Router();
-
+var helper = hbs.create({
+    // Specify helpers which are only registered on this instance.
+    helpers: {
+        eq: function (v1, v2) { return v1 == v2; }
+    }
+});
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.engine('hbs', hbs({ extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname+'/views/layout' }));
@@ -41,9 +45,10 @@ app.use(session({
 }));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(flash());
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, __dirname + '/uploads')
+        cb(null, __dirname + '/public/uploads')
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + "-" + file.originalname);
@@ -54,26 +59,22 @@ var upload = multer({ storage: storage });
 app.use(express.static(path.join(__dirname, 'public')));
 // development only
 
-app.get('/setsession', function (req, res) {
-    var sess = req.session;
-    sess.sessdata = {};
-    sess.sessdata.email = "inaam";
-    sess.sessdata.pass = "inaam1234";
-    var data = {
-        "Data": ""
-    };
-    data["Data"] = 'Session set';
-    console.log(sess.sessdata);
-    res.json(data);
-
-});
 
 app.get('/', routes.index);
 app.get('/login', routes.loginPage);
 app.post('/login-authen', routes.loginAuthen);
 app.get('/signup', routes.signup);
-app.get('/post-ads', routes.postAds);
-app.post('/post-ads-method', upload.single('photo'), routes.insertAds);
+
+app.get('/post-job', routes.postJob);
+app.post('/post-job-submit', upload.single('photo'), routes.insertAds);
+
+app.get('/manage-jobs', manage.index);
+app.get('/update-job/:id', manage.updateJob);
+app.post('/update-job-submit', upload.single('photo'), manage.updateJobSubmit);
+
+app.get('/delete-job/:id', manage.deleteJob);
+
+
 //apiRoutes.get('/', routes.index);
 //apiRoutes.get('/add', routes.add);
 //apiRoutes.get('/api/name/:name', api.name);
