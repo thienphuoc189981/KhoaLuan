@@ -173,19 +173,20 @@ function getcareerbuilder(url,kw,callback)
    AcrawlByXMLHttpRequest(url + kw.replace(/ /g, '-')+ '-k-vi.html', function(hmtlString) {
         AhtmlParser(hmtlString, 'dd.brief').each(function(i, jobs) {
             var dt = $(this);
-            var dateposted, title, city, description, link, company,id;
+            var dateposted, title, city, description, link, company,id,salary;
             id = guid();
-            city = $('span.location',jobs).text();
-            title = $('a.job',jobs).text();
-            link = $('a.job',jobs).attr('href');
-            dateposted = $('p.dateposted',jobs).text();
+            city = $('p.location',jobs).text();
+            salary = $('p.salary',jobs).text() + 'cuc';
+            title = $('h3.job',jobs).text();
+            link = dt.children().next().eq(0).children().children().attr('href');//$('a.job',jobs).attr('href');
+            dateposted = $('div.dateposted',jobs).text();
             description = $('p.rc_jobDescription',jobs).text();
             var drr = description.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,"").replace(/\s+/g," ");
             company = dt.children().children().next().eq(0).children().text();//$('span.location',jobs).text();
-            if (!$('img', jobs).attr('src')) {
-                img = "images/no-img.png";
+            if (!$('img', jobs).attr('data-original')) {
+                img = "http://static.careerbuilder.vn/themes/kiemviecv32/images/graphics/logo-default.png";
             } else {
-                img = 'http://careerbuilder.vn'+$('img', jobs).attr('src');
+                img = $('img', jobs).attr('data-original');
             }
             var date = dateposted.split("Dăng tuyển: ");
             var json = {
@@ -193,11 +194,12 @@ function getcareerbuilder(url,kw,callback)
                 postedDate : date,
                 title : title, 
                 location : city, 
-                description : drr, 
+                description : "", 
                 link : link,
                 company : company,
                 image : img,
-                salary : 'select to view'
+                salary : salary
+                source : 'http://careerbuilder.vn'
             };
             rs.push(json);
         })
@@ -231,7 +233,7 @@ function getcareerbuilder(url,kw,callback)
             var des = '...'+description.split('...')[1]+'...';
             company =(dt.children().next().next().children().children().children().next().eq(0).text()).trim();
             if (!$('img', jobs).attr('src')) {
-                img = "images/no-img.png";
+                img = "http://static.careerbuilder.vn/themes/kiemviecv32/images/graphics/logo-default.png";
             } else {
                 img = 'https://www.careerlink.vn'+$('img', jobs).attr('src');
             }
@@ -245,6 +247,7 @@ function getcareerbuilder(url,kw,callback)
                 "company" : company,
                 "image" : img,
                 "salary" : salary
+                "source" : 'https://mywork.com.vn'
             };
             rs.push(json);           
         });
@@ -272,7 +275,7 @@ function getcareerbuilder(url,kw,callback)
             console.log(description);
             company = $('a.text-accent',jobs).text();
             if (!$('img', jobs).attr('src')) {
-                img = "/images/no-img.png";
+                img = "http://static.careerbuilder.vn/themes/kiemviecv32/images/graphics/logo-default.png";
             } else {
                 img = 'https://www.careerlink.vn'+$('img', jobs).attr('src');
             }
@@ -286,6 +289,7 @@ function getcareerbuilder(url,kw,callback)
                 company : company,
                 image : img,
                 salary : salary
+                source : 'https://www.careerlink.vn'
             };
             rs.push(json);
         });
