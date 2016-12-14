@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+    "name": "Search Add-on",
+    "description": "Search from other website",
+    "author": "ThienPhuoc",
+    "version": "1.0.0",
+    "icons": {
+        "16": "images/app.png",
+        "48": "images/app.png",
+        "128": "images/app.png"
+    },
+    "browser_action": {
+        "default_icon": "images/app.png",
+        "default_title": "Search Extension"
+    },
+    "background": {
+        "scripts": ["js/background.js"]
+    },
+    "permissions": [
+        "http://*/",
+        "https://*/"
+    ]
+}
