@@ -63,11 +63,11 @@ export module Project {
                                 }
                             }.toString()
                         },
-                        usersByPhone: {
+                        usersById: {
                             map: function (doc) {
                                 if (doc.type === 'users') {
-                                    if (doc.phone) {
-                                        emit(doc.phone);
+                                    if (doc._id) {
+                                        emit(doc._id);
                                     }
                                 }
                             }.toString()
@@ -235,12 +235,11 @@ export module Project {
             return db.post(data);
         }
 
-        updateData(data: any, dbName?: string): any {
+        updateData(data: any, dbName?: string):any {
             if (checkNull(dbName) == true)
             var db = new PouchDB(this.host + this.dbName);
             else
                 var db = new PouchDB(this.host + dbName);
-
             return db.put(data);
         }
 

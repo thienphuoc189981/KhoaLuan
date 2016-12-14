@@ -57,11 +57,11 @@ var Project;
                                 }
                             }.toString()
                         },
-                        usersByPhone: {
+                        usersById: {
                             map: function (doc) {
                                 if (doc.type === 'users') {
-                                    if (doc.phone) {
-                                        emit(doc.phone);
+                                    if (doc._id) {
+                                        emit(doc._id);
                                     }
                                 }
                             }.toString()

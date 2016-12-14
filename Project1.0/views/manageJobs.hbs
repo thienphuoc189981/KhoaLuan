@@ -61,14 +61,19 @@
                                         <h4><a href="/job-detail/{{item._id}}">{{item.title}}</a></h4>
                                         <p>
                                             <strong> Posted On </strong>:
-                                            {{item.datetime}}
+                                            {{item.postDate}}
+                                        </p>
+                                        <p>
+                                            <strong> Expire Date </strong>:
+                                            {{item.expireDate}}
                                         </p>
                                         <p> <strong>Location </strong>: {{item.location}} 
                                         <p> <strong>Salary </strong>: {{item.salary}} 
                                     </td>
                                     <td class="price-td">
-                                        {{#if item.users.applicator}}
-                                        <strong> {{item.users.applicator}}</strong>
+                                        {{#if item.users.applyId}}
+                                        <strong> {{item.users.applyId.length}}</strong></br>
+                                        <i><a href="/applicator/{{item._id}}">[View applicators]</a></i>
                                         {{else}}
                                         <strong><i>None</i></strong>
                                         {{/if}}
@@ -87,8 +92,3 @@
         </div>
     </div>
 </div>
-<script>
-    (function blink() {
-        $('.flash-message').fadeOut(3000);
-    })();
-</script>

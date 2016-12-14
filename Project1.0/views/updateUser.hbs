@@ -1,0 +1,48 @@
+﻿<!-- Content section Start -->
+<section id="content">
+    <div class="container">
+        <div class="row flash-message" style="text-align:center">
+            <span style="color:cornflowerblue; font-size: 20pt"><b>{{message.successUpdateUser}}</b></span>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-9 col-md-offset-2">
+                    <div class="page-ads box">
+                        <h2 class="title-2">
+                            user management
+                        </h2>
+                        <form class="form-ad" method="post" action="/update-user">
+                            <input type="hidden" value="{{user._id}}" name="_id" />
+                            <input type="hidden" value="{{user._rev}}" name="_rev" />
+
+                            <div class="form-group">
+                                <label class="control-label">Your name</label>
+                                <input name="name" class="form-control input-md" type="text" value="{{user.name}}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Email</label>
+                                <input name="email" class="form-control input-md" type="text" value="{{user.email}}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Phone</label>
+                                <input name="phone" class="form-control input-md" type="text" value="{{user.phone}}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="well">
+                                    <button type="submit" class="btn btn-common">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<!-- Content section End -->
+<script>
+    (function blink() {
+        $('.flash-message').fadeOut(3000);
+    })();
+</script>
