@@ -43,6 +43,7 @@ function analyzeData(req, res) {
             a = a.replace(/" type "/g, '"type"');
             a = a.replace(/" rows "/g, '"rows"');
             a = a.replace(/" district "/g, '"district"');
+            a = a.replace(/" source "/g, '"source"');
             //a = a.replace(/" http : / / "/g, '"type"');
             console.log(a); // data
             res.json(a);

@@ -6,6 +6,7 @@ let api = new database_1.Project.api();
 let async = require("async");
 var request = require('request');
 var http = require('http');
+var datetime = require('node-datetime');
 //-------begin function check cached with input keyword-----//
 //-------req: handle request
 //-------res: handle response
@@ -29,11 +30,11 @@ function checkCached(req, res) {
             let json;
             for (var i = 0; i < arrKeyword.length; i++) {
                 if (arrKeyword[i].key.toLowerCase() === query.toLowerCase()) {
-                    if (arrKeyword[i].doc.cache.status === true) {
-                        console.log(arrKeyword[i].doc._id);
+                    if (arrKeyword[i].doc.cache === true) {
+                        //console.log(arrKeyword[i].doc._id);
                         //Get list of job's id cached
                         api.findData(arrKeyword[i].doc._id, "cacheByKeyword").then(function (rs) {
-                            console.log(rs);
+                            //console.log(rs);
                             let jobs = rs.rows[0];
                             jobs.status = true;
                             callback(null, jobs);
@@ -214,16 +215,18 @@ function dbSearch(req, res) {
 exports.dbSearch = dbSearch;
 function solrSearch(req, res) {
     var data = req.body.rows;
-    console.log(data);
+    //console.log(data);
     //var json = { rows: [] };
     var q = req.query.q;
-    //var q = "developer";
+    //console.log(q);
+    //console.log(q.length);
+    //var q = "java";
     var source = "";
     var i;
     //for (i = 0; i < data.length; i++) {
     //    json.rows.push(data[i].doc);
     //}
-    console.log(data.length);
+    //console.log(data.length);
     //----Handle index----//
     async.waterfall([
         function (callback) {
@@ -270,6 +273,66 @@ function solrSearch(req, res) {
     });
 }
 exports.solrSearch = solrSearch;
+function saveCache(req, res) {
+    var data = req.body;
+    var q = req.query.q.toLowerCase();
+    let keyword;
+    let cache;
+    let dt = datetime.create();
+    let fomratted = dt.format('m/d/Y H:M:S');
+    api.findData(q, 'keywordAll').then(function (rs) {
+        if (rs) {
+            keyword = rs.rows[0].doc;
+            keyword.count = keyword.count + 1;
+            keyword.cache = true;
+            api.updateData(keyword);
+            cache = {
+                cacheAt: fomratted,
+                type: "cache",
+                keyword: {
+                    "idKeyword": keyword._id,
+                    "content": q
+                },
+                jobs: data
+            };
+            api.insertData(cache);
+        }
+        else {
+            let id = guid();
+            keyword = {
+                _id: id,
+                content: q,
+                type: "keyword",
+                cache: true,
+                count: 1
+            };
+            api.updateData(keyword);
+            cache = {
+                cacheAt: fomratted,
+                type: "cache",
+                keyword: {
+                    "idKeyword": id,
+                    "content": q
+                },
+                jobs: data
+            };
+            api.insertData(cache);
+        }
+    });
+    res.json(data);
+    res.end();
+}
+exports.saveCache = saveCache;
+function guid() {
+    function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+    }
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+        s4() + '-' + s4() + s4() + s4();
+}
+;
 function createDoc() {
     api.createDdoc();
 }

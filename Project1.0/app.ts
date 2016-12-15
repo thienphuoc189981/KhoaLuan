@@ -43,7 +43,7 @@ app.use(session({
     saveUninitialized: true,
     secret: 'uwotm8'
 }));
-app.use(bodyParser.json())
+app.use(bodyParser.json({ limit: '5mb' }))
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(flash());
 var storage = multer.diskStorage({
@@ -191,6 +191,7 @@ apiRoutes.get('/checkCached', api.checkCached);
 apiRoutes.get('/dbSearch', api.dbSearch);
 apiRoutes.post('/solrSearch', api.solrSearch);
 apiRoutes.get('/createDoc', api.createDoc);
+apiRoutes.post('/saveCache', api.saveCache);
 apiRoutes.post('/vnTokenizer', vnTokenizer.analyzeData);
 
 app.use('/api', apiRoutes);

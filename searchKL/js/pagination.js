@@ -13,6 +13,9 @@ app.factory('Items', ['$http', function ($http) {
             },
             solrSearch : function(json,q) {
                 return $http.post('http://localhost:1337/api/solrSearch?q='+q, json);
+            },
+            saveCache : function(json,q) {
+                return $http.post('http://localhost:1337/api/saveCache?q='+q, json);
             }
         }
 }]);
@@ -20,7 +23,7 @@ app.factory('Items', ['$http', function ($http) {
 app.controller('PageCtrl',['Items','$scope', function (Items,$scope) {   
 
     $scope.items = dataTest();   
-    $scope.todos = "cddddd";
+    // $scope.todos = "cddddd";
     $scope.doSearch = function() {
 
         Items.checkCached($scope.formData.txtSearch)
@@ -29,15 +32,15 @@ app.controller('PageCtrl',['Items','$scope', function (Items,$scope) {
                 //$scope.todos = $scope.todos.status;
                 if (data.status) {
                     var json = [];
-                    for (var i = 0; i <data.rows.length; i++){
-                        json.push(data.rows[i].doc);
+                    for (var i = 0; i <data.doc.jobs.length; i++){
+                        json.push(data.doc.jobs[i]);
                     };
                     $scope.todos = json;
-                    console.log(json);
-                    console.log("status true");
+                    // console.log(json);
+                    // console.log("status true");
                     $scope.items = json;
                     $scope.totalItems = json.length;
-                    console.log(json.length)
+                    // console.log(json.length)
                     $scope.pageCount = function () {
                         return Math.ceil($scope.totalItems / $scope.entryLimit);
                     };
@@ -64,7 +67,7 @@ app.controller('PageCtrl',['Items','$scope', function (Items,$scope) {
                             };
 
                             $scope.todos = json;
-                            console.log(json);
+                            // console.log(json);
 
                             for (var i = 0; i <rs.length; i++){
                                     json.push(rs[i]);
@@ -74,23 +77,35 @@ app.controller('PageCtrl',['Items','$scope', function (Items,$scope) {
                                 // call the create function from our service (returns a promise object)
                             Items.indexVnTokenizer(json)
                                 .success(function(data) {
+                                        // console.log(data.indexOf('\ "'));
+                                    
+                                    var dataParse = JSON.parse(data);
+                                    // console.log("this is a: "+dataParse);
 
-                                    // console.log(data);
-                                    var a = JSON.parse(data);
-                                    // console.log("this is a: "+a);
-
-                                     Items.solrSearch(a,$scope.formData.txtSearch)
+                                     Items.solrSearch(dataParse, $scope.formData.txtSearch)
                                         .success(function(result) {
                                             // result.push({"q" : $scope.formData.txtSearch})
-                                            console.log("this is solr " +result);
+                                            // console.log("this is solr " +result);
                                             result = JSON.stringify(result);
-                                            console.log("this is solr " +result);
+                                            // console.log("this is solr " +result);
                                             result = JSON.parse(result);
-                                            console.log(result);
+                                            // console.log(result);
+                                            //prepare json
+                                            result.forEach(function(rs){
+                                                rs.title = rs.title[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                rs.description = rs.description[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                rs.location = rs.location[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                rs.company = rs.company[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                rs.salary = rs.salary[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                rs.link = rs.link[0].replace(/https : \/ \/ /g,'https://').replace(/http : \/ \/ /g,'http://').replace(/" /g,'"').replace(/ "/g,'"');
+                                                // console.log(rs.title);
+                                                // console.log(rs.link);
+                                            });
 
+                                           
                                             $scope.items = result;
                                             $scope.totalItems = result.length;
-                                            console.log(result.length)
+                                            // console.log(result.length)
                                             $scope.pageCount = function () {
                                                 return Math.ceil($scope.totalItems / $scope.entryLimit);
                                             };
@@ -98,6 +113,10 @@ app.controller('PageCtrl',['Items','$scope', function (Items,$scope) {
                                             end = begin + $scope.entryLimit;
                                             $scope.filtereditems = $scope.items.slice(begin, end);
                                             //$scope.$digest();
+                                            Items.saveCache(result, $scope.formData.txtSearch)
+                                                .success(function(data) {
+                                                    console.log(data);
+                                                });
 
                                     });
                                 });
@@ -168,7 +187,7 @@ function getcareerbuilder(url,kw,callback)
     for (var i = 0; i< lc.split(" ").length;i++) {
         b2 = b2 + arrLocation[i].substr(0, 1);
     }
-    console.log("chuoi la "+b2);
+    // console.log("chuoi la "+b2);
 
    AcrawlByXMLHttpRequest(url + kw.replace(/ /g, '-')+ '-k-vi.html', function(hmtlString) {
         AhtmlParser(hmtlString, 'dd.brief').each(function(i, jobs) {
@@ -180,7 +199,7 @@ function getcareerbuilder(url,kw,callback)
             title = $('h3.job',jobs).text();
             link = dt.children().next().eq(0).children().children().attr('href');//$('a.job',jobs).attr('href');
             dateposted = $('div.dateposted',jobs).text();
-            description = $('p.rc_jobDescription',jobs).text();
+            description = $('p.rc_jobDescription',jobs).text().replace('"','');
             var drr = description.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,"").replace(/\s+/g," ");
             company = dt.children().children().next().eq(0).children().text();//$('span.location',jobs).text();
             if (!$('img', jobs).attr('data-original')) {
@@ -191,19 +210,19 @@ function getcareerbuilder(url,kw,callback)
             var date = dateposted.split("Dăng tuyển: ");
             var json = {
                 _id: id,
-                postedDate : date,
+                postDate : date,
                 title : title, 
                 location : city, 
                 description : "", 
                 link : link,
                 company : company,
                 image : img,
-                salary : salary
-                source : 'http://careerbuilder.vn'
+                salary : salary,
+                source : 'careerbuilder.vn'
             };
             rs.push(json);
         })
-        console.log(rs);
+        // console.log(rs);
         callback(rs);
     });
 
@@ -222,14 +241,14 @@ function getcareerbuilder(url,kw,callback)
         var a = url + kw.replace(/ /g, '-')+ '.html';
         AhtmlParser(hmtlString, 'div.item').each(function(i, jobs) {
             var dt = $(this);
-            var datetime, title, city, description, link,company, img, salary, id;
+            var expireDate, title, city, description, link,company, img, salary, id;
             id = guid();
             city = $('a:last',jobs).text();
             salary = dt.children().next().eq(0).text();//$('span:first',jobs).text() + '-' + $('span:last',jobs).text();
             title = (dt.children().children().eq(0).text()).trim();
             link = 'https://mywork.com.vn' + $('a.title',jobs).attr('href');
-            datetime = dt.children().next().next().children().next().children().eq(0).text();
-            description = $('small',jobs).text();
+            expireDate = dt.children().next().next().children().next().children().eq(0).text();
+            description = $('small',jobs).text().replace('"','');
             var des = '...'+description.split('...')[1]+'...';
             company =(dt.children().next().next().children().children().children().next().eq(0).text()).trim();
             if (!$('img', jobs).attr('src')) {
@@ -239,19 +258,19 @@ function getcareerbuilder(url,kw,callback)
             }
             var json = {
                 "_id":id,    
-                "expireDate" : datetime,
+                "expireDate" : expireDate,
                 "title" : title, 
                 "location" : city, 
                 "description" : "Nhấn vào đề xem chi tiết công việc", 
                 "link" : link,
                 "company" : company,
                 "image" : img,
-                "salary" : salary
-                "source" : 'https://mywork.com.vn'
+                "salary" : salary,
+                "source" : 'mywork.com.vn'
             };
             rs.push(json);           
         });
-        console.log(rs);
+        // console.log(rs);
         callback(rs);
     });
     
@@ -260,19 +279,19 @@ function getcareerbuilder(url,kw,callback)
     AcrawlByXMLHttpRequest(urlCareerlink + kw.replace(/ /g, '%2520')+ '?keyword_use=A', function(hmtlString) {
         var a = url + kw.replace(/ /g, '-')+ '?keyword_use=A';
         AhtmlParser(hmtlString, 'div.list-group-item').each(function(i, jobs) {
-            var datetime, title, city, description, link,company, img, salary, id;
+            var postDate, title, city, description, link,company, img, salary, id;
             id = guid();
             var dt = $(this);
             var location = $('p.priority-data',jobs).text();
             city = location.split('-')[1].replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,"").replace(/\s+/g," ");
-            console.log(city);
+            // console.log(city);
            // city = loc1;//$('a:last',jobs).text();
             salary = (($('small:first',jobs).text()).split('|')[0]).trim();
             title = $('a:first',jobs).text();
             link = 'https://www.careerlink.vn' + $('a:first',jobs).attr('href');
-            datetime = dt.children().next().children().next().eq(3).children().text();
-            var description = dt.children().next().children().next().eq(0).children().children().next().children().text();//$('small',jobs).text(); //
-            console.log(description);
+            postDate = dt.children().next().children().next().eq(3).children().text();
+            var description = dt.children().next().children().next().eq(0).children().children().next().children().text().replace('"','');//$('small',jobs).text(); //
+            // console.log(description);
             company = $('a.text-accent',jobs).text();
             if (!$('img', jobs).attr('src')) {
                 img = "http://static.careerbuilder.vn/themes/kiemviecv32/images/graphics/logo-default.png";
@@ -281,15 +300,15 @@ function getcareerbuilder(url,kw,callback)
             }
             var json = {
                 _id: id,
-                postedDate : datetime,
+                postDate : postDate,
                 title : title, 
                 location : city, 
                 description : description, 
                 link : link,
                 company : company,
                 image : img,
-                salary : salary
-                source : 'https://www.careerlink.vn'
+                salary : salary,
+                source : 'careerlink.vn'
             };
             rs.push(json);
         });
@@ -342,7 +361,7 @@ function b()
             };       
     rs.push(json);
     rs.push(json2);
-    console.log(rs);
+    // console.log(rs);
             return rs;
 }
 
