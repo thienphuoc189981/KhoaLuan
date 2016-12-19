@@ -3,6 +3,7 @@ import express = require('express');
 import routes = require('./routes/index');
 import manage = require('./routes/manage');
 import api = require('./routes/api');
+import admin = require('./routes/admin');
 import vnTokenizer = require('./routes/vnTokenizer');
 
 import http = require('http');
@@ -24,6 +25,7 @@ var jwt = require('jsonwebtoken');
 var hbs = require('express-handlebars');
 var app = express();
 var apiRoutes = express.Router();
+var adminRoutes = express.Router();
 var helper = hbs.create({
     // Specify helpers which are only registered on this instance.
     helpers: {
@@ -194,7 +196,25 @@ apiRoutes.get('/createDoc', api.createDoc);
 apiRoutes.post('/saveCache', api.saveCache);
 apiRoutes.post('/vnTokenizer', vnTokenizer.analyzeData);
 
+
+//middleware login to admin dashboar
+var adminLoggin = function (req, res, next) {
+    req.requestTime = Date.now();
+    next();
+}
+
+adminRoutes.use(adminLoggin);
+
+adminRoutes.get('/dashboard', admin.index); 
+adminRoutes.get('/users-management-update/:id', admin.updateUser);
+adminRoutes.post('/update-user-submit', admin.updateUserSubmit);
+adminRoutes.post('/users-management-delete', admin.deleteUser);
+adminRoutes.post('/add-user', admin.addUser);
+
+adminRoutes.post('/insert-job', admin.insertJob);
+
 app.use('/api', apiRoutes);
+app.use('/admin', adminRoutes);
 if (app.get('env') === 'development') {
     app.use(errorHandler())
 }

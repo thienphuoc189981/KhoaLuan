@@ -119,9 +119,7 @@ exports.updateJobSubmit = updateJobSubmit;
 function deleteJob(req, res) {
     let idJob = req.params.id;
     api.findData(idJob, 'jobsById').then(function (job) {
-        console.log(req.session.userId == job.rows[0].doc.users.postId);
         if (req.session.userId == job.rows[0].doc.users.postId) {
-            console.log("delete now " + job.rows[0].doc._id);
             api.deleteData(job.rows[0].doc._id, job.rows[0].doc._rev).then(function () {
                 req.flash('success', 'You are successfully deleting !', { maxage: 6000 });
                 res.redirect('/manage-jobs');

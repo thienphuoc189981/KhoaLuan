@@ -259,6 +259,7 @@ export module Project {
                 var db = new PouchDB(this.host + dbName);
             return db.query('search/' + view, {include_docs: true});
         }
+
         syncDB(dbName?: string) {
             if (checkNull(dbName) == true)
                 var db = new PouchDB(this.host + this.dbName);

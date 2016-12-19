@@ -113,7 +113,7 @@ export function signupSubmit(req: express.Request, res: express.Response) {
     let user = req.body;
     let sess = req.session;
     user.type = 'users';
-    user.status = 'active';
+    user.status = 'Active';
     user.password = passwordHash.generate(user.password);
 
     api.insertData(user).then(function () {
@@ -121,6 +121,8 @@ export function signupSubmit(req: express.Request, res: express.Response) {
             sess.email = rs.rows[0].doc.email;
             sess.name = rs.rows[0].doc.name;
             sess.userId = rs.rows[0].doc._id;
+            sess.privilege = rs.rows[0].doc.privilege;
+
             console.log(sess);
             res.redirect('/');
         });
