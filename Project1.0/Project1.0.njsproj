@@ -2552,6 +2552,8 @@
     <Content Include="public\uploads\a.png" />
     <Content Include="views\admin\addJob.hbs" />
     <Content Include="views\admin\index.hbs" />
+    <Content Include="views\admin\managementJobs.hbs" />
+    <Content Include="views\admin\updateJob.hbs" />
     <Content Include="views\admin\updateUser.hbs" />
     <Content Include="views\layout\admin.hbs" />
     <Content Include="views\applicator.hbs" />

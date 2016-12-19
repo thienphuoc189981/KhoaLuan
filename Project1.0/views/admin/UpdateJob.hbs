@@ -1,0 +1,100 @@
+﻿{{!< admin}}
+
+<!-- BEGIN PAGE -->
+<div class="page-content">
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <h3 class="page-title">
+                    Update user <small>update user form</small>
+                </h3>
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>
+                        <a href="/admin/user-management">User management</a>
+                        <i class="icon-angle-right"></i>
+                    </li>
+                    <li><a href="#">Update user </a></li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <div class="tab-pane" id="tab_4">
+            <div class="portlet box blue">
+                <div class="portlet-title">
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->
+                    <form action="/admin/update-job-submit" method="post" class="form-horizontal form-row-seperated" enctype="multipart/form-data">
+                        <input type="hidden" value="{{job._id}}" name="_id" />
+                        <input type="hidden" value="{{job._rev}}" name="_rev" />
+                        <div class="control-group last">
+                            <label class="control-label">Status</label>
+                            <div class="controls">
+                                <select class="m-wrap span12" name="category">
+                                    {{#each cats as |item|}}
+                                    {{#if (eq item)}}
+                                    <option value="{{item}}" selected>{{item}}</option>
+                                    {{else}}
+                                    <option value="{{item}}">{{item}}</option>
+                                    {{/if}}
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Job title</label>
+                            <div class="controls">
+                                <input type="text" name="title" value="{{job.title}}" placeholder="Java Developer" class="m-wrap span12" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Job description</label>
+                            <div class="controls">
+                                <input type="text" name="description" value="{{job.description}}" placeholder="email@gmail.com" class="m-wrap span12" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Location</label>
+                            <div class="controls">
+                                <input type="text" name="location" value="{{job.location}}" class="m-wrap span12" placeholder="Hồ Chí Minh">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Salary</label>
+                            <div class="controls">
+                                <p><span style="color:blue">*Website sẽ hiển thị đúng những gì bạn nhập</span></p>
+                                <input size="6" type="text" name="salary" value="{{job.salary}}" class="m-wrap span12" placeholder="091xxxxxxx">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Salary</label>
+                            <div class="controls">
+                                <input type="date" name="expireDate" value="{{job.expireDate}}" class="m-wrap medium" placeholder="091xxxxxxx">
+                            </div>
+                        </div>
+                        <h2 class="title-2">
+                            Picture attachment
+                        </h2>
+                        <div class="control-group">
+                            {{#if job.attachment}}
+                            <img class="img-responsive" id="update-img" src="../../{{job.attachment}}" alt="img" width="200" height="100" />
+                            {{else}}
+                            <img class="img-responsive" id="update-img" src="../../assets/img/default.jpg" alt="img" width="200" height="100" />
+                            {{/if}}
+                        </div>
+                        <input type="file" name="photo" id="input-photo" />
+                        <div class="form-actions">
+                            <button type="submit" class="btn blue"><i class="icon-ok"></i> Save</button>
+                            <button type="reset" class="btn">Cancel</button>
+                        </div>
+                    </form>
+                    <!-- END FORM-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

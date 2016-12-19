@@ -20,7 +20,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label">Job title</label>
-                            <input name="title" placeholder="Java Developer" class="form-control input-md" required="" type="text">
+                            <input name="title" placeholder="Java Developer" class="form-control input-md" type="text">
                             <span class="help-block">A great title needs at least 60 characters. </span>
                         </div>
                         <div class="form-group">
@@ -29,59 +29,44 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label">Location</label>
-                            <input name="location" placeholder="TP. Hồ Chí Minh" class="form-control input-md" required="" type="text">
+                            <input name="location" placeholder="TP. Hồ Chí Minh" class="form-control input-md"  type="text">
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="salary">Salary</label>
+                            <p><span style="color:blue">*Website sẽ hiển thị đúng những gì bạn nhập</span></p>
                             <div class="form-inline">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input type="text" id="salary" name="salary" class="form-control" placeholder="10 000 000 - 20 000 000">
-                                        <span class="input-group-addon addon">VND</span>
-                                    </div>
+                                        <input  type="text" name="salary" class="form-control " placeholder="5 triệu - 10 triệu">                                    </div>
+                                </div>
+                              
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="expireDate">Expire Date</label>
-                            <div class="form-inline">
                                 <div class="form-group">
-                                    <div class="input-group">
-                                        <input name="expireDate" class="form-control input-md" required="" type="date">
+                                    <label class="control-label" for="expireDate">Expire Date</label>
+                                    <div class="form-inline">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input name="expireDate" class="form-control input-md"  type="date">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <h2 class="title-2">
-                            Picture attachment
-                        </h2>
-                        <div class="form-group">
-                            <label class="control-label">Choose picture</label>
-                            <!--<div class="mb15">
-                <div class="input-group ">
-                    <div tabindex="-1" class="form-control file-caption">
-                        <div style="width: 239px;" class="file-caption-name"></div>
-                    </div>
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-danger fileinput-remove fileinput-remove-button"><i class="glyphicon glyphicon-ban-circle"></i> Remove</button>
-                        <button type="submit" class="btn btn-success kv-fileinput-upload"><i class="glyphicon glyphicon-upload"></i> Upload</button>
-                        <div class="btn btn-primary btn-file">
-                            <i class="glyphicon glyphicon-folder-open"></i> &nbsp;Browse …
-                            <input id="input-upload-img" class="file" name="attachment" data-preview-file-type="text" type="file">
-                        </div>
-                    </div>
-                </div>
-            </div>-->
+                                <h2 class="title-2">
+                                    Picture attachment
+                                </h2>
+                                <div class="form-group">
+                                    <label class="control-label">Choose picture</label>
 
-                        </div>
-                        <img class="img-responsive" id="update-img" src="/assets/img/default.jpg" alt="img" width="300" height="200" />
-                        <input type="file" name="photo" id="input-photo" />
-                        <div class="form-group">
-                            <div class="well">
-                                <button type="submit" class="btn btn-common">Submit</button>
-                            </div>
-                        </div>
-                    </form>
+                                </div>
+                                <img class="img-responsive" id="update-img" src="/assets/img/default.jpg" alt="img" width="300" height="200" />
+                                <input type="file" name="photo" id="input-photo" />
+                                <div class="form-group">
+                                    <div class="well">
+                                        <button type="submit" class="btn btn-common">Submit</button>
+                                    </div>
+                                </div>
+</form>
                 </div>
             </div>
         </div>
@@ -103,5 +88,19 @@
 
    $("#input-photo").change(function () {
         readURL(this);
-    });
+   });
+
+   //$(document).ready(function () {
+   //    $("#salaryInput").click(function () {
+   //        if (document.getElementById("salaryInput").checked) {
+   //            $(".numSal").attr('disabled',true);  // checked
+   //            $(".txtSal").attr('disabled', false);
+   //        }
+   //        else {
+   //            $(".txtSal").attr('disabled',true);  // unchecked
+   //            $(".numSal").attr('disabled', false);
+   //        }
+   //    });
+   //});
+  
 </script>

@@ -23,7 +23,9 @@
             </div>
             <!-- END PAGE HEADER-->
             <!-- BEGIN PAGE CONTENT-->
-            <span style="color:cornflowerblue; font-size: 20pt"><b>{{message.successUpdate}}</b></span>
+            <div class="row flash-message" style="text-align:center">
+                <span style="color:cornflowerblue; font-size: 20pt"><b>{{message.successUpdate}}</b></span>
+            </div>
             <div class="row-fluid">
                 <div class="span12">
                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -57,14 +59,14 @@
                                         <td>{{obj.name}}</td>
                                         <td class="hidden-480"><a href="{{obj.email}}">{{obj.email}}</a></td>
                                         <td class="hidden-480">{{obj.phone}}</td>
-                                        {{#if (eq Active )}}
+                                        {{#if (eq Active)}}
                                         <td><span class="label label-success">{{obj.status}}</span></td>
                                         {{else}}
                                         <td><span class="label label-error">{{obj.status}}</span></td>
                                         {{/if}}
                                         <td class="center hidden-480">
-                                            <button class="btn blue"><a href="/admin/users-management-update/{{obj._id}}"><span style="color:white">Update</span></a></button>
-                                            <button class="btn red"><a href="/admin/users-management-delete/{{obj._id}}"><span style="color:white">Delete</span></a></button>
+                                            <a href="/admin/users-management-update/{{obj._id}}"><button class="btn blue"><span style="color:white">Update</span></button></a>
+                                            <a href="/admin/delete-user/{{obj._id}}"><button class="btn red"><span style="color:white">Delete</span></button></a>
                                         </td>
                                     </tr>
                                     {{/each}}
