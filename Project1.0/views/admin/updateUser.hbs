@@ -52,7 +52,7 @@
                             <label class="control-label">Status</label>
                             <div class="controls">
                                 <select class="m-wrap span12" name="status">
-                                    {{#if (eq Active )}}
+                                    {{#if (eq json.status )}}
                                     <option value="Active" selected> Active</option>
                                     <option value="Banned"> Banned</option>
                                     {{else}}

@@ -183,9 +183,11 @@ adminRoutes.use(adminLoggin);
 adminRoutes.get('/dashboard', admin.index);
 adminRoutes.get('/users-management-update/:id', admin.updateUser);
 adminRoutes.post('/update-user-submit', admin.updateUserSubmit);
-adminRoutes.post('/users-management-delete', admin.deleteUser);
-adminRoutes.post('/add-user', admin.addUser);
-adminRoutes.post('/insert-job', admin.insertJob);
+adminRoutes.get('/delete-user/:id', admin.deleteUser);
+adminRoutes.get('/jobs-management', admin.managementJobs);
+adminRoutes.get('/delete-job/:id', admin.deleteJob);
+adminRoutes.get('/jobs-management-update/:id', admin.updateJob);
+adminRoutes.post('/update-job-submit', upload.single('photo'), admin.updateJobSubmit);
 app.use('/api', apiRoutes);
 app.use('/admin', adminRoutes);
 if (app.get('env') === 'development') {
