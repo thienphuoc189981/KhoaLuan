@@ -267,7 +267,7 @@ console.log("cuc");
                                         // console.log(data.indexOf('\ "'));
                                     
                                     var dataParse = JSON.parse(data);
-                                    //console.log("this is a: "+dataParse);
+                                    // console.log("this is a: "+dataParse);
 
                                      Items.solrSearch(dataParse, $scope.formData.txtSearch)
                                         .success(function(result) {
@@ -290,7 +290,7 @@ console.log("cuc");
                                                 // console.log(rs.title);
                                                 // console.log(rs.link);
                                             });
-
+                                            console.log(rs);
                                            
                                             $scope.items = result;
                                             $scope.totalItems = result.length;
