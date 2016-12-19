@@ -103,8 +103,17 @@ function getcareerbuilder(url,kw,callback)
             var dt = $(this);
             var location = $('p.priority-data',jobs).text();
             city = location.split('-')[1].replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,"").replace(/\s+/g," ");
+
             salary = (($('small:first',jobs).text()).split('|')[0]).trim();
             var trimSalary = salary.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,"").replace(/\s+/g," ") ;
+            if(trimSalary.indexOf('VNĐ') > -1 && trimSalary.indexOf(',') > -1 && trimSalary.indexOf('-') > -1){
+              console.log("sa "+ trimSalary);
+              trimSalary = trimSalary.replace(/,/g,"").replace(/VNĐ/g,"").split('-');
+              var min = parseFloat(trimSalary[0].trim()) / 1000000 ;
+              var max = parseFloat(trimSalary[1].trim()) / 1000000 ;
+              trimSalary = min + ' triệu - ' + max + ' triệu ';
+            }
+
             title = $('a:first',jobs).text();
             link = 'https://www.careerlink.vn' + $('a:first',jobs).attr('href');
             postDate = dt.children().next().children().next().eq(3).children().text().trim();
@@ -169,47 +178,51 @@ function dataTest()
 {
   var a = [
   {
-   datetime : "datetime",
+   postDate : "23/9/2016",
+   source : 'careerlink.vn',
    title: "iOS Developer",
    location: "Ho Chi Minh",
    district: "Tan Binh",
    description: "The iOS developer position will be required to have experience on iOS and eager to learn and work on new mobile platform.",
    link: "iOS Objective C Mobile Apps",
    company : "company",
-         image : "img",
+         image : "http://static.careerbuilder.vn/themes/kiemviecv32/images/graphics/logo-default.png",
           salary : "salary"
   },
   {
-   datetime : "datetime",
+   postDate : "23/9/2016",
+   source : 'careerlink.vn',
    title: "Business Analyst",
    location: "Ho Chi Minh",
    district: "Binh Thanh",
    description: "About Alternative Investments Operations (AIO) As part of the Alternative Investments team, your greatest assets are your teammates. Our platform...",
    link: "Business Analyst Sales Engineer English",
    company : "company",
-          image : "img",
+          image : "http://static.careerbuilder.vn/themes/kiemviecv32/images/graphics/logo-default.png",
           salary : "salary"
   },
   {
-   datetime: "datetime",
+   postDate : "23/9/2016",
+   source : 'careerlink.vn',
    title: "Web Developer - URGENT!! ($500-$1000)",
    location: "Ha Noi",
    district: "Cau Giay",
    description: "Đọc tài liệu yêu cầu từ khách hàng để tham gia xây dựng hệ thống cùng nhóm phát triển Lựa chọn...",
    link: "Java PHP NodeJS",
    company : "company",
-          image : "img",
+          image : "http://static.careerbuilder.vn/themes/kiemviecv32/images/graphics/logo-default.png",
           salary : "salary"
   },
   {
-   datetime : "datetime",
+   postDate : "23/9/2016",
+   source : 'careerlink.vn',
    title: "Senior PHP Developer",
    location: "Ho Chi Minh",
    district: "District 1",
    description: "Work as the front-end developer in development of OTTtv project and advertising technology platform Be responsible for developing, enhancing,...",
    link: "PHP Linux MySQL",
    company : "company",
-          image : "img",
+          image : "http://static.careerbuilder.vn/themes/kiemviecv32/images/graphics/logo-default.png",
           salary : "salary"
   }
  ];

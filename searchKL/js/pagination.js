@@ -212,7 +212,7 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
     $scope.items = dataTest();   
     // $scope.todos = "cddddd";
     $scope.doSearch = function() {
-
+console.log("cuc");
         Items.checkCached($scope.formData.txtSearch)
             .success(function(data) {
               

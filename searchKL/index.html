@@ -60,7 +60,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <!-- End Toggle Nav Link For Mobiles -->
-                    <a class="navbar-brand logo" href="index.html"><img src="assets/img/logo.png" alt=""></a>
+                    <a class="navbar-brand logo" href="index.html"><img src="assets/img/logo-job.png" alt=""></a>
                 </div>
                 <!-- brand and toggle menu for mobile End -->
                 <!-- Navbar Start -->
@@ -211,8 +211,56 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="inner-box">
+                            <div class="categories">
+                            <div class="widget-title">
+                                    <i class="fa fa-align-justify"></i>
+                                    <h4>Nhận Thông Tin Việc Làm</h4>
+                                </div>
+                                <div class="categories-list">
+                                    <ul>
+                                      <li>
+                                        <a href="#">
+                                          <i class="fa fa-github-alt"></i>
+                                          Thông qua email
+                                        </a>
+                                      </li>
+                                    </ul>                          
+                                </div>
+                            </div>
+                        </div>
                     </aside>
                 </div>
+
+                <!-- pop up việc làm -->
+                <div class="modal fade" id="getJobViaEmail" role="dialog">
+                    <div class="modal-dialog">
+                    
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Nhập Thông Tin</h4>
+                        </div>
+                        <div class="modal-body">
+                       
+                          <div class="input-group input-group-lg">
+                              <input type="text" class="form-control" placeholder="Nhập email của bạn" aria-describedby="sizing-addon1">
+                        </div>
+                        <div class="input-group input-group-lg">
+                              <input type="text" class="form-control" placeholder="Tên Việc muốn nhận" aria-describedby="sizing-addon1">
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-dismiss="modal" >Send </button>
+                          <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                <!--end pop Up-->
+
                 <div class="col-sm-9 page-content">
                     <!-- Product filter Start -->
                     <div class="product-filter">
@@ -244,10 +292,16 @@
                                 <div class="add-details">
                                     <h5 class="add-title"><a href="{{item.link}}">{{item.title}}</a></h5>
                                     <div class="info">
+                                        <div  ng-if="item.postDate">
                                         <span class="date">
                                             <i class="glyphicon glyphicon-time"></i>
-                                            {{item.postDate}}
-                                        </span> <br>
+                                           Đăng tuyển: {{item.postDate}}
+                                        </span> <br> </div>
+                                        <div  ng-if="item.expireDate">
+                                        <span class="date">
+                                            <i class="glyphicon glyphicon-time"></i>
+                                           Hạn nộp:  {{item.expireDate}}
+                                        </span> <br> </div>
                                         <span class="category"><i class="glyphicon glyphicon-globe"></i> {{item.company}}</span> <br>
                                         <span class="item-location"><i class="fa fa-map-marker"></i>  {{item.location}}</span>
                                     </div>
@@ -262,7 +316,7 @@
                                     <span>{{item.salary}}</span>
                                 </a>
                                 <a class="btn btn-common btn-sm"> <i class="fa fa-eye"></i> <span>215</span> </a><br>
-                                <a class="">{{item.source}} </a>
+                                <a ng-if ="item.source"><span class="category"><i class="glyphicon glyphicon-globe"></i></span> &nbsp;&nbsp;{{item.source}}</a>
                             </div>
                         </div>
     
