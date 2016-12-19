@@ -1,169 +1,139 @@
 $(document).ready(function() {
-  dataTest(); // khai báo function a ở đây mới bỏ vào  file angularjs được
-  // autocompleteKeyWord('txtSearch');
+  dataTest(); 
+
+  //----------- khai bao collapse----------
+
+  $('.collapse').on('shown.bs.collapse', function(){
+  $(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass("glyphicon-minus");
+  }).on('hidden.bs.collapse', function(){
+  $(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
+  });
 });
 
-function autocompleteKeyWord(idElement) {
-    var jsonData = {
-        "java": null,
-        "Java Developer": "images/autocomplete/samsung.png",
-        "iOS Developer": null,
-        "PHP Programming Officer": null,
-        "Ôtô": null,
-        "Ipad": null,
-        "Điện thoại": null,
-        "Di động": null,
-        "Quần áo": null,
-        "Mobile": null,
-        "Apple": null,
-        "Nokia": "images/autocomplete/nokia.jpg",
-        "Microsoft": null,
-        "Google": null,
-        "Máy vi tính": null,
-        "HP": null,
-        "Dell": null
-    }
-
-    $('input#' + idElement).autocomplete({
-        data: jsonData
-    });
-}
-
-function doSearch()
-{
-  var result = [];
-  $('#btnSearch').on('click', function () {
-        var kw = $("#txtSearch").val(); 
-        var urlCareerlink = 'https://www.careerlink.vn/viec-lam/k/'; //java?keyword_use=A  /ios%2520developer?keyword_use=A
-        var urlCareerbuilder = 'http://careerbuilder.vn/viec-lam/';
-        var urlMywork = 'https://mywork.com.vn/tim-viec-lam/';//ky-thuat-lap-trinh.html
-        var arr1 = careerlink(urlCareerlink,kw);
-        var arr2 = mywork( urlMywork , kw)
-        var arr3 = careerbuilder(urlCareerbuilder,kw);
-        console.log(arr2);
-        console.log(result);
-        });
-    return result;
- 
-}
-
-function mywork( url , kw)
-{
-  var rs = [];
-
-    crawlByXMLHttpRequest(url + kw.replace(/ /g, '-')+ '.html', function(hmtlString) {
-      var a = url + kw.replace(/ /g, '-')+ '.html';
-        htmlParser(hmtlString, 'div.item').each(function(i, jobs) {
-          var dt = $(this);
-          var datetime, title, city, description, link,company, img, salary;
-          city = $('a:last',jobs).text();
-          salary = $('span:first',jobs).text() + '-' + $('span:last',jobs).text();
-            title = (dt.children().children().eq(0).text()).trim();
-            link = 'https://mywork.com.vn' + $('a.title',jobs).attr('href');
-            datetime = dt.children().next().next().children().next().children().eq(0).text();
-            description = $('small',jobs).text();
-            var des = '...'+description.split('...')[1]+'...';
-            company =(dt.children().next().next().children().children().children().next().eq(0).text()).trim();
-            if (!$('img', jobs).attr('src')) {
-                img = "images/no-img.png";
-            } else {
-                img = 'https://www.careerlink.vn'+$('img', jobs).attr('src');
-            }
-            var json = {
-        "datetime" : "datetime",
-          "title" : "title", 
-          "location" : "city", 
-          "description" : "", 
-          "link" : "link",
-          "company" : "company",
-          "image" : "img",
-          "salary" : "salary"
-      };
-      rs.push(json);
-      
-        });
-    });
-    return rs;
-}
-
-function careerbuilder( url , kw)
+function getcareerbuilder(url,kw,callback)
 {
     var rs = [];
 
-    crawlByXMLHttpRequest(url + kw.replace(/ /g, '-')+ '-k-vi.html', function(hmtlString) {
-        htmlParser(hmtlString, 'dd.brief').each(function(i, jobs) {
-            var datetime, title, city, description, link, company;
-            city = $('span.location',jobs).text();
-            title = $('a.job',jobs).text();
-            link = $('a.job',jobs).attr('href');
-            datetime = $('p.dateposted',jobs).text();
-            description = $('p.rc_jobDescription',jobs).text();
-            company = $('span.location',jobs).text();
-            if (!$('img', jobs).attr('src')) {
-                img = "images/no-img.png";
+   AcrawlByXMLHttpRequest(url + kw.replace(/ /g, '-')+ '-k-vi.html', function(hmtlString) {
+        AhtmlParser(hmtlString, 'dd.brief').each(function(i, jobs) {
+            var dt = $(this);
+            var dateposted, title, city, description, link, company,id,salary;
+            id = guid();
+            city = $('p.location',jobs).text();
+            var sl = $('p.salary',jobs).text();
+            salary = sl.split('Lương:')[1].replace(/Tr/g,'triệu').replace(/VND/g,'');
+            title = $('h3.job',jobs).text();
+            link = dt.children().next().eq(0).children().children().attr('href');
+            dateposted = $('div.dateposted',jobs).text().split("Đăng tuyển:")[1].trim();
+            description = $('p.rc_jobDescription',jobs).text().replace('"','');
+            var drr = description.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,"").replace(/\s+/g," ");
+            company = dt.children().children().next().eq(0).children().text();
+            if (!$('img', jobs).attr('data-original')) {
+                img = "http://static.careerbuilder.vn/themes/kiemviecv32/images/graphics/logo-default.png";
             } else {
-                img = 'http://careerbuilder.vn'+$('img', jobs).attr('src');
+                img = $('img', jobs).attr('data-original');
             }
-            var date = datetime.split("Dăng tuyển: ");
             var json = {
-        datetime : datetime,
-          title : title, 
-          location : city, 
-          description : description, 
-          link : link,
-          company : company,
-          image : img,
-          salary : 'select to view'
-      };
-      rs.push(json);
-
+                _id: id,
+                postDate : dateposted,
+                title : title, 
+                location : city, 
+                description : "", 
+                link : link,
+                company : company,
+                image : img,
+                salary : salary,
+                source : 'careerbuilder.vn'
+            };
+            if(i < 32)
+            {
+              rs.push(json);
+            }
         })
+        callback(rs);
+    });
 
-    })
-    return rs;
-}
+    var urlMywork = 'https://mywork.com.vn/tim-viec-lam/';
 
-function careerlink( url , kw)
-{
-  var rs = [];
-
-    crawlByXMLHttpRequest(url + kw.replace(/ /g, '%2520')+ '?keyword_use=A', function(hmtlString) {
-      var a = url + kw.replace(/ /g, '-')+ '?keyword_use=A';
-      //console.log(hmtlString);
-      alert(a);
-        htmlParser(hmtlString, 'div.list-group-item').each(function(i, jobs) {
-          var datetime, title, city, description, link,company, img, salary;
-          city = $('a:last',jobs).text();
-          salary = (($('small:first',jobs).text()).split('|')[0]).trim();
-            title = $('a:first',jobs).text();
-            link = 'https://www.careerlink.vn' + $('a:first',jobs).attr('href');
-            datetime = $('small:last',jobs).text();
-            description = $('small',jobs).text();
+    AcrawlByXMLHttpRequest(urlMywork + kw.replace(/ /g, '-')+ '.html', function(hmtlString) {
+        var a = url + kw.replace(/ /g, '-')+ '.html';
+        AhtmlParser(hmtlString, 'div.item').each(function(i, jobs) {
+            var dt = $(this);
+            var expireDate, title, city, description, link,company, img, salary, id;
+            id = guid();
+            city = $('a:last',jobs).text();
+            salary = dt.children().next().eq(0).text().trim();
+            title = (dt.children().children().eq(0).text()).trim();
+            link = 'https://mywork.com.vn' + $('a.title',jobs).attr('href');
+            expireDate = dt.children().next().next().children().next().children().eq(0).text();
+            description = $('small',jobs).text().replace('"','');
             var des = '...'+description.split('...')[1]+'...';
-            company = $('a.text-accent',jobs).text();
+            company =(dt.children().next().next().children().children().children().next().eq(0).text()).trim();
             if (!$('img', jobs).attr('src')) {
-                img = "images/no-img.png";
+                img = "http://static.careerbuilder.vn/themes/kiemviecv32/images/graphics/logo-default.png";
             } else {
                 img = 'https://www.careerlink.vn'+$('img', jobs).attr('src');
             }
             var json = {
-        datetime : datetime,
-          title : title, 
-          location : city, 
-          description : des, 
-          link : link,
-          company : company,
-          image : img,
-          salary : salary
-      };
-      rs.push(json);
-        })
-       // console.log(rs);
-    })
-    return rs;
-}
+                "_id":id,    
+                "expireDate" : expireDate,
+                "title" : title, 
+                "location" : city, 
+                "description" : "Nhấn vào đề xem chi tiết công việc", 
+                "link" : link,
+                "company" : company,
+                "image" : img,
+                "salary" : salary,
+                "source" : 'mywork.com.vn'
+            };
+            rs.push(json);           
+        });
+        callback(rs);
+    });
+    
+    var urlCareerlink = 'https://www.careerlink.vn/viec-lam/k/';
 
-function crawlByXMLHttpRequest(url, fn) {
+    AcrawlByXMLHttpRequest(urlCareerlink + kw.replace(/ /g, '%2520')+ '?keyword_use=A', function(hmtlString) {
+        var a = url + kw.replace(/ /g, '-')+ '?keyword_use=A';
+        AhtmlParser(hmtlString, 'div.list-group-item').each(function(i, jobs) {
+            var postDate, title, city, description, link,company, img, salary, id;
+            id = guid();
+            var dt = $(this);
+            var location = $('p.priority-data',jobs).text();
+            city = location.split('-')[1].replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,"").replace(/\s+/g," ");
+            salary = (($('small:first',jobs).text()).split('|')[0]).trim();
+            var trimSalary = salary.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,"").replace(/\s+/g," ") ;
+            title = $('a:first',jobs).text();
+            link = 'https://www.careerlink.vn' + $('a:first',jobs).attr('href');
+            postDate = dt.children().next().children().next().eq(3).children().text().trim();
+            var description = dt.children().next().children().next().eq(0).children().children().next().children().text().replace('"','');
+            var drr = description.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,"").replace(/\s+/g," ");
+            company = $('a.text-accent',jobs).text();
+            if (!$('img', jobs).attr('src')) {
+                img = "http://static.careerbuilder.vn/themes/kiemviecv32/images/graphics/logo-default.png";
+            } else {
+                img = 'https://www.careerlink.vn'+$('img', jobs).attr('src');
+            }
+            var json = {
+                _id: id,
+                postDate : postDate,
+                title : title, 
+                location : city, 
+                description : drr, 
+                link : link,
+                company : company,
+                image : img,
+                salary : trimSalary,
+                source : 'careerlink.vn'
+            };
+            rs.push(json);
+        });
+       callback(rs);
+    });
+    
+};
+
+function AcrawlByXMLHttpRequest(url, fn) {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -172,15 +142,25 @@ function crawlByXMLHttpRequest(url, fn) {
     };
     xhr.open("GET", url, true);
     xhr.send();
-}
+};
 
-function htmlParser(htmlString, classElement) {
+function AhtmlParser(htmlString, classElement) {
     // jquery
     var $element = $('<div></div>');
     $element.html(htmlString);
     var DOM = $(classElement, $element);
     return DOM;
-}
+};
+
+function guid() {
+    function s4() {
+                        return Math.floor((1 + Math.random()) * 0x10000)
+                          .toString(16)
+                          .substring(1);
+                      }
+                      return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+                        s4() + '-' + s4() + s4() + s4();
+                    };
 
 function dataTest()
 {
