@@ -128,7 +128,7 @@
                                             <i class="glyphicon glyphicon-plus"></i>
                                             Chọn Khu Vực </a>
                                             <div class="collapse" id ="location">
-                                                <div ng-repeat="(key, value) in items | uniq | countBy: 'location' " >
+                                                <div ng-repeat="(key, value) in items | uniq " >
                                                     <label>
                                                         <input type="checkbox" ng-model = "selected" ng-checked = "exist(key)" ng-click = "checkLocation(key)">
                                                         <span class="category-counter">&nbsp;&nbsp;&nbsp;&nbsp;({{value}})</span>
@@ -246,7 +246,7 @@
                                     <div class="info">
                                         <span class="date">
                                             <i class="glyphicon glyphicon-time"></i>
-                                            {{item.datetime}}
+                                            {{item.postDate}}
                                         </span> <br>
                                         <span class="category"><i class="glyphicon glyphicon-globe"></i> {{item.company}}</span> <br>
                                         <span class="item-location"><i class="fa fa-map-marker"></i>  {{item.location}}</span>

@@ -36,6 +36,7 @@ function getcareerbuilder(url,kw,callback)
             var json = {
                 _id: id,
                 postDate : dateposted,
+                expireDate: "",
                 title : title, 
                 location : city, 
                 description : "", 
@@ -76,6 +77,7 @@ function getcareerbuilder(url,kw,callback)
             }
             var json = {
                 "_id":id,    
+                postDate : "",
                 "expireDate" : expireDate,
                 "title" : title, 
                 "location" : city, 
@@ -117,6 +119,7 @@ function getcareerbuilder(url,kw,callback)
             var json = {
                 _id: id,
                 postDate : postDate,
+                expireDate : "",
                 title : title, 
                 location : city, 
                 description : drr, 
