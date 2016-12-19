@@ -33,7 +33,7 @@ function postJob(req, res) {
 exports.postJob = postJob;
 ;
 //--------app.post('/post-job-submit', upload.single('photo'), routes.insertAds);
-function insertAds(req, res) {
+function insertJob(req, res) {
     let json = req.body;
     let postId = req.body.userId;
     let dt = datetime.create();
@@ -60,7 +60,7 @@ function insertAds(req, res) {
         res.redirect('/manage-jobs');
     });
 }
-exports.insertAds = insertAds;
+exports.insertJob = insertJob;
 ;
 //-------app.get('/login', routes.loginPage);
 function loginPage(req, res) {

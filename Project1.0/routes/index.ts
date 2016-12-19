@@ -35,7 +35,7 @@ export function postJob(req: express.Request, res: express.Response) {
 };
 
 //--------app.post('/post-job-submit', upload.single('photo'), routes.insertAds);
-export function insertAds(req: express.Request, res: express.Response) {
+export function insertJob(req: express.Request, res: express.Response) {
     let json = req.body;
     let postId = req.body.userId;
     let dt = datetime.create();

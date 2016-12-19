@@ -1,4 +1,4 @@
-﻿var app = angular.module('myApp', ['ui.bootstrap']);
+﻿var app = angular.module('myApp', ['ui.bootstrap','angular.filter']);
 
 app.factory('Items', ['$http', function ($http) {
         return {
@@ -120,7 +120,7 @@ app.filter('uniq', function(){
     }else if(a.indexOf(',') > -1 && a.length > 1){
         for(var i = 0;i< a.split(',').length;i++){
             language.location = a.split(',')[i].trim();
-            console.log("cuc "+ language.location);
+          //  console.log("cuc "+ language.location);
             out.push(language);
         }
     }
@@ -267,7 +267,7 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
                                         // console.log(data.indexOf('\ "'));
                                     
                                     var dataParse = JSON.parse(data);
-                                    // console.log("this is a: "+dataParse);
+                                    //console.log("this is a: "+dataParse);
 
                                      Items.solrSearch(dataParse, $scope.formData.txtSearch)
                                         .success(function(result) {
@@ -284,6 +284,8 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
                                                 rs.location = rs.location[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
                                                 rs.company = rs.company[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
                                                 rs.salary = rs.salary[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                rs.postDate = rs.postDate[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                rs.expireDate = rs.expireDate[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
                                                 rs.link = rs.link[0].replace(/https : \/ \/ /g,'https://').replace(/http : \/ \/ /g,'http://').replace(/" /g,'"').replace(/ "/g,'"');
                                                 // console.log(rs.title);
                                                 // console.log(rs.link);
@@ -300,10 +302,10 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
                                             end = begin + $scope.entryLimit;
                                             $scope.filtereditems = $scope.items.slice(begin, end);
                                             //$scope.$digest();
-                                            Items.saveCache(result, $scope.formData.txtSearch)
-                                                .success(function(data) {
-                                                    console.log(data);
-                                                });
+                                            // Items.saveCache(result, $scope.formData.txtSearch)
+                                            //     .success(function(data) {
+                                            //         console.log(data);
+                                            //     });
 
                                     });
                                 });
@@ -359,6 +361,25 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
                     });
 
      //   });
+    //-----------------------------------------start filter --------------------------------------------
+     $scope.selected = [];
+     $scope.exist = function(key){
+        return $scope.selected.indexOf(key) > -1 ;
+
+     }
+
+     $scope.checkLocation = function(key){
+        var a = $scope.selected.indexOf(key);
+        if(a > -1){
+            $scope.selected.splice(a,1);
+        }else{
+            $scope.selected.push(key);
+        }
+        return $scope.selected;
+
+     }
+     //-----------------------------------------end filter-----------------------------------------------
+   
    
 }]);
 

@@ -234,12 +234,14 @@ function solrSearch(req, res) {
                 //console.log(json.rows[i].title);
                 var updateQuery = "<add><doc><field name='id'>" + (data[i]._id) +
                     "</field><field name='title'>" + (data[i].title) +
+                    "</field><field name='postDate'>" + (data[i].postDate) +
+                    "</field><field name='expireDate'>" + (data[i].expireDate) +
                     "</field><field name='description'>" + (data[i].description) +
                     "</field><field name='company'>" + (data[i].company) +
                     "</field><field name='salary'>" + (data[i].salary) +
                     "</field><field name='location'>" + (data[i].location) +
                     "</field><field name='link'>" + (data[i].link) +
-                    "</field><field name='source'>" + (source) + "</field></doc></add>";
+                    "</field><field name='source'>" + ((data[i].source) + "</field></doc></add>");
                 updateQuery = encodeURIComponent(updateQuery);
                 request.get("http://localhost:8983/solr/search/update?commit=true&stream.body=" + updateQuery + "&wt=json");
             }

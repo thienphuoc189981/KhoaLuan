@@ -69,7 +69,7 @@ app.get('/signup', routes.signup);
 app.post('/signup-submit', routes.signupSubmit);
 
 app.get('/post-job', routes.postJob);
-app.post('/post-job-submit', upload.single('photo'), routes.insertAds);
+app.post('/post-job-submit', upload.single('photo'), routes.insertJob);
 
 app.get('/manage-jobs', manage.index);
 app.get('/update-job/:id', manage.updateJob);

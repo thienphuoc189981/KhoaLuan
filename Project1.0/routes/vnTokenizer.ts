@@ -36,7 +36,6 @@ export function analyzeData(req, res) {
             a = a.replace(/" title "/g, '"title"');
             a = a.replace(/" description "/g, '"description"');
             a = a.replace(/" salary "/g, '"salary"');
-            a = a.replace(/" datetime "/g, '"datetime"');
             a = a.replace(/" location "/g, '"location"');
             a = a.replace(/" company "/g, '"company"');
             a = a.replace(/" image "/g, '"image"');
@@ -49,8 +48,9 @@ export function analyzeData(req, res) {
             a = a.replace(/" rows "/g, '"rows"');
             a = a.replace(/" district "/g, '"district"');
             a = a.replace(/" source "/g, '"source"');  
-            //a = a.replace(/" http : / / "/g, '"type"');
-            console.log(a); // data
+            a = a.replace(/" postDate "/g, '"postDate"');
+            a = a.replace(/" expireDate "/g, '"expireDate"');
+
             res.json(a);
             return res.end();
         });
