@@ -96,12 +96,13 @@ app.filter('formatDate', function(){
         dt = language.postDate;
         if(!(key) ||key == 0 && language.postDate.indexOf(DateFormat) >-1){
             out.push(language);
-        }else if( key > 0){
-            var date = new Date(dt.split('/')[1] +'-'+ dt.split('/')[0] +'-'+ dt.split('/')[2]);
-            var dueTime = new Date(valueOfCeurrDate - numDay*86400000);
-            if(parseInt(dueTime.valueOf()) <= parseInt(date.valueOf())){
-                out.push(language);
-            }
+        }else if( key > 0 && dt.length > 1){
+                var date = new Date(dt.split('/')[1] +'/'+ dt.split('/')[0] +'/'+ dt.split('/')[2]);
+                console.log("date " + date);
+                var dueTime = new Date(valueOfCeurrDate - numDay*86400000);
+                if(parseInt(dueTime.valueOf()) <= parseInt(date.valueOf())){
+                    out.push(language);
+                }
         }
     });
     return out;
