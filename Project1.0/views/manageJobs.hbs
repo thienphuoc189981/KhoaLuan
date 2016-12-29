@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-sm-12 page-content">
                 <div class="inner-box">
-                    <h2 class="title-2"><i class="fa fa-hourglass-o"></i> List of posted jobs</h2>
+                    <h2 class="title-2"><i class="fa fa-hourglass-o"></i> Danh sách công việc của bạn</h2>
                     <div class="table-responsive">
                         <div class="table-action">
                             <!--<div class="checkbox">
@@ -32,10 +32,10 @@
                             <thead>
                                 <tr>
                                     <th data-type="numeric"></th>
-                                    <th>Photo</th>
-                                    <th>Jobs Details</th>
-                                    <th>Applicator</th>
-                                    <th>Option</th>
+                                    <th>Logo công ty</th>
+                                    <th>Thông tin</th>
+                                    <th>Ứng viên</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,10 +50,10 @@
                                     </td>
                                     <td class="add-img-td">
                                         <a href="/job-detail/{{item._id}}">
-                                            {{#if item.attachment}}
-                                            <img class="img-responsive" src="{{item.attachment}}" alt="img">
+                                            {{#if item.image}}
+                                            <img class="img-responsive" src="{{item.image}}" alt="img">
                                             {{else}}
-                                            <img class="img-responsive" src="assets/img/default.jpg" alt="img">
+                                            <img class="img-responsive" src="http://static.careerbuilder.vn/themes/kiemviecv32/images/graphics/logo-default.png" alt="img">
                                             {{/if}}
                                         </a>
                                     </td>

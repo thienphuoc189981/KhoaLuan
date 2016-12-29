@@ -2,8 +2,8 @@
  * GET home page.
  */
 "use strict";
-const database_1 = require("./database");
-let api = new database_1.Project.api();
+var database_1 = require("./database");
+var api = new database_1.Project.api();
 var datetime = require('node-datetime');
 var passwordHash = require('password-hash');
 //export function add(req: express.Request, res: express.Response) {
@@ -17,13 +17,13 @@ exports.index = index;
 function postJob(req, res) {
     //console.log("ads " + req.session.email);
     if (req.session.email) {
-        let json = [];
+        var json_1 = [];
         api.indexView("categoriesAll").then(function (data) {
             data.rows.forEach(function (item) {
-                json.push(item.key);
+                json_1.push(item.key);
             });
             //console.log(json);
-            res.render('./postJob', { cats: json, session: req.session });
+            res.render('./postJob', { cats: json_1, session: req.session });
         });
     }
     else {
@@ -34,27 +34,29 @@ exports.postJob = postJob;
 ;
 //--------app.post('/post-job-submit', upload.single('photo'), routes.insertAds);
 function insertJob(req, res) {
-    let json = req.body;
-    let postId = req.body.userId;
-    let dt = datetime.create();
-    let fomratted = dt.format('d/m/Y');
+    var json = req.body;
+    var postId = req.body.userId;
+    var dt = datetime.create();
+    var fomratted = dt.format('d/m/Y');
     delete json["userId"];
-    let users = {
+    var users = {
         "postId": postId,
-        "applyId": ""
+        "applyId": []
     };
     console.log(req.file);
     if (req.file) {
-        json.attachment = '/uploads/' + req.file.filename;
+        json.image = '/uploads/' + req.file.filename;
     }
     else {
-        json.attachment = "";
+        json.image = "";
     }
     json.postDate = fomratted;
-    json.expireDate = json.expireDate.format('d/m/Y');
+    var temp = datetime.create(json.expireDate);
+    json.expireDate = temp.format('d/m/Y');
     json.type = "jobs";
     json.status = "post";
     json.users = users;
+    json.source = "UIT Search";
     api.insertData(json).then(function () {
         req.flash('success', 'You are successfully posting !');
         res.redirect('/manage-jobs');
@@ -70,12 +72,12 @@ exports.loginPage = loginPage;
 //-------app.post('/login-authen', routes.loginAuthen);
 function loginAuthen(req, res) {
     console.log(req.body);
-    let val = req.body;
-    let mess = '';
-    let render = '';
-    let nextlink = '';
-    let sess = req.session;
-    let redirect = val.nextlink;
+    var val = req.body;
+    var mess = '';
+    var render = '';
+    var nextlink = '';
+    var sess = req.session;
+    var redirect = val.nextlink;
     api.findData(val.email, "usersByEmail").then(function (result) {
         if (result.rows[0] != null) {
             if (passwordHash.verify(val.password, result.rows[0].doc.password)) {
@@ -109,8 +111,8 @@ function signup(req, res) {
 }
 exports.signup = signup;
 function signupSubmit(req, res) {
-    let user = req.body;
-    let sess = req.session;
+    var user = req.body;
+    var sess = req.session;
     user.type = 'users';
     user.status = 'Active';
     user.password = passwordHash.generate(user.password);
@@ -133,6 +135,11 @@ function signout(req, res) {
     });
 }
 exports.signout = signout;
+function forgotPassword(req, res) {
+    console.log('asdasd');
+    res.render('./forgotPassword');
+}
+exports.forgotPassword = forgotPassword;
 function userManagement(req, res) {
     if (req.session.email) {
         api.findData(req.session.email, "usersByEmail").then(function (rs) {
@@ -145,8 +152,8 @@ function userManagement(req, res) {
 }
 exports.userManagement = userManagement;
 function updateUser(req, res) {
-    let id = req.body._id;
-    let body = req.body;
+    var id = req.body._id;
+    var body = req.body;
     api.findData(id, 'usersById').then(function (user) {
         user.rows[0].doc.name = body.name;
         user.rows[0].doc.email = body.email;

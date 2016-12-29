@@ -11,12 +11,12 @@
                 <div class="col-lg-offset-1 col-sm-10">
                     <div class="inner-box ads-details-wrapper">
                         <div class="img-detail">
-                            {{#if job.attachment}}
-                            <img src="{{job.attachment}}" alt="company photo">
+                            {{#if job.image}}
+                            <img src="{{job.image}}" alt="company photo" width="220" height="140">
                             {{else}}
-                            <img src="/assets/img/default.jpg" alt="company photo" height="120" width="200">
+                            <img src="http://static.careerbuilder.vn/themes/kiemviecv32/images/graphics/logo-default.png" alt="company photo" height="120" width="200">
                             {{/if}}
-                            {{#if sessoion.email}}
+                            {{#if session.email}}
                             <span style="margin-left:400px">
                                 <a class="btn btn-danger btn-post" href="/apply/{{job._id}}">
                                     <span class="fa fa-plus-circle"></span> Apply now
@@ -35,7 +35,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Signup to apply</h4>
+                                            <h4 class="modal-title">Đăng ký để ứng tuyển</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form role="form" class="login-form" method="post" id="signup-form" action="/apply-signup" name="registration">
@@ -71,7 +71,7 @@
                                                         <input type="password" id="rePassword" class="form-control" placeholder="Retype Password">
                                                     </div>
                                                 </div>
-                                                <button class="btn btn-common log-btn" type="submit">Register</button>
+                                                <button class="btn btn-common log-btn" type="submit">Gửi</button>
                                             </form>
                                         </div>
                                     </div>

@@ -219,33 +219,32 @@ export function dbSearch(req, res) {
 
 export function solrSearch(req, res) {
     var data = req.body.rows;
+    var json: any;
+
+    var q = encodeURIComponent(req.query.q);
     //console.log(data);
-    //var json = { rows: [] };
-    var q = req.query.q;
-    //console.log(q);
-    //console.log(q.length);
-    //var q = "java";
+    
     var source = "";
     var i: number;
-    //for (i = 0; i < data.length; i++) {
-    //    json.rows.push(data[i].doc);
-    //}
+
     //console.log(data.length);
+    //console.log(data)
     //----Handle index----//
     async.waterfall([
         function (callback) {
             for (i = 0; i < data.length; i++) {
-                //console.log(json.rows[i].title);
+                data[i].link = encodeURIComponent(data[i].link);
+                console.log(data[i].link);
                 var updateQuery = "<add><doc><field name='id'>" + (data[i]._id) +
                     "</field><field name='title'>" + (data[i].title) +
                     "</field><field name='postDate'>" + (data[i].postDate) +
                     "</field><field name='expireDate'>" + (data[i].expireDate) +
                     "</field><field name='description'>" + (data[i].description) +
                     "</field><field name='company'>" + (data[i].company) +
+                    "</field><field name='image'>" + (data[i].image) +
                     "</field><field name='salary'>" + (data[i].salary) +
                     "</field><field name='location'>" + (data[i].location) +
-                    "</field><field name='link'>" + (data[i].link) +
-                    "</field><field name='source'>" + ((data[i].source) + "</field></doc></add>";
+                    "</field><field name='source'>" + (data[i].source) + "</field></doc></add>";
                 updateQuery = encodeURIComponent(updateQuery);
                 request.get("http://localhost:8983/solr/search/update?commit=true&stream.body=" + updateQuery + "&wt=json");
             }
@@ -265,8 +264,8 @@ export function solrSearch(req, res) {
                         //body = body.replace(/[]/, "");
                         body = JSON.parse(body);
                         //console.log(body.response.docs[0]);
+                        //console.log(response);
                         callback(null, body.response.docs);
-
                     });
             }
         }
@@ -335,6 +334,27 @@ export function saveCache(req, res) {
    
     res.json(data);
     res.end();
+}
+
+export function deleteCache(req, res) {
+    let cacheAt: any;
+    let now = datetime.create();
+    api.indexView('cacheByCacheAt').then(function (rs) {
+        rs.rows.forEach(function (cache) {
+            cacheAt = datetime.create(cache.key);
+            if (((now.getTime() - cacheAt.getTime()) / 3600000) >= 24) {
+                api.findData(cache.doc.keyword.content, 'keywordAll').then(function (k) {
+                    k.rows[0].doc.cache = false;
+                    api.updateData(k.rows[0].doc.cache);
+                });
+
+                api.deleteData(cache.doc._id, cache.doc._rev).then(function () {
+                    request.get('http://localhost:8983/solr/search/update?stream.body=<delete><query>*:*</query></delete>&commit=true');
+                    res.end();
+                });;
+            }
+        });
+    });
 }
 
 function guid() {

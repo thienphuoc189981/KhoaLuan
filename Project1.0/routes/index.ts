@@ -43,19 +43,21 @@ export function insertJob(req: express.Request, res: express.Response) {
     delete json["userId"];
     let users = {
         "postId": postId,
-        "applyId": ""
+        "applyId": []
     };
     console.log(req.file);
     if (req.file) {
-        json.attachment = '/uploads/'+req.file.filename;
+        json.image = '/uploads/'+req.file.filename;
     } else {
-        json.attachment = "";
+        json.image = "";
     }
     json.postDate = fomratted;
-    json.expireDate = json.expireDate.format('d/m/Y');
+    let temp = datetime.create(json.expireDate)
+    json.expireDate = temp.format('d/m/Y');
     json.type = "jobs";
     json.status = "post";
     json.users = users;
+    json.source = "UIT Search";
 
     api.insertData(json).then(function () {
         req.flash('success', 'You are successfully posting !');
@@ -134,6 +136,11 @@ export function signout(req: express.Request, res: express.Response) {
         // will have a new session here
         res.redirect('/');
     });
+}
+
+export function forgotPassword(req: express.Request, res: express.Response) {
+    console.log('asdasd');
+    res.render('./forgotPassword');
 }
 
 export function userManagement(req: express.Request, res: express.Response) {

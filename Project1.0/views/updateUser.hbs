@@ -8,14 +8,14 @@
                 <div class="col-sm-12 col-md-9 col-md-offset-2">
                     <div class="page-ads box">
                         <h2 class="title-2">
-                            user management
+                            Thông tin cá nhân
                         </h2>
                         <form class="form-ad" method="post" action="/update-user">
                             <input type="hidden" value="{{user._id}}" name="_id" />
                             <input type="hidden" value="{{user._rev}}" name="_rev" />
 
                             <div class="form-group">
-                                <label class="control-label">Your name</label>
+                                <label class="control-label">Tên của bạn</label>
                                 <input name="name" class="form-control input-md" type="text" value="{{user.name}}" required>
                             </div>
 
@@ -25,13 +25,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label">Phone</label>
+                                <label class="control-label">Điện thoại</label>
                                 <input name="phone" class="form-control input-md" type="text" value="{{user.phone}}" required>
                             </div>
 
                             <div class="form-group">
                                 <div class="well">
-                                    <button type="submit" class="btn btn-common">Submit</button>
+                                    <button type="submit" class="btn btn-common">Cập nhật</button>
                                 </div>
                             </div>
                         </form>

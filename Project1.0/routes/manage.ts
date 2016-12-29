@@ -69,7 +69,8 @@ export function updateJob(req: express.Request, res: express.Response) {
                     cats.push(item.key);
                 });
                 json.push(result.rows[0].doc);
-                console.log(json[0]);
+                //console.log(json[0]);
+
                 res.render('./updateJob', {
                     session: req.session, job: json[0], cats: cats,
                     helpers: {
@@ -90,13 +91,13 @@ export function updateJobSubmit(req: express.Request, res: express.Response) {
     api.findData(idJob, 'jobsById').then(function (job) {
         json = job.rows[0].doc;
         if (req.session.userId == job.rows[0].doc.users.postId) {
-        if (job.rows[0].doc.attachment && req.file && job.rows[0].doc.attachment!="") {
-            let oldImg = job.rows[0].doc.attachment;
+            if (job.rows[0].doc.image && req.file && job.rows[0].doc.image!="") {
+                let oldImg = job.rows[0].doc.image;
             fs.unlink(oldImg);
             }
 
         if (req.file) {
-            json.attachment = '/uploads/' + req.file.filename;
+            json.image = '/uploads/' + req.file.filename;
         }
         json.title = body.title;
         json.description = body.description;
@@ -136,7 +137,7 @@ export function viewJob(req: express.Request, res: express.Response) {
     let job = [];
     api.findData(idJob, 'jobsById').then(function (rs) {
         job.push(rs.rows[0].doc);
-        //console.log(job);
+        console.log(job);
         res.render('./viewJob', { session: req.session, job: job[0], message: req.flash() });
     });
 }
@@ -146,7 +147,7 @@ export function applyJob(req: express.Request, res: express.Response) {
     if (req.session.email) {
         api.findData(idJob, 'jobsById').then(function (rs) {
             rs.rows[0].doc.users.applyId.push(req.session.userId);
-            //console.log(rs.rows[0].doc.users.applyId);
+            console.log(rs.rows[0].doc.users.applyId);
             api.updateData(rs.rows[0].doc).then(function () {
                 req.flash('successApply', 'You are successfully applying !', { maxage: 6000 });
                 res.redirect('/job-detail/' + idJob);

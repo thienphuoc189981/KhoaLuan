@@ -1,13 +1,13 @@
 "use strict";
-const database_1 = require("./database");
-let api = new database_1.Project.api();
-let async = require("async");
+var database_1 = require("./database");
+var api = new database_1.Project.api();
+var async = require("async");
 var request = require('request');
 var http = require('http');
 var datetime = require('node-datetime');
 var fs = require('fs');
 function index(req, res) {
-    let json = [];
+    var json = [];
     //if (req.session.privilege == 'admin') {
     api.indexView('usersById').then(function (rs) {
         rs.rows.forEach(function (u) {
@@ -17,16 +17,35 @@ function index(req, res) {
             json: json, layout: 'admin', session: req.session, message: req.flash(),
             helpers: {
                 eq: function (v1) { return v1 == json.status; }
-            } });
+            }
+        });
     });
     //} else {
     //    res.redirect('/login');
     //}
 }
 exports.index = index;
+function managementUsers(req, res) {
+    var json = [];
+    //if (req.session.privilege == 'admin') {
+    api.indexView('usersById').then(function (rs) {
+        rs.rows.forEach(function (u) {
+            json.push(u.doc);
+        });
+        res.render('./admin/managementUsers', {
+            json: json, layout: 'admin', session: req.session, message: req.flash(),
+            helpers: {
+                eq: function (v1) { return v1 == json.status; }
+            } });
+    });
+    //} else {
+    //    res.redirect('/login');
+    //}
+}
+exports.managementUsers = managementUsers;
 function updateUser(req, res) {
-    let json;
-    let id = req.params.id;
+    var json;
+    var id = req.params.id;
     //if (req.session.privilege == 'admin') {
     api.findData(id, 'usersById').then(function (rs) {
         json = rs.rows[0].doc;
@@ -43,9 +62,9 @@ function updateUser(req, res) {
 }
 exports.updateUser = updateUser;
 function updateUserSubmit(req, res) {
-    let json;
-    let id = req.body._id;
-    let body = req.body;
+    var json;
+    var id = req.body._id;
+    var body = req.body;
     //if (req.session.privilege == 'admin') {
     api.findData(id, 'usersById').then(function (rs) {
         json = rs.rows[0].doc;
@@ -64,7 +83,7 @@ function updateUserSubmit(req, res) {
 }
 exports.updateUserSubmit = updateUserSubmit;
 function deleteUser(req, res) {
-    let id = req.params.id;
+    var id = req.params.id;
     //if (req.session.privilege == 'admin') {
     api.findData(id, 'usersById').then(function (rs) {
         api.deleteData(rs.rows[0].doc._id, rs.rows[0].doc._rev).then(function () {
@@ -79,7 +98,7 @@ function deleteUser(req, res) {
 exports.deleteUser = deleteUser;
 //------jobs-------//
 function managementJobs(req, res) {
-    let json = [];
+    var json = [];
     //console.log(req.flash);
     //if (req.session.privilege == 'admin') {
     api.indexView('jobsById').then(function (rs) {
@@ -96,7 +115,7 @@ function managementJobs(req, res) {
 }
 exports.managementJobs = managementJobs;
 function deleteJob(req, res) {
-    let id = req.params.id;
+    var id = req.params.id;
     //if (req.session.privilege == 'admin') {
     api.findData(id, 'jobsById').then(function (rs) {
         api.deleteData(rs.rows[0].doc._id, rs.rows[0].doc._rev).then(function () {
@@ -110,9 +129,9 @@ function deleteJob(req, res) {
 }
 exports.deleteJob = deleteJob;
 function updateJob(req, res) {
-    let idJob = req.params.id;
-    let json = [];
-    let cats = [];
+    var idJob = req.params.id;
+    var json = [];
+    var cats = [];
     //if (req.session.privilege == 'admin') {
     api.findData(idJob, 'jobsById').then(function (result) {
         api.indexView("categoriesAll").then(function (data) {
@@ -135,19 +154,19 @@ function updateJob(req, res) {
 }
 exports.updateJob = updateJob;
 function updateJobSubmit(req, res) {
-    let idJob = req.body._id;
-    let body = req.body;
-    let json;
+    var idJob = req.body._id;
+    var body = req.body;
+    var json;
     //if (req.session.privilege == 'admin') {
     console.log(body.photo);
     api.findData(idJob, 'jobsById').then(function (job) {
         json = job.rows[0].doc;
-        if (job.rows[0].doc.attachment && req.file && job.rows[0].doc.attachment != "") {
-            let oldImg = job.rows[0].doc.attachment;
+        if (job.rows[0].doc.image && req.file && job.rows[0].doc.image != "") {
+            var oldImg = job.rows[0].doc.image;
             fs.unlink(oldImg);
         }
         if (req.file) {
-            json.attachment = '/uploads/' + req.file.filename;
+            json.image = '/uploads/' + req.file.filename;
         }
         console.log(req.file);
         json.title = body.title;

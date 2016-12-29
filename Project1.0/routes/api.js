@@ -1,9 +1,9 @@
 "use strict";
 //------import module Project from database.ts-----//
 /// <reference path="database.ts" />
-const database_1 = require("./database");
-let api = new database_1.Project.api();
-let async = require("async");
+var database_1 = require("./database");
+var api = new database_1.Project.api();
+var async = require("async");
 var request = require('request');
 var http = require('http');
 var datetime = require('node-datetime');
@@ -11,9 +11,9 @@ var datetime = require('node-datetime');
 //-------req: handle request
 //-------res: handle response
 function checkCached(req, res) {
-    let query = req.query.q; //get keyword from URL with query is 'q'
-    let arrKeyword = [];
-    let idTemps = [];
+    var query = req.query.q; //get keyword from URL with query is 'q'
+    var arrKeyword = [];
+    var idTemps = [];
     async.waterfall([
         //Get all keyword from database
         function (callback) {
@@ -27,7 +27,7 @@ function checkCached(req, res) {
         },
         //Handle checking cache
         function (arrKeyword, callback) {
-            let json;
+            var json;
             for (var i = 0; i < arrKeyword.length; i++) {
                 if (arrKeyword[i].key.toLowerCase() === query.toLowerCase()) {
                     if (arrKeyword[i].doc.cache === true) {
@@ -35,7 +35,7 @@ function checkCached(req, res) {
                         //Get list of job's id cached
                         api.findData(arrKeyword[i].doc._id, "cacheByKeyword").then(function (rs) {
                             //console.log(rs);
-                            let jobs = rs.rows[0];
+                            var jobs = rs.rows[0];
                             jobs.status = true;
                             callback(null, jobs);
                         });
@@ -55,7 +55,7 @@ function checkCached(req, res) {
                         console.log("excute else");
                         //Data not found then we'll insert new keyword to database
                         //Prepare data
-                        let data = {
+                        var data = {
                             "content": query,
                             "type": "keyword",
                             "cache": {
@@ -168,15 +168,15 @@ exports.checkCached = checkCached;
 //    });
 //}
 function dbSearch(req, res) {
-    let q = req.query.q;
+    var q = req.query.q;
     q = q.toLowerCase();
-    let arrKey = [];
-    let obj = new Object();
-    let rows = [];
-    let json = {
+    var arrKey = [];
+    var obj = new Object();
+    var rows = [];
+    var json = {
         rows: []
     };
-    let i, j;
+    var i, j;
     if (q.indexOf(' ') !== -1) {
         arrKey = (q.split(' '));
         api.searchView('byTitleAndDescription').then(function (result) {
@@ -215,33 +215,29 @@ function dbSearch(req, res) {
 exports.dbSearch = dbSearch;
 function solrSearch(req, res) {
     var data = req.body.rows;
+    var json;
+    var q = encodeURIComponent(req.query.q);
     //console.log(data);
-    //var json = { rows: [] };
-    var q = req.query.q;
-    //console.log(q);
-    //console.log(q.length);
-    //var q = "java";
     var source = "";
     var i;
-    //for (i = 0; i < data.length; i++) {
-    //    json.rows.push(data[i].doc);
-    //}
     //console.log(data.length);
+    //console.log(data)
     //----Handle index----//
     async.waterfall([
         function (callback) {
             for (i = 0; i < data.length; i++) {
-                //console.log(json.rows[i].title);
+                data[i].link = encodeURIComponent(data[i].link);
+                console.log(data[i].link);
                 var updateQuery = "<add><doc><field name='id'>" + (data[i]._id) +
                     "</field><field name='title'>" + (data[i].title) +
                     "</field><field name='postDate'>" + (data[i].postDate) +
                     "</field><field name='expireDate'>" + (data[i].expireDate) +
                     "</field><field name='description'>" + (data[i].description) +
                     "</field><field name='company'>" + (data[i].company) +
+                    "</field><field name='image'>" + (data[i].image) +
                     "</field><field name='salary'>" + (data[i].salary) +
                     "</field><field name='location'>" + (data[i].location) +
-                    "</field><field name='link'>" + (data[i].link) +
-                    "</field><field name='source'>" + ((data[i].source) + "</field></doc></add>");
+                    "</field><field name='source'>" + (data[i].source) + "</field></doc></add>";
                 updateQuery = encodeURIComponent(updateQuery);
                 request.get("http://localhost:8983/solr/search/update?commit=true&stream.body=" + updateQuery + "&wt=json");
             }
@@ -259,12 +255,13 @@ function solrSearch(req, res) {
                     //body = body.replace(/[]/, "");
                     body = JSON.parse(body);
                     //console.log(body.response.docs[0]);
+                    //console.log(response);
                     callback(null, body.response.docs);
                 });
             }
         }
     ], function (err, data) {
-        let result = [];
+        var result = [];
         var z;
         for (z = 0; z < data.length; z++) {
             data[z].rank = z + 1;
@@ -278,10 +275,10 @@ exports.solrSearch = solrSearch;
 function saveCache(req, res) {
     var data = req.body;
     var q = req.query.q.toLowerCase();
-    let keyword;
-    let cache;
-    let dt = datetime.create();
-    let fomratted = dt.format('m/d/Y H:M:S');
+    var keyword;
+    var cache;
+    var dt = datetime.create();
+    var fomratted = dt.format('m/d/Y H:M:S');
     api.findData(q, 'keywordAll').then(function (rs) {
         if (rs) {
             keyword = rs.rows[0].doc;
@@ -300,7 +297,7 @@ function saveCache(req, res) {
             api.insertData(cache);
         }
         else {
-            let id = guid();
+            var id = guid();
             keyword = {
                 _id: id,
                 content: q,
@@ -325,6 +322,27 @@ function saveCache(req, res) {
     res.end();
 }
 exports.saveCache = saveCache;
+function deleteCache(req, res) {
+    var cacheAt;
+    var now = datetime.create();
+    api.indexView('cacheByCacheAt').then(function (rs) {
+        rs.rows.forEach(function (cache) {
+            cacheAt = datetime.create(cache.key);
+            if (((now.getTime() - cacheAt.getTime()) / 3600000) >= 24) {
+                api.findData(cache.doc.keyword.content, 'keywordAll').then(function (k) {
+                    k.rows[0].doc.cache = false;
+                    api.updateData(k.rows[0].doc.cache);
+                });
+                api.deleteData(cache.doc._id, cache.doc._rev).then(function () {
+                    request.get('http://localhost:8983/solr/search/update?stream.body=<delete><query>*:*</query></delete>&commit=true');
+                    res.end();
+                });
+                ;
+            }
+        });
+    });
+}
+exports.deleteCache = deleteCache;
 function guid() {
     function s4() {
         return Math.floor((1 + Math.random()) * 0x10000)

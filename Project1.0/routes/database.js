@@ -11,22 +11,22 @@ var Project;
             return false;
     }
     // Class API couchDB
-    class api {
+    var api = (function () {
         // contructor
-        constructor(dbName) {
+        function api(dbName) {
             this.host = 'http://127.0.0.1:5984/'; // set server CouchDB
             this.dbName = 'project';
         }
         //Create Design document
-        createDdoc(dbName) {
+        api.prototype.createDdoc = function (dbName) {
             //check database name
             if (checkNull(dbName) == true)
                 var db = new PouchDB('http://username:password@127.0.0.1:5984/project');
             else
                 var db = new PouchDB('http://username:password@127.0.0.1:5984/project');
             function createDoc(dbName) {
-                let db = new PouchDB(dbName);
-                let remoteCouch = 'http://username:password@127.0.0.1:5984/' + dbName;
+                var db = new PouchDB(dbName);
+                var remoteCouch = 'http://username:password@127.0.0.1:5984/' + dbName;
                 var ddoc = {
                     _id: '_design/index',
                     views: {
@@ -137,9 +137,9 @@ var Project;
                 var opts = { live: true };
                 db.sync(remoteCouch, opts);
             }
-        }
+        };
         //call query
-        indexView(view, dbName) {
+        api.prototype.indexView = function (view, dbName) {
             var result;
             //check database name
             if (checkNull(dbName) == true)
@@ -148,9 +148,9 @@ var Project;
                 var db = new PouchDB(this.host + dbName);
             //query data
             return db.query('index/' + view, { include_docs: true });
-        }
+        };
         //Select Object with id and emit's parameter
-        selectObj(view, field, dbName) {
+        api.prototype.selectObj = function (view, field, dbName) {
             if (checkNull(dbName) == true)
                 var db = new PouchDB(this.host + this.dbName);
             else
@@ -175,71 +175,72 @@ var Project;
             }).catch(function (err) {
                 // some error
             });
-        }
+        };
         ;
         //function get a json document objects from ID array
-        getData(item, dbName) {
+        api.prototype.getData = function (item, dbName) {
             if (checkNull(dbName) == true)
                 var db = new PouchDB(this.host + this.dbName);
             else
                 var db = new PouchDB(this.host + dbName);
             return db.get(item);
-        }
+        };
         //Get multiple data with key
-        getMultipleData(arrKey, view, dbName) {
+        api.prototype.getMultipleData = function (arrKey, view, dbName) {
             if (checkNull(dbName) == true)
                 var db = new PouchDB(this.host + this.dbName);
             else
                 var db = new PouchDB(this.host + dbName);
             return db.query("index/" + view, { keys: arrKey, include_docs: true });
-        }
+        };
         //Get multiple data with key
-        findData(key, view, dbName) {
+        api.prototype.findData = function (key, view, dbName) {
             if (checkNull(dbName) == true)
                 var db = new PouchDB(this.host + this.dbName);
             else
                 var db = new PouchDB(this.host + dbName);
             return db.query("index/" + view, { key: key, include_docs: true });
-        }
+        };
         //-------function insert data to database------//
         //-------data: insert data
         //-------dbName: database name (can be null)
-        insertData(data, dbName) {
+        api.prototype.insertData = function (data, dbName) {
             if (checkNull(dbName) == true)
                 var db = new PouchDB(this.host + this.dbName);
             else
                 var db = new PouchDB(this.host + dbName);
             return db.post(data);
-        }
-        updateData(data, dbName) {
+        };
+        api.prototype.updateData = function (data, dbName) {
             if (checkNull(dbName) == true)
                 var db = new PouchDB(this.host + this.dbName);
             else
                 var db = new PouchDB(this.host + dbName);
             return db.put(data);
-        }
-        deleteData(_id, _rev, dbName) {
+        };
+        api.prototype.deleteData = function (_id, _rev, dbName) {
             if (checkNull(dbName) == true)
                 var db = new PouchDB(this.host + this.dbName);
             else
                 var db = new PouchDB(this.host + dbName);
             return db.remove(_id, _rev);
-        }
-        searchView(view, dbName) {
+        };
+        api.prototype.searchView = function (view, dbName) {
             if (checkNull(dbName) == true)
                 var db = new PouchDB(this.host + this.dbName);
             else
                 var db = new PouchDB(this.host + dbName);
             return db.query('search/' + view, { include_docs: true });
-        }
-        syncDB(dbName) {
+        };
+        api.prototype.syncDB = function (dbName) {
             if (checkNull(dbName) == true)
                 var db = new PouchDB(this.host + this.dbName);
             else
                 var db = new PouchDB(this.host + dbName);
             db.sync(this.host + dbName, { live: true }); //sync localStorage to CouchDB server
-        }
-    }
+        };
+        return api;
+    }());
     Project.api = api;
 })(Project = exports.Project || (exports.Project = {}));
 //# sourceMappingURL=database.js.map

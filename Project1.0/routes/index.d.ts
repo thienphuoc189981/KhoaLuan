@@ -1,0 +1,12 @@
+import express = require('express');
+export declare function index(req: express.Request, res: express.Response): void;
+export declare function postJob(req: express.Request, res: express.Response): void;
+export declare function insertJob(req: express.Request, res: express.Response): void;
+export declare function loginPage(req: express.Request, res: express.Response): void;
+export declare function loginAuthen(req: express.Request, res: express.Response): void;
+export declare function signup(req: express.Request, res: express.Response): void;
+export declare function signupSubmit(req: express.Request, res: express.Response): void;
+export declare function signout(req: express.Request, res: express.Response): void;
+export declare function forgotPassword(req: express.Request, res: express.Response): void;
+export declare function userManagement(req: express.Request, res: express.Response): void;
+export declare function updateUser(req: express.Request, res: express.Response): void;

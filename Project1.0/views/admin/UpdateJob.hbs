@@ -8,15 +8,15 @@
             <div class="span12">
                 <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                 <h3 class="page-title">
-                    Update user <small>update user form</small>
+                    Form cập nhật người dùng
                 </h3>
                 <ul class="breadcrumb">
                     <li>
                         <i class="icon-home"></i>
-                        <a href="/admin/user-management">User management</a>
+                        <a href="/admin/user-management">Quản lý người dùng</a>
                         <i class="icon-angle-right"></i>
                     </li>
-                    <li><a href="#">Update user </a></li>
+                    <li><a href="#">Cập nhật người dùng </a></li>
                 </ul>
                 <!-- END PAGE TITLE & BREADCRUMB-->
             </div>
@@ -77,19 +77,19 @@
                             </div>
                         </div>
                         <h2 class="title-2">
-                            Picture attachment
+                            Logo công ty
                         </h2>
                         <div class="control-group">
                             {{#if job.attachment}}
                             <img class="img-responsive" id="update-img" src="../../{{job.attachment}}" alt="img" width="200" height="100" />
                             {{else}}
-                            <img class="img-responsive" id="update-img" src="../../assets/img/default.jpg" alt="img" width="200" height="100" />
+                            <img class="img-responsive" id="update-img" src="http://static.careerbuilder.vn/themes/kiemviecv32/images/graphics/logo-default.png" alt="img" width="200" height="100" />
                             {{/if}}
                         </div>
                         <input type="file" name="photo" id="input-photo" />
                         <div class="form-actions">
-                            <button type="submit" class="btn blue"><i class="icon-ok"></i> Save</button>
-                            <button type="reset" class="btn">Cancel</button>
+                            <button type="submit" class="btn blue"><i class="icon-ok"></i> Cập nhật</button>
+                            <button type="reset" class="btn">Hủy</button>
                         </div>
                     </form>
                     <!-- END FORM-->

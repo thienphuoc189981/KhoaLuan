@@ -19,7 +19,7 @@
     <OutputPath>.</OutputPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
     <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
@@ -28,6 +28,17 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>False</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>true</DebugSymbols>
@@ -2552,6 +2563,7 @@
     <Content Include="public\uploads\a.png" />
     <Content Include="views\admin\addJob.hbs" />
     <Content Include="views\admin\index.hbs" />
+    <Content Include="views\admin\managementUsers.hbs" />
     <Content Include="views\admin\managementJobs.hbs" />
     <Content Include="views\admin\updateJob.hbs" />
     <Content Include="views\admin\updateUser.hbs" />
@@ -2562,6 +2574,7 @@
     <Content Include="views\login.hbs" />
     <Content Include="views\manageJobs.hbs" />
     <Content Include="views\postJob.hbs" />
+    <Content Include="views\forgotPassword.hbs" />
     <Content Include="views\signup.hbs" />
     <Content Include="views\updateJob.hbs" />
     <Content Include="views\updateUser.hbs" />
@@ -3995,9 +4008,11 @@
     <Compile Include="public\admin\assets\plugins\uniform\jquery.uniform.min.js" />
     <Compile Include="public\admin\assets\scripts\app.js" />
     <Compile Include="public\admin\assets\scripts\calendar.js" />
+    <Compile Include="public\admin\assets\scripts\chart.js" />
     <Compile Include="public\admin\assets\scripts\charts.js" />
     <Compile Include="public\admin\assets\scripts\coming-soon.js" />
     <Compile Include="public\admin\assets\scripts\contact-us.js" />
+    <Compile Include="public\admin\assets\scripts\exporting.js" />
     <Compile Include="public\admin\assets\scripts\form-components.js" />
     <Compile Include="public\admin\assets\scripts\form-editable.js" />
     <Compile Include="public\admin\assets\scripts\form-fileupload.js" />
@@ -4006,6 +4021,7 @@
     <Compile Include="public\admin\assets\scripts\form-validation.js" />
     <Compile Include="public\admin\assets\scripts\form-wizard.js" />
     <Compile Include="public\admin\assets\scripts\gallery.js" />
+    <Compile Include="public\admin\assets\scripts\highcharts.js" />
     <Compile Include="public\admin\assets\scripts\inbox.js" />
     <Compile Include="public\admin\assets\scripts\index.js" />
     <Compile Include="public\admin\assets\scripts\lock.js" />

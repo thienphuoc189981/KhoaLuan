@@ -5,7 +5,7 @@
             <div class="col-sm-12 col-md-9 col-md-offset-2">
                 <div class="page-ads box">
                     <h2 class="title-2">
-                        post a job free
+                        Cập nhật việc làm
                     </h2>
                     <form class="form-ad" method="post" action="/update-job-submit" enctype="multipart/form-data">
                         <input type="hidden" value="{{job._id}}" name="_id" />
@@ -51,25 +51,25 @@
                             <div class="form-inline">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input name="expireDate" class="form-control input-md" required="" type="date" value="{{job.expireDate}}">
+                                        <input name="expireDate" class="form-control datepicker input-md" data-date-format="dd/mm/yyyy" required="" value="{{job.expireDate}}">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <h2 class="title-2">
-                            Picture attachment
+                            Logo công ty
                         </h2>
                         <div class="form-group">
-                            {{#if job.attachment}}
-                            <img class="img-responsive" id="update-img" src="{{job.attachment}}" alt="img" width="300" height="200" />
+                            {{#if job.image}}
+                            <img class="img-responsive" id="update-img" src="{{job.image}}" alt="img" width="300" height="200" />
                             {{else}}
-                            <img class="img-responsive" id="update-img" src="/assets/img/default.jpg" alt="img" width="300" height="200" />
+                            <img class="img-responsive" id="update-img" src="http://static.careerbuilder.vn/themes/kiemviecv32/images/graphics/logo-default.png" alt="img" width="300" height="200" />
                             {{/if}}
                         </div>
                         <input type="file" name="photo" id="input-photo" />
                         <div class="form-group">
                             <div class="well">
-                                <button type="submit" class="btn btn-common">Submit</button>
+                                <button type="submit" class="btn btn-common">Cập nhật</button>
                             </div>
                         </div>
                     </form>
@@ -94,5 +94,8 @@
 
    $("#input-photo").change(function () {
         readURL(this);
-    });
+   });
+
+   $('.datepicker').datepicker({
+   });
 </script>

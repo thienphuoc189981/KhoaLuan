@@ -1,0 +1,10 @@
+import express = require('express');
+export declare function index(req: any, res: any): void;
+export declare function managementUsers(req: any, res: any): void;
+export declare function updateUser(req: any, res: any): void;
+export declare function updateUserSubmit(req: any, res: any): void;
+export declare function deleteUser(req: any, res: any): void;
+export declare function managementJobs(req: any, res: any): void;
+export declare function deleteJob(req: any, res: any): void;
+export declare function updateJob(req: any, res: any): void;
+export declare function updateJobSubmit(req: express.Request, res: express.Response): void;

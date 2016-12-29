@@ -83,6 +83,7 @@ app.get('/apply/:id', manage.applyJob);
 app.post('/apply-signup', manage.applySignup);
 
 app.get('/sign-out', routes.signout);
+app.get('/forgot-password', routes.forgotPassword);
 
 app.get('/user-management', routes.userManagement);
 app.post('/update-user', routes.updateUser);
@@ -194,8 +195,9 @@ apiRoutes.get('/dbSearch', api.dbSearch);
 apiRoutes.post('/solrSearch', api.solrSearch);
 apiRoutes.get('/createDoc', api.createDoc);
 apiRoutes.post('/saveCache', api.saveCache);
+apiRoutes.get('/deleteCache', api.deleteCache);
 apiRoutes.post('/vnTokenizer', vnTokenizer.analyzeData);
-
+apiRoutes.get('/indexKeyword', vnTokenizer.indexKeyword);
 
 //middleware login to admin dashboar
 var adminLoggin = function (req, res, next) {
@@ -206,6 +208,8 @@ var adminLoggin = function (req, res, next) {
 adminRoutes.use(adminLoggin);
 
 adminRoutes.get('/dashboard', admin.index); 
+
+adminRoutes.get('/users-management', admin.managementUsers); 
 adminRoutes.get('/users-management-update/:id', admin.updateUser);
 adminRoutes.post('/update-user-submit', admin.updateUserSubmit);
 adminRoutes.get('/delete-user/:id', admin.deleteUser);
@@ -218,7 +222,7 @@ adminRoutes.post('/update-job-submit', upload.single('photo'), admin.updateJobSu
 app.use('/api', apiRoutes);
 app.use('/admin', adminRoutes);
 if (app.get('env') === 'development') {
-    app.use(errorHandler())
+    app.use(errorHandler()) 
 }
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));

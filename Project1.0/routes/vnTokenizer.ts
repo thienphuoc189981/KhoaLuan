@@ -50,6 +50,7 @@ export function analyzeData(req, res) {
             a = a.replace(/" source "/g, '"source"');  
             a = a.replace(/" postDate "/g, '"postDate"');
             a = a.replace(/" expireDate "/g, '"expireDate"');
+            a = a.replace(/" image "/g, '"image"');
 
             res.json(a);
             return res.end();
@@ -61,4 +62,29 @@ export function analyzeData(req, res) {
     //}
     
     
+}
+
+export function indexKeyword(req, res) {
+
+    var q = req.query.q;
+    var json: any;
+    fs.writeFile('public/vn.hus.nlp.tokenizer-4.1.1-bin/samples/keyword.txt', q, function (err) {
+        if (err) {
+            return console.error(err);
+        }
+    });
+
+    var cmd = '""E:\\VS_workspace\\project\\KhoaLuan\\Project1.0\\public\\vn.hus.nlp.tokenizer-4.1.1-bin\\vnTokenizer.bat -i samples/keyword.txt -o samples/outputKw.tok.txt""';
+    exec(cmd, function (error, stdout, stderr) {
+        console.log(error);
+        //console.log("sdf");
+
+        fs.readFile('public/vn.hus.nlp.tokenizer-4.1.1-bin/samples/outputKw.tok.txt', function (err, data) {
+            json = { 'kw': data.toString().replace(/ "/g, '').replace(/" /g, '') }
+
+            res.json(json);
+            return res.end();
+        });
+    });
+
 }

@@ -1,12 +1,12 @@
 "use strict";
-const express = require('express');
-const routes = require('./routes/index');
-const manage = require('./routes/manage');
-const api = require('./routes/api');
-const admin = require('./routes/admin');
-const vnTokenizer = require('./routes/vnTokenizer');
-const http = require('http');
-const path = require('path');
+var express = require('express');
+var routes = require('./routes/index');
+var manage = require('./routes/manage');
+var api = require('./routes/api');
+var admin = require('./routes/admin');
+var vnTokenizer = require('./routes/vnTokenizer');
+var http = require('http');
+var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var methodOverride = require('method-override');
@@ -72,6 +72,7 @@ app.get('/job-detail/:id', manage.viewJob);
 app.get('/apply/:id', manage.applyJob);
 app.post('/apply-signup', manage.applySignup);
 app.get('/sign-out', routes.signout);
+app.get('/forgot-password', routes.forgotPassword);
 app.get('/user-management', routes.userManagement);
 app.post('/update-user', routes.updateUser);
 //apiRoutes.get('/', routes.index);
@@ -118,7 +119,7 @@ app.post('/authenticate', function (req, res) {
     }
     else {
         // create a token
-        let token = jwt.sign(user, 'secretKey', {
+        var token = jwt.sign(user, 'secretKey', {
             expiresIn: 60 * 60 * 24 // expires in 24 hours
         });
         // return the information including token as JSON
@@ -173,7 +174,9 @@ apiRoutes.get('/dbSearch', api.dbSearch);
 apiRoutes.post('/solrSearch', api.solrSearch);
 apiRoutes.get('/createDoc', api.createDoc);
 apiRoutes.post('/saveCache', api.saveCache);
+apiRoutes.get('/deleteCache', api.deleteCache);
 apiRoutes.post('/vnTokenizer', vnTokenizer.analyzeData);
+apiRoutes.get('/indexKeyword', vnTokenizer.indexKeyword);
 //middleware login to admin dashboar
 var adminLoggin = function (req, res, next) {
     req.requestTime = Date.now();
@@ -181,6 +184,7 @@ var adminLoggin = function (req, res, next) {
 };
 adminRoutes.use(adminLoggin);
 adminRoutes.get('/dashboard', admin.index);
+adminRoutes.get('/users-management', admin.managementUsers);
 adminRoutes.get('/users-management-update/:id', admin.updateUser);
 adminRoutes.post('/update-user-submit', admin.updateUserSubmit);
 adminRoutes.get('/delete-user/:id', admin.deleteUser);

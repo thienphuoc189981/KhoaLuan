@@ -2,13 +2,13 @@
 /*
  * GET manage jobs.
  */
-const database_1 = require("./database");
-let api = new database_1.Project.api();
-let async = require("async");
+var database_1 = require("./database");
+var api = new database_1.Project.api();
+var async = require("async");
 var fs = require('fs');
 var passwordHash = require('password-hash');
 function index(req, res) {
-    let json = [];
+    var json = [];
     if (req.session.email) {
         api.syncDB();
         api.findData(req.session.userId, 'jobsByUsers').then(function (result) {
@@ -26,9 +26,9 @@ function index(req, res) {
 exports.index = index;
 ;
 function viewApplicator(req, res) {
-    let idJob = req.params.id;
-    let json = [];
-    let idTemps = [];
+    var idJob = req.params.id;
+    var json = [];
+    var idTemps = [];
     if (req.session.email) {
         async.waterfall([
             //Get all applicator's id from database
@@ -60,9 +60,9 @@ function viewApplicator(req, res) {
 exports.viewApplicator = viewApplicator;
 ;
 function updateJob(req, res) {
-    let idJob = req.params.id;
-    let json = [];
-    let cats = [];
+    var idJob = req.params.id;
+    var json = [];
+    var cats = [];
     if (req.session.email) {
         api.findData(idJob, 'jobsById').then(function (result) {
             api.indexView("categoriesAll").then(function (data) {
@@ -70,7 +70,7 @@ function updateJob(req, res) {
                     cats.push(item.key);
                 });
                 json.push(result.rows[0].doc);
-                console.log(json[0]);
+                //console.log(json[0]);
                 res.render('./updateJob', {
                     session: req.session, job: json[0], cats: cats,
                     helpers: {
@@ -86,18 +86,18 @@ function updateJob(req, res) {
 }
 exports.updateJob = updateJob;
 function updateJobSubmit(req, res) {
-    let idJob = req.body._id;
-    let body = req.body;
-    let json;
+    var idJob = req.body._id;
+    var body = req.body;
+    var json;
     api.findData(idJob, 'jobsById').then(function (job) {
         json = job.rows[0].doc;
         if (req.session.userId == job.rows[0].doc.users.postId) {
-            if (job.rows[0].doc.attachment && req.file && job.rows[0].doc.attachment != "") {
-                let oldImg = job.rows[0].doc.attachment;
+            if (job.rows[0].doc.image && req.file && job.rows[0].doc.image != "") {
+                var oldImg = job.rows[0].doc.image;
                 fs.unlink(oldImg);
             }
             if (req.file) {
-                json.attachment = '/uploads/' + req.file.filename;
+                json.image = '/uploads/' + req.file.filename;
             }
             json.title = body.title;
             json.description = body.description;
@@ -117,7 +117,7 @@ function updateJobSubmit(req, res) {
 }
 exports.updateJobSubmit = updateJobSubmit;
 function deleteJob(req, res) {
-    let idJob = req.params.id;
+    var idJob = req.params.id;
     api.findData(idJob, 'jobsById').then(function (job) {
         if (req.session.userId == job.rows[0].doc.users.postId) {
             api.deleteData(job.rows[0].doc._id, job.rows[0].doc._rev).then(function () {
@@ -132,21 +132,21 @@ function deleteJob(req, res) {
 }
 exports.deleteJob = deleteJob;
 function viewJob(req, res) {
-    let idJob = req.params.id;
-    let job = [];
+    var idJob = req.params.id;
+    var job = [];
     api.findData(idJob, 'jobsById').then(function (rs) {
         job.push(rs.rows[0].doc);
-        //console.log(job);
+        console.log(job);
         res.render('./viewJob', { session: req.session, job: job[0], message: req.flash() });
     });
 }
 exports.viewJob = viewJob;
 function applyJob(req, res) {
-    let idJob = req.params.id;
+    var idJob = req.params.id;
     if (req.session.email) {
         api.findData(idJob, 'jobsById').then(function (rs) {
             rs.rows[0].doc.users.applyId.push(req.session.userId);
-            //console.log(rs.rows[0].doc.users.applyId);
+            console.log(rs.rows[0].doc.users.applyId);
             api.updateData(rs.rows[0].doc).then(function () {
                 req.flash('successApply', 'You are successfully applying !', { maxage: 6000 });
                 res.redirect('/job-detail/' + idJob);
@@ -156,10 +156,10 @@ function applyJob(req, res) {
 }
 exports.applyJob = applyJob;
 function applySignup(req, res) {
-    let user = req.body;
-    let idJob = user.id;
+    var user = req.body;
+    var idJob = user.id;
     delete user['id'];
-    let sess = req.session;
+    var sess = req.session;
     user.type = 'users';
     user.status = 'active';
     user.password = passwordHash.generate(user.password);

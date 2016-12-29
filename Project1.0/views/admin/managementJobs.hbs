@@ -8,15 +8,15 @@
             <div class="span12">
                 <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                 <h3 class="page-title">
-                    Users management <small>managed users</small>
+                    Quản lý việc làm
                 </h3>
                 <ul class="breadcrumb">
                     <li>
                         <i class="icon-home"></i>
-                        <a href="/admin/dashbord">Home</a>
+                        <a href="/admin/dashbord">Trang thống kê</a>
                         <i class="icon-angle-right"></i>
                     </li>
-                    <li><a href="#">Managed Users Table</a></li>
+                    <li><a href="#">Danh sach việc làm</a></li>
                 </ul>
                 <!-- END PAGE TITLE & BREADCRUMB-->
             </div>
@@ -56,10 +56,10 @@
                                 {{#each json as |obj|}}
                                 <tr class="odd gradeX">
                                     <td class="add-img-td">
-                                            {{#if obj.attachment}}
-                                            <img class="img-responsive" src="{{obj.attachment}}" width="80" height="30" alt="img">
+                                            {{#if obj.image}}
+                                            <img class="img-responsive" src="{{obj.image}}" width="80" height="30" alt="img">
                                             {{else}}
-                                            <img class="img-responsive" src="../../assets/img/default.jpg" width="80" height="30" alt="img">
+                                            <img class="img-responsive" src="http://static.careerbuilder.vn/themes/kiemviecv32/images/graphics/logo-default.png" width="80" height="30" alt="img">
                                             {{/if}}
                                     </td>
                                     <td>{{obj.title}}</td>
@@ -67,8 +67,8 @@
                                     <td class="hidden-480">{{obj.salary}}</td>
                                     <td class="hidden-480">{{obj.expireDate}}</td>
                                     <td class="center hidden-480">
-                                        <a href="/admin/jobs-management-update/{{obj._id}}"><button class="btn blue"><span style="color:white">Update</span></button></a>
-                                        <a href="/admin/delete-job/{{obj._id}}"><button class="btn red"><span style="color:white">Delete</span></button></a>
+                                        <a href="/admin/jobs-management-update/{{obj._id}}"><button class="btn blue"><span style="color:white">Cập nhật</span></button></a>
+                                        <a href="/admin/delete-job/{{obj._id}}"><button class="btn red"><span style="color:white">Xóa</span></button></a>
                                     </td>
                                 </tr>
                                 {{/each}}

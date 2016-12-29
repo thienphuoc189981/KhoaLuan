@@ -7,7 +7,6 @@ var http = require('http');
 var datetime = require('node-datetime');
 var fs = require('fs');
 
-
 export function index(req, res) {
     let json = [];
     //if (req.session.privilege == 'admin') {
@@ -16,6 +15,26 @@ export function index(req, res) {
             json.push(u.doc);
         });
         res.render('./admin/index', {
+            json: json, layout: 'admin', session: req.session, message: req.flash(),
+            helpers: {
+                eq: function (v1) { return v1 == json.status; }
+            }
+        });
+    });
+    //} else {
+    //    res.redirect('/login');
+    //}
+
+}
+
+export function managementUsers(req, res) {
+    let json = [];
+    //if (req.session.privilege == 'admin') {
+    api.indexView('usersById').then(function (rs) {
+        rs.rows.forEach(function (u) {
+            json.push(u.doc);
+        });
+        res.render('./admin/managementUsers', {
             json: json, layout: 'admin', session: req.session, message: req.flash(),
             helpers: {
                 eq: function (v1) { return v1 == json.status; }
@@ -153,13 +172,13 @@ export function updateJobSubmit(req: express.Request, res: express.Response) {
     console.log(body.photo);
     api.findData(idJob, 'jobsById').then(function (job) {
         json = job.rows[0].doc;
-            if (job.rows[0].doc.attachment && req.file && job.rows[0].doc.attachment != "") {
-                let oldImg = job.rows[0].doc.attachment;
+        if (job.rows[0].doc.image && req.file && job.rows[0].doc.image != "") {
+            let oldImg = job.rows[0].doc.image;
                 fs.unlink(oldImg);
             }
 
             if (req.file) {
-                json.attachment = '/uploads/' + req.file.filename;
+                json.image = '/uploads/' + req.file.filename;
             }
             console.log(req.file);
 
