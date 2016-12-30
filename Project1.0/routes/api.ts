@@ -244,11 +244,15 @@ export function solrSearch(req, res) {
                     "</field><field name='image'>" + (data[i].image) +
                     "</field><field name='salary'>" + (data[i].salary) +
                     "</field><field name='location'>" + (data[i].location) +
+                    "</field><field name='link'>" + (data[i].link) +
                     "</field><field name='source'>" + (data[i].source) + "</field></doc></add>";
                 updateQuery = encodeURIComponent(updateQuery);
                 request.get("http://localhost:8983/solr/search/update?commit=true&stream.body=" + updateQuery + "&wt=json");
+                //if (i == data.length - 1) {
+                //    console.log("Index thanh cong !");
+                //    callback(null, true);
+                //}
             }
-            console.log("Index thanh cong !");
             callback(null, true);
         },
 
@@ -264,7 +268,7 @@ export function solrSearch(req, res) {
                         //body = body.replace(/[]/, "");
                         body = JSON.parse(body);
                         //console.log(body.response.docs[0]);
-                        //console.log(response);
+                        console.log("Seach");
                         callback(null, body.response.docs);
                     });
             }

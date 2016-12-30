@@ -287,21 +287,25 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
                                                 result = JSON.parse(result);
                                                 console.log(result);
                                                 //prepare json
-                                                // result.forEach(function(rs){
-                                                //     console.log('Location: ' +rs.title[0]);
-                                                //     rs.title = rs.title[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
-                                                //     rs.description = rs.description[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
-                                                //     rs.location = rs.location[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
-                                                //     rs.company = rs.company[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
-                                                //     rs.salary = rs.salary[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
-                                                //     rs.postDate = rs.postDate[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
-                                                //     rs.source = rs.source[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
-                                                //     rs.expireDate = rs.expireDate[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
-                                                //     rs.image = rs.image[0].replace(/ /g,'');
-                                                //     rs.link = decodeURIComponent(rs.link[0]).replace(/ /g,'');
+                                                result.forEach(function(rs){
+                                                    console.log('Location: ' +rs.link);
+                                                    rs.title = rs.title[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                    rs.description = rs.description[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                    rs.location = rs.location[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                    rs.company = rs.company[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                    rs.salary = rs.salary[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                    rs.postDate = rs.postDate[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                    rs.source = rs.source[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                    rs.expireDate = rs.expireDate[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                    rs.image = rs.image[0].replace(/ /g,'');
+                                                    if (rs.link) {
+                                                        console.log('Location: ' +rs.link);
+                                                        rs.link = decodeURIComponent(rs.link[0]).replace(/ /g,'');
+                                                    };
+                                                    
                                                 //     // console.log(rs.title);
                                                 //     console.log(rs.link);
-                                                // });
+                                                });
                                                 console.log('----------'+result);
                                                
                                                 $scope.items = result;

@@ -2575,6 +2575,8 @@
     <Content Include="views\manageJobs.hbs" />
     <Content Include="views\postJob.hbs" />
     <Content Include="views\forgotPassword.hbs" />
+    <Content Include="views\search.html" />
+    <Content Include="views\searchExtension.html" />
     <Content Include="views\signup.hbs" />
     <Content Include="views\updateJob.hbs" />
     <Content Include="views\updateUser.hbs" />
@@ -4755,8 +4757,10 @@
     <Compile Include="public\assets\js\owl.carousel.min.js" />
     <Compile Include="public\assets\js\waypoints.min.js" />
     <Compile Include="public\assets\js\wow.js" />
+    <Compile Include="public\js\getData.js" />
     <Compile Include="public\js\jquery-3.1.1.min.js" />
     <Compile Include="public\js\myJs.js" />
+    <Compile Include="public\js\search.js" />
     <Compile Include="views\postingSuccess.hbs" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->

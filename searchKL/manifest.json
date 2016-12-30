@@ -20,5 +20,14 @@
         "http://*/",
         "https://*/"
     ],
+    "content_scripts": [
+    {
+      "matches": ["http://localhost:1337/searchExtension"],
+      "js": ["js/angular.js", "js/angular-filter.js", "js/ui-bootstrap-tpls.js", "js/jquery.min.js", "js/pagination.js"]
+    }
+    ],
+    "web_accessible_resources": [
+      "images/app.png"
+    ],
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
