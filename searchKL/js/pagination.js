@@ -224,6 +224,7 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
               
                 //$scope.todos = $scope.todos.status;
                 if (data.status) {
+                    var t0 = performance.now();
                     var json = [];
                     for (var i = 0; i <data.doc.jobs.length; i++){
                         json.push(data.doc.jobs[i]);
@@ -242,13 +243,15 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
                     $scope.filtereditems = $scope.items.slice(begin, end);
                     //$scope.$digest();
                     Items.deleteCache();
+                    var t1 = performance.now();
+                    console.log("Call to Cache took " + (t1 - t0) + " milliseconds.");
                 }else{
-
+                    var t0 = performance.now();
                     crawler($scope.formData.txtSearch,function(rs){ 
                         var s =JSON.stringify(rs).replace(/\\n/g, "");
                         s=s.replace(/\\t/g, "");
-                        console.log('------');
-                        console.log(s);
+                        // console.log('------');
+                        // console.log(s);
 
                         rs = JSON.parse(s);
                           // console.log(rs);
@@ -274,21 +277,23 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
                                         // console.log(data.indexOf('\ "'));
                                     
                                     var dataParse = JSON.parse(data);
-                                    console.log("this is a: "+dataParse);
+                                    // console.log("this is a: "+dataParse);
                                     Items.indexKeyword($scope.formData.txtSearch)
                                         .success(function(indexKeyword){
                                             // console.log(indexKeyword.kw);
+                                            // var indexKeyword =indexKeyword.replace(/" /g,'"').replace(/ "/g,'"');
+
                                         Items.solrSearch(dataParse, indexKeyword.kw)
                                             .success(function(result) {
                                                 // result.push({"q" : $scope.formData.txtSearch})
                                                 // console.log("this is solr " +result);
                                                 result = JSON.stringify(result);
-                                                console.log("this is solr " +result);
+                                                // console.log("this is solr " +result);
                                                 result = JSON.parse(result);
-                                                console.log(result);
+                                                // console.log(result);
                                                 //prepare json
                                                 result.forEach(function(rs){
-                                                    console.log('Location: ' +rs.link);
+                                                    // console.log('Location: ' +rs.link);
                                                     rs.title = rs.title[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
                                                     rs.description = rs.description[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
                                                     rs.location = rs.location[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
@@ -299,14 +304,14 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
                                                     rs.expireDate = rs.expireDate[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
                                                     rs.image = rs.image[0].replace(/ /g,'');
                                                     if (rs.link) {
-                                                        console.log('Location: ' +rs.link);
+                                                        // console.log('Location: ' +rs.link);
                                                         rs.link = decodeURIComponent(rs.link[0]).replace(/ /g,'');
                                                     };
                                                     
                                                 //     // console.log(rs.title);
                                                 //     console.log(rs.link);
                                                 });
-                                                console.log('----------'+result);
+                                                // console.log('----------'+result);
                                                
                                                 $scope.items = result;
                                                 $scope.totalItems = result.length;
@@ -319,10 +324,12 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
                                                 $scope.filtereditems = $scope.items.slice(begin, end);
                                                 //$scope.$digest();
                                                 Items.deleteCache();
-                                                // Items.saveCache(result, $scope.formData.txtSearch)
-                                                //     .success(function(data) {
-                                                //         console.log('da save cache');
-                                                //     });
+                                                Items.saveCache(result, $scope.formData.txtSearch)
+                                                    .success(function(data) {
+                                                        console.log('da save cache');
+                                                    });
+                                    var t1 = performance.now();
+                                    console.log("Call to Crawl took " + (t1 - t0) + " milliseconds.");
                                         });
                                     });
                                 });
@@ -340,7 +347,7 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
                     // $scope.filtereditems = $scope.items.slice(begin, end);
                     // $scope.$digest();
                   });
-
+               
                 }
             });
 

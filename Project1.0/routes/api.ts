@@ -51,7 +51,7 @@ export function checkCached(req, res) {
                     }
                 } else {
                     if (i === arrKeyword.length - 1) {//end of loop
-                        console.log("excute else");
+                        //console.log("excute else");
                         //Data not found then we'll insert new keyword to database
                         //Prepare data
                         let data = {
@@ -234,7 +234,7 @@ export function solrSearch(req, res) {
         function (callback) {
             for (i = 0; i < data.length; i++) {
                 data[i].link = encodeURIComponent(data[i].link);
-                console.log(data[i].link);
+                //console.log(data[i].link);
                 var updateQuery = "<add><doc><field name='id'>" + (data[i]._id) +
                     "</field><field name='title'>" + (data[i].title) +
                     "</field><field name='postDate'>" + (data[i].postDate) +
@@ -268,7 +268,7 @@ export function solrSearch(req, res) {
                         //body = body.replace(/[]/, "");
                         body = JSON.parse(body);
                         //console.log(body.response.docs[0]);
-                        console.log("Seach");
+                        //console.log("Seach");
                         callback(null, body.response.docs);
                     });
             }
