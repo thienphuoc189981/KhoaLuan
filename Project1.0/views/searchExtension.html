@@ -41,8 +41,23 @@
     <!-- Bootstrap Select -->
 
 
-    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">  
+    <script src="assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/js/jquery-ui.js" type="text/javascript"></script>
     <script src="js/2.5.3-crypto-md5.js" type="text/javascript"></script>
+     <script>
+        $(document).ready(function () {
+            var imgFirefox,imgChrome;
+            imgFirefox = new Image();
+            imgFirefox.src = "moz-extension://" + "74f836b1-9010-4aff-bbc3-eea488b7e077/icons/quicknote-48.png";
+            imgFirefox.onload = function () {
+                window.location = "http://localhost:1337/search";
+            };
+            imgChrome = new Image();
+            imgChrome.src = "chrome-extension://" + "afoolkakdcmkjfhiebfkopdblkedieei/icons/quicknote-48.png";
+            
+        });
+    </script>
 </head>
 
 <body ng-controller="PageCtrl">
