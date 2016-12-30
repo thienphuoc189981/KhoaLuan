@@ -9,6 +9,12 @@
         "48": "images/app.png",
         "128": "images/app.png"
     },
+    "applications": {
+    "gecko": {
+      "id": "quicknotezzz@mozilla.org",
+      "strict_min_version": "45.0"
+    }
+  }, 
     "browser_action": {
         "default_icon": "images/app.png",
         "default_title": "Search Extension"

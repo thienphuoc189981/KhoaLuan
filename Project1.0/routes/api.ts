@@ -294,6 +294,7 @@ export function saveCache(req, res) {
     let cache: any;
     let dt = datetime.create();
     let fomratted = dt.format('m/d/Y H:M:S');
+    console.log(data);
     api.findData(q, 'keywordAll').then(function (rs) {
         if (rs) {
             keyword = rs.rows[0].doc;

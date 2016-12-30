@@ -324,10 +324,10 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
                                                 $scope.filtereditems = $scope.items.slice(begin, end);
                                                 //$scope.$digest();
                                                 Items.deleteCache();
-                                                Items.saveCache(result, $scope.formData.txtSearch)
-                                                    .success(function(data) {
-                                                        console.log('da save cache');
-                                                    });
+                                                // Items.saveCache(result, $scope.formData.txtSearch)
+                                                //     .success(function(data) {
+                                                //         console.log('da save cache');
+                                                //     });
                                     var t1 = performance.now();
                                     console.log("Call to Crawl took " + (t1 - t0) + " milliseconds.");
                                         });
