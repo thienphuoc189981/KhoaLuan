@@ -26,6 +26,208 @@ app.factory('Items', ['$http', function ($http) {
         }
 }]);
 
+app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$scope,filterFilter) {   
+
+    // $scope.items = dataTest();   
+    // $scope.todos = "cddddd";
+    $scope.doSearch = function() {
+        $scope.loading = true;
+// console.log("cuc");
+        Items.checkCached($scope.formData.txtSearch)
+            .success(function(data) {
+              
+                //$scope.todos = $scope.todos.status;
+                if (data.status) {
+                    var t0 = performance.now();
+                    var json = [];
+                    for (var i = 0; i <data.doc.jobs.length; i++){
+                        json.push(data.doc.jobs[i]);
+                    };
+                    $scope.todos = json;
+                    // console.log(json);
+                    // console.log("status true");
+                    $scope.items = json;
+                    $scope.totalItems = json.length;
+                    // console.log(json.length)
+                    $scope.pageCount = function () {
+                        return Math.ceil($scope.totalItems / $scope.entryLimit);
+                    };
+                    var begin = (($scope.currentPage - 1) * $scope.entryLimit),
+                    end = begin + $scope.entryLimit;
+                    $scope.filtereditems = $scope.items.slice(begin, end);
+                    //$scope.$digest();
+                    Items.deleteCache();
+                    var t1 = performance.now();
+                    console.log("Call to Cache took " + (t1 - t0) + " milliseconds.");
+                }else{
+                    var t0 = performance.now();
+                    crawler($scope.formData.txtSearch,function(rs){ 
+                        var s =JSON.stringify(rs).replace(/\\n/g, "");
+                        s=s.replace(/\\t/g, "");
+                        // console.log('------');
+                        // console.log(s);
+
+                        rs = JSON.parse(s);
+                          // console.log(rs);
+                    //xu ly search
+                     var json = [];
+                    Items.dbSearch($scope.formData.txtSearch)
+                        .success(function(data) {
+                            for (var i = 0; i <data.rows.length; i++){
+                                json.push(data.rows[i].doc);
+                            };
+
+                            // $scope.todos = json;
+                            // console.log(json);
+
+                            for (var i = 0; i <rs.length; i++){
+                                    json.push(rs[i]);
+                                };   
+
+
+                                // call the create function from our service (returns a promise object)
+                            Items.indexVnTokenizer(json)
+                                .success(function(data) {
+                                        // console.log(data.indexOf('\ "'));
+                                    
+                                    var dataParse = JSON.parse(data);
+                                    // console.log("this is a: "+dataParse);
+                                    Items.indexKeyword($scope.formData.txtSearch)
+                                        .success(function(indexKeyword){
+                                            // console.log(indexKeyword.kw);
+                                            // var indexKeyword =indexKeyword.replace(/" /g,'"').replace(/ "/g,'"');
+
+                                        Items.solrSearch(dataParse, indexKeyword.kw)
+                                            .success(function(result) {
+                                                // result.push({"q" : $scope.formData.txtSearch})
+                                                // console.log("this is solr " +result);
+                                                result = JSON.stringify(result);
+                                                // console.log("this is solr " +result);
+                                                result = JSON.parse(result);
+                                                // console.log(result);
+                                                //prepare json
+                                                result.forEach(function(rs){
+                                                    // console.log('Location: ' +rs.link);
+                                                    rs.title = rs.title[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                    rs.description = rs.description[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                    rs.location = rs.location[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                    rs.company = rs.company[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                    rs.salary = rs.salary[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                    rs.postDate = rs.postDate[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                    rs.source = rs.source[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                    rs.expireDate = rs.expireDate[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
+                                                    rs.image = rs.image[0].replace(/ /g,'');
+                                                    if (rs.link) {
+                                                        // console.log('Location: ' +rs.link);
+                                                        rs.link = decodeURIComponent(rs.link[0]).replace(/ /g,'');
+                                                    };
+                                                    
+                                                //     // console.log(rs.title);
+                                                //     console.log(rs.link);
+                                                });
+                                                // console.log('----------'+result);
+                                               $scope.loading = false;
+                                                $scope.items = result;
+                                                $scope.totalItems = result.length;
+                                                // console.log(result.length)
+                                                $scope.pageCount = function () {
+                                                    return Math.ceil($scope.totalItems / $scope.entryLimit);
+                                                };
+                                                var begin = (($scope.currentPage - 1) * $scope.entryLimit),
+                                                end = begin + $scope.entryLimit;
+                                                $scope.filtereditems = $scope.items.slice(begin, end);
+                                                //$scope.$digest();
+                                                Items.deleteCache();
+                                                // Items.saveCache(result, $scope.formData.txtSearch)
+                                                //     .success(function(data) {
+                                                //         console.log('da save cache');
+                                                //     });
+                                    var t1 = performance.now();
+                                    console.log("Call to Crawl took " + (t1 - t0) + " milliseconds.");
+                                        });
+                                    });
+                                });
+
+
+                        });
+
+                    // $scope.items = rs;
+                    // $scope.totalItems = $scope.items.length;
+                    // $scope.pageCount = function () {
+                    //     return Math.ceil($scope.totalItems / $scope.entryLimit);
+                    // };
+                    // var begin = (($scope.currentPage - 1) * $scope.entryLimit),
+                    // end = begin + $scope.entryLimit;
+                    // $scope.filtereditems = $scope.items.slice(begin, end);
+                    // $scope.$digest();
+                  });
+               
+                }
+            });
+
+      /*  $scope.urlCareerbuilder = 'http://careerbuilder.vn/viec-lam/';
+         getcareerbuilder($scope.urlCareerbuilder,$scope.formData.txtSearch,function(rs){ 
+            //xu ly search
+            console.log(rs);
+            $scope.items = rs;
+            $scope.totalItems = $scope.items.length;
+            $scope.pageCount = function () {
+                return Math.ceil($scope.totalItems / $scope.entryLimit);
+            };
+            var begin = (($scope.currentPage - 1) * $scope.entryLimit),
+            end = begin + $scope.entryLimit;
+            $scope.filtereditems = $scope.items.slice(begin, end);
+            $scope.$digest();
+          });*/
+
+    };
+
+                    $scope.currentPage = 1;
+                    // $scope.totalItems = $scope.items.length;
+                    $scope.entryLimit = 8; // items per page
+                    
+                    $scope.maxSize = 3;
+                    var json = [];
+                    Items.dbSearch('')
+                    .success(function(data) {
+                        for (var i = 0; i <data.rows.length; i++){
+                            json.push(data.rows[i].doc);
+                        };
+                        console.log(json);
+                        $scope.items = json;
+                        $scope.totalItems = json.length;
+                                                // console.log(result.length)
+                                                $scope.pageCount = function () {
+                                                    return Math.ceil($scope.totalItems / $scope.entryLimit);
+                                                };
+                                                var begin = (($scope.currentPage - 1) * $scope.entryLimit),
+                                                end = begin + $scope.entryLimit;
+                                                $scope.filtereditems = $scope.items.slice(begin, end);
+                });
+
+     //   });
+    //-----------------------------------------start filter --------------------------------------------
+     $scope.selected = [];
+     $scope.exist = function(key){
+        return $scope.selected.indexOf(key) > -1 ;
+
+     }
+
+     $scope.checkLocation = function(key){
+        var a = $scope.selected.indexOf(key);
+        if(a > -1){
+            $scope.selected.splice(a,1);
+        }else{
+            $scope.selected.push(key);
+        }
+        return $scope.selected;
+
+     }
+     //-----------------------------------------end filter-----------------------------------------------
+   
+   
+}]);
+
 //------------------------------------Filter Data-----------------------------
 
 //---------------filter Multiple location------------------------
@@ -211,206 +413,3 @@ app.filter('salaryFilter', function(){
     return out;
   }
 });
-
-
-app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$scope,filterFilter) {   
-
-    // $scope.items = dataTest();   
-    // $scope.todos = "cddddd";
-    $scope.doSearch = function() {
-// console.log("cuc");
-        Items.checkCached($scope.formData.txtSearch)
-            .success(function(data) {
-              
-                //$scope.todos = $scope.todos.status;
-                if (data.status) {
-                    var t0 = performance.now();
-                    var json = [];
-                    for (var i = 0; i <data.doc.jobs.length; i++){
-                        json.push(data.doc.jobs[i]);
-                    };
-                    $scope.todos = json;
-                    // console.log(json);
-                    // console.log("status true");
-                    $scope.items = json;
-                    $scope.totalItems = json.length;
-                    // console.log(json.length)
-                    $scope.pageCount = function () {
-                        return Math.ceil($scope.totalItems / $scope.entryLimit);
-                    };
-                    var begin = (($scope.currentPage - 1) * $scope.entryLimit),
-                    end = begin + $scope.entryLimit;
-                    $scope.filtereditems = $scope.items.slice(begin, end);
-                    //$scope.$digest();
-                    Items.deleteCache();
-                    var t1 = performance.now();
-                    console.log("Call to Cache took " + (t1 - t0) + " milliseconds.");
-                }else{
-                    var t0 = performance.now();
-                    crawler($scope.formData.txtSearch,function(rs){ 
-                        var s =JSON.stringify(rs).replace(/\\n/g, "");
-                        s=s.replace(/\\t/g, "");
-                        // console.log('------');
-                        // console.log(s);
-
-                        rs = JSON.parse(s);
-                          // console.log(rs);
-                    //xu ly search
-                     var json = [];
-                    Items.dbSearch($scope.formData.txtSearch)
-                        .success(function(data) {
-                            for (var i = 0; i <data.rows.length; i++){
-                                json.push(data.rows[i].doc);
-                            };
-
-                            // $scope.todos = json;
-                            // console.log(json);
-
-                            for (var i = 0; i <rs.length; i++){
-                                    json.push(rs[i]);
-                                };   
-
-
-                                // call the create function from our service (returns a promise object)
-                            Items.indexVnTokenizer(json)
-                                .success(function(data) {
-                                        // console.log(data.indexOf('\ "'));
-                                    
-                                    var dataParse = JSON.parse(data);
-                                    // console.log("this is a: "+dataParse);
-                                    Items.indexKeyword($scope.formData.txtSearch)
-                                        .success(function(indexKeyword){
-                                            // console.log(indexKeyword.kw);
-                                            // var indexKeyword =indexKeyword.replace(/" /g,'"').replace(/ "/g,'"');
-
-                                        Items.solrSearch(dataParse, indexKeyword.kw)
-                                            .success(function(result) {
-                                                // result.push({"q" : $scope.formData.txtSearch})
-                                                // console.log("this is solr " +result);
-                                                result = JSON.stringify(result);
-                                                // console.log("this is solr " +result);
-                                                result = JSON.parse(result);
-                                                // console.log(result);
-                                                //prepare json
-                                                result.forEach(function(rs){
-                                                    // console.log('Location: ' +rs.link);
-                                                    rs.title = rs.title[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
-                                                    rs.description = rs.description[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
-                                                    rs.location = rs.location[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
-                                                    rs.company = rs.company[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
-                                                    rs.salary = rs.salary[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
-                                                    rs.postDate = rs.postDate[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
-                                                    rs.source = rs.source[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
-                                                    rs.expireDate = rs.expireDate[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"');
-                                                    rs.image = rs.image[0].replace(/ /g,'');
-                                                    if (rs.link) {
-                                                        // console.log('Location: ' +rs.link);
-                                                        rs.link = decodeURIComponent(rs.link[0]).replace(/ /g,'');
-                                                    };
-                                                    
-                                                //     // console.log(rs.title);
-                                                //     console.log(rs.link);
-                                                });
-                                                // console.log('----------'+result);
-                                               
-                                                $scope.items = result;
-                                                $scope.totalItems = result.length;
-                                                // console.log(result.length)
-                                                $scope.pageCount = function () {
-                                                    return Math.ceil($scope.totalItems / $scope.entryLimit);
-                                                };
-                                                var begin = (($scope.currentPage - 1) * $scope.entryLimit),
-                                                end = begin + $scope.entryLimit;
-                                                $scope.filtereditems = $scope.items.slice(begin, end);
-                                                //$scope.$digest();
-                                                Items.deleteCache();
-                                                // Items.saveCache(result, $scope.formData.txtSearch)
-                                                //     .success(function(data) {
-                                                //         console.log('da save cache');
-                                                //     });
-                                    var t1 = performance.now();
-                                    console.log("Call to Crawl took " + (t1 - t0) + " milliseconds.");
-                                        });
-                                    });
-                                });
-
-
-                        });
-
-                    // $scope.items = rs;
-                    // $scope.totalItems = $scope.items.length;
-                    // $scope.pageCount = function () {
-                    //     return Math.ceil($scope.totalItems / $scope.entryLimit);
-                    // };
-                    // var begin = (($scope.currentPage - 1) * $scope.entryLimit),
-                    // end = begin + $scope.entryLimit;
-                    // $scope.filtereditems = $scope.items.slice(begin, end);
-                    // $scope.$digest();
-                  });
-               
-                }
-            });
-
-      /*  $scope.urlCareerbuilder = 'http://careerbuilder.vn/viec-lam/';
-         getcareerbuilder($scope.urlCareerbuilder,$scope.formData.txtSearch,function(rs){ 
-            //xu ly search
-            console.log(rs);
-            $scope.items = rs;
-            $scope.totalItems = $scope.items.length;
-            $scope.pageCount = function () {
-                return Math.ceil($scope.totalItems / $scope.entryLimit);
-            };
-            var begin = (($scope.currentPage - 1) * $scope.entryLimit),
-            end = begin + $scope.entryLimit;
-            $scope.filtereditems = $scope.items.slice(begin, end);
-            $scope.$digest();
-          });*/
-
-    };
-
-                    $scope.currentPage = 1;
-                    // $scope.totalItems = $scope.items.length;
-                    $scope.entryLimit = 8; // items per page
-                    
-                    $scope.maxSize = 3;
-                    var json = [];
-                    Items.dbSearch('')
-                    .success(function(data) {
-                        for (var i = 0; i <data.rows.length; i++){
-                            json.push(data.rows[i].doc);
-                        };
-                        console.log(json);
-                        $scope.items = json;
-                        $scope.totalItems = json.length;
-                                                // console.log(result.length)
-                                                $scope.pageCount = function () {
-                                                    return Math.ceil($scope.totalItems / $scope.entryLimit);
-                                                };
-                                                var begin = (($scope.currentPage - 1) * $scope.entryLimit),
-                                                end = begin + $scope.entryLimit;
-                                                $scope.filtereditems = $scope.items.slice(begin, end);
-                });
-
-     //   });
-    //-----------------------------------------start filter --------------------------------------------
-     $scope.selected = [];
-     $scope.exist = function(key){
-        return $scope.selected.indexOf(key) > -1 ;
-
-     }
-
-     $scope.checkLocation = function(key){
-        var a = $scope.selected.indexOf(key);
-        if(a > -1){
-            $scope.selected.splice(a,1);
-        }else{
-            $scope.selected.push(key);
-        }
-        return $scope.selected;
-
-     }
-     //-----------------------------------------end filter-----------------------------------------------
-   
-   
-}]);
-

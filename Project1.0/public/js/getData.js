@@ -216,6 +216,7 @@ app.filter('salaryFilter', function () {
 app.controller('PageCtrl', ['Items', '$scope', 'filterFilter', function (Items, $scope, filterFilter) {
 
     $scope.doSearch = function () {
+        $scope.loading = true;
         var result = [];
         Items.dbSearch($scope.formData.txtSearch)
             .success(function (data) {
@@ -223,6 +224,7 @@ app.controller('PageCtrl', ['Items', '$scope', 'filterFilter', function (Items, 
                     result.push(data.rows[i].doc);
                 };
             });
+        $scope.loading = false;
         $scope.items = result;
         $scope.totalItems = result.length;
         // console.log(result.length)
