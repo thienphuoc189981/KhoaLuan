@@ -50,7 +50,7 @@
             var imgFirefox,imgChrome;
             imgFirefox = new Image();
             imgFirefox.src = "moz-extension://" + "a450a1d8-21e8-409a-94a3-6ff498cfd4b7/icons/quicknote-48.png";
-            imgFirefox.onload = function () {
+            imgFirefox.onerror = function () {
                 window.location = "http://localhost:1337/search";
             };
             imgChrome = new Image();
