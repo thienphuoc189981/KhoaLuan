@@ -1,5 +1,4 @@
 ﻿var app = angular.module('myApp', ['ui.bootstrap','angular.filter']);
-
 app.factory('Items', ['$http', function ($http) {
         return {
             checkCached : function(q) {
@@ -30,12 +29,13 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
 
     // $scope.items = dataTest();   
     // $scope.todos = "cddddd";
+    $scope.loading = false;
     $scope.doSearch = function() {
         $scope.loading = true;
 // console.log("cuc");
         Items.checkCached($scope.formData.txtSearch)
             .success(function(data) {
-              
+              // alert("bbb");
                 //$scope.todos = $scope.todos.status;
                 if (data.status) {
                     var t0 = performance.now();
@@ -46,6 +46,7 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
                     $scope.todos = json;
                     // console.log(json);
                     // console.log("status true");
+                    $scope.loading = false;
                     $scope.items = json;
                     $scope.totalItems = json.length;
                     // console.log(json.length)
