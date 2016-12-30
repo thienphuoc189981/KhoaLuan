@@ -215,46 +215,48 @@ app.filter('salaryFilter', function () {
 
 app.controller('PageCtrl', ['Items', '$scope', 'filterFilter', function (Items, $scope, filterFilter) {
 
-    $scope.items = dataTest();
-    $scope.todos = "cddddd";
-    $scope.status = 0;
-    // alert("hoa");
     $scope.doSearch = function () {
-        Items.post()
+        var result = [];
+        Items.dbSearch($scope.formData.txtSearch)
             .success(function (data) {
-                $scope.todos = data;
+                for (var i = 0; i < data.rows.length; i++) {
+                    result.push(data.rows[i].doc);
+                };
             });
-        // $scope.items = rs;
-        $scope.totalItems = $scope.items.length;
+        $scope.items = result;
+        $scope.totalItems = result.length;
+        // console.log(result.length)
         $scope.pageCount = function () {
             return Math.ceil($scope.totalItems / $scope.entryLimit);
         };
         var begin = (($scope.currentPage - 1) * $scope.entryLimit),
             end = begin + $scope.entryLimit;
         $scope.filtereditems = $scope.items.slice(begin, end);
-        if (!$scope.$$phase) {
-            //$digest or $apply
-            $scope.$digest();
-        }
-
 
     };
+
     $scope.currentPage = 1;
-    $scope.totalItems = $scope.items.length;
+    // $scope.totalItems = $scope.items.length;
     $scope.entryLimit = 8; // items per page
-    $scope.noOfPages = Math.ceil($scope.totalItems / $scope.entryLimit);
-    $scope.maxSize = 6;
 
-    $scope.pageCount = function () {
-        return Math.ceil($scope.totalItems / $scope.entryLimit);
-    };
-    // $watch search to update pagination
-    $scope.$watch('currentPage + itemsPerPage', function () {
-        var begin = (($scope.currentPage - 1) * $scope.entryLimit),
-            end = begin + $scope.entryLimit;
-
-        $scope.filtereditems = filterFilter($scope.items, begin);
-    });
+    $scope.maxSize = 3;
+    var json = [];
+    Items.dbSearch('')
+        .success(function (data) {
+            for (var i = 0; i < data.rows.length; i++) {
+                json.push(data.rows[i].doc);
+            };
+            console.log(json);
+            $scope.items = json;
+            $scope.totalItems = json.length;
+            // console.log(result.length)
+            $scope.pageCount = function () {
+                return Math.ceil($scope.totalItems / $scope.entryLimit);
+            };
+            var begin = (($scope.currentPage - 1) * $scope.entryLimit),
+                end = begin + $scope.entryLimit;
+            $scope.filtereditems = $scope.items.slice(begin, end);
+        });
 
     //   });
     //-----------------------------------------start filter --------------------------------------------
@@ -276,4 +278,6 @@ app.controller('PageCtrl', ['Items', '$scope', 'filterFilter', function (Items, 
     }
     //-----------------------------------------end filter-----------------------------------------------
 
+
 }]);
+
