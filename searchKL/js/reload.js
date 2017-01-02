@@ -1,0 +1,1 @@
+ window.location = "moz-extension://bba6d4bc-32c4-4e0d-bc7e-15bca6a16a88/index.html";

@@ -175,7 +175,8 @@ apiRoutes.get('/jobs', function (req, res) {
 });
 apiRoutes.get('/checkCached', api.checkCached);
 apiRoutes.get('/dbSearch', api.dbSearch);
-apiRoutes.post('/solrSearch', api.solrSearch);
+apiRoutes.get('/solrSearch', api.solrSearch);
+apiRoutes.post('/solrIndex', api.solrIndex);
 apiRoutes.get('/createDoc', api.createDoc);
 apiRoutes.post('/saveCache', api.saveCache);
 apiRoutes.get('/deleteCache', api.deleteCache);

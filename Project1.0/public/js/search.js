@@ -1,5 +1,6 @@
 ﻿$(document).ready(function() {
 
+
   //----------- khai bao collapse----------
   $('.collapse').on('shown.bs.collapse', function(){
   $(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass("glyphicon-minus");

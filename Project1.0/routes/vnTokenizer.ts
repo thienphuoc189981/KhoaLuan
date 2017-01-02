@@ -3,8 +3,7 @@ var fs = require("fs");
 var path = require('path'); 
 
 export function analyzeData(req, res) {
-
-
+    
     var data = req.body;
     //console.log(data);
     var json = { rows: [] };
@@ -51,7 +50,6 @@ export function analyzeData(req, res) {
             a = a.replace(/" postDate "/g, '"postDate"');
             a = a.replace(/" expireDate "/g, '"expireDate"');
             a = a.replace(/" image "/g, '"image"');
-
             res.json(a);
             return res.end();
         });

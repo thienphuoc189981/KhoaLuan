@@ -217,24 +217,14 @@ export function dbSearch(req, res) {
     }
 }
 
-export function solrSearch(req, res) {
+export function solrIndex(req, res) {
     var data = req.body.rows;
     var json: any;
-
-    var q = encodeURIComponent(req.query.q);
-    //console.log(data);
-    
-    var source = "";
     var i: number;
-
-    //console.log(data.length);
-    //console.log(data)
-    //----Handle index----//
-    async.waterfall([
-        function (callback) {
+    
             for (i = 0; i < data.length; i++) {
                 data[i].link = encodeURIComponent(data[i].link);
-                //console.log(data[i].link);
+                data[i].image = encodeURIComponent(data[i].image);
                 var updateQuery = "<add><doc><field name='id'>" + (data[i]._id) +
                     "</field><field name='title'>" + (data[i].title) +
                     "</field><field name='postDate'>" + (data[i].postDate) +
@@ -248,43 +238,34 @@ export function solrSearch(req, res) {
                     "</field><field name='source'>" + (data[i].source) + "</field></doc></add>";
                 updateQuery = encodeURIComponent(updateQuery);
                 request.get("http://localhost:8983/solr/search/update?commit=true&stream.body=" + updateQuery + "&wt=json");
-                //if (i == data.length - 1) {
-                //    console.log("Index thanh cong !");
-                //    callback(null, true);
-                //}
-            }
-            callback(null, true);
-        },
-
-         //----Handle search----//
-        function (data, callback) {
-            if (data == true) {
-                if (q.length == 0 || q == '') {
-                    q = '*:*';
-                }
-
-                request.get('http://localhost:8983/solr/search/select/?q='
-                    + q + '&indent=on&rows=999&wt=json&callback=?&sort=score desc&fl=*,score', function (error, response, body) {
-                        //body = body.replace(/[]/, "");
-                        body = JSON.parse(body);
-                        //console.log(body.response.docs[0]);
-                        //console.log("Seach");
-                        callback(null, body.response.docs);
-                    });
-            }
-        }
-
-        //----Handle result----//
-    ], function (err, data) {
-        let result = [];
-        var z;
-        for ( z = 0; z < data.length; z++) {
-            data[z].rank = z + 1;
-            result.push(data[z])
-        }
-        res.json(data);
+    }
+            res.json({ 'status': true });
         res.end();
-        });
+       
+}
+
+export function solrSearch(req, res) {
+
+    var q = encodeURIComponent(req.query.q);
+    var data: any;
+    let result = [];
+    var z;
+
+        if (q.length == 0 || q == '') {
+            q = '*:*';
+        }
+
+        request.get('http://localhost:8983/solr/search/select/?q='
+            + q + '&indent=on&rows=999&wt=json&callback=?&sort=score desc&fl=*,score', function (error, response, body) {
+                body = JSON.parse(body);
+                data = body.response.docs;
+                for (z = 0; z < data.length; z++) {
+                    data[z].rank = z + 1;
+                    result.push(data[z])
+                }
+                res.json(result);
+                res.end
+            });
 }
 
 export function saveCache(req, res) {
@@ -294,14 +275,17 @@ export function saveCache(req, res) {
     let cache: any;
     let dt = datetime.create();
     let fomratted = dt.format('m/d/Y H:M:S');
-    console.log(data);
+    console.log(q);
     api.findData(q, 'keywordAll').then(function (rs) {
-        if (rs) {
+        console.log(rs);
+        if (rs.rows.length != 0) {
+            console.log('vao if');
             keyword = rs.rows[0].doc;
             keyword.count = keyword.count + 1;
             keyword.cache = true;
-            api.updateData(keyword);
-
+            api.updateData(keyword).then(function (error, result) {
+                console.log(error);
+            });
             cache = {
                 cacheAt: fomratted,
                 type: "cache",
@@ -311,7 +295,11 @@ export function saveCache(req, res) {
                 },
                 jobs: data
             };
-            api.insertData(cache);
+            api.insertData(cache).then(function (error, result) {
+                console.log(error);
+                res.json({ 'status': true });
+                res.end();
+            });
 
         } else {
             let id = guid();
@@ -322,7 +310,10 @@ export function saveCache(req, res) {
                 cache: true,
                 count: 1
             };
-            api.updateData(keyword);
+            console.log(keyword);
+            api.updateData(keyword).then(function (error, result) {
+                console.log(error);
+            });
 
             cache = {
                 cacheAt: fomratted,
@@ -333,12 +324,16 @@ export function saveCache(req, res) {
                 },
                 jobs: data
             };
-            api.insertData(cache);
+            api.insertData(cache).then(function (error, result) {
+                console.log(error);
+                res.json({ 'status': true });
+                res.end();
+            });
         }
+      
     });
    
-    res.json(data);
-    res.end();
+   
 }
 
 export function deleteCache(req, res) {
