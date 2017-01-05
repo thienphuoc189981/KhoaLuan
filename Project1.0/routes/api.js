@@ -1,9 +1,9 @@
 "use strict";
 //------import module Project from database.ts-----//
 /// <reference path="database.ts" />
-var database_1 = require("./database");
-var api = new database_1.Project.api();
-var async = require("async");
+const database_1 = require("./database");
+let api = new database_1.Project.api();
+let async = require("async");
 var request = require('request');
 var http = require('http');
 var datetime = require('node-datetime');
@@ -11,9 +11,9 @@ var datetime = require('node-datetime');
 //-------req: handle request
 //-------res: handle response
 function checkCached(req, res) {
-    var query = req.query.q; //get keyword from URL with query is 'q'
-    var arrKeyword = [];
-    var idTemps = [];
+    let query = req.query.q; //get keyword from URL with query is 'q'
+    let arrKeyword = [];
+    let idTemps = [];
     async.waterfall([
         //Get all keyword from database
         function (callback) {
@@ -27,15 +27,16 @@ function checkCached(req, res) {
         },
         //Handle checking cache
         function (arrKeyword, callback) {
-            var json;
+            let json;
             for (var i = 0; i < arrKeyword.length; i++) {
-                if (arrKeyword[i].key.toLowerCase() === query.toLowerCase()) {
-                    if (arrKeyword[i].doc.cache === true) {
+                if (encodeURIComponent(arrKeyword[i].key.toLowerCase()) == encodeURIComponent(query.toLowerCase())) {
+                    //console.log(arrKeyword[i].key);
+                    if (arrKeyword[i].doc.cache == true) {
                         //console.log(arrKeyword[i].doc._id);
                         //Get list of job's id cached
                         api.findData(arrKeyword[i].doc._id, "cacheByKeyword").then(function (rs) {
                             //console.log(rs);
-                            var jobs = rs.rows[0];
+                            let jobs = rs.rows[0];
                             jobs.status = true;
                             callback(null, jobs);
                         });
@@ -55,7 +56,7 @@ function checkCached(req, res) {
                         //console.log("excute else");
                         //Data not found then we'll insert new keyword to database
                         //Prepare data
-                        var data = {
+                        let data = {
                             "content": query,
                             "type": "keyword",
                             "cache": {
@@ -87,96 +88,16 @@ function checkCached(req, res) {
     });
 }
 exports.checkCached = checkCached;
-//export function checkCached(req, res) {
-//    let query = req.query.q; //get keyword from URL with query is 'q'
-//    let arrKeyword = [];
-//    let idTemps = [];
-//    async.waterfall([
-//        //Get all keyword from database
-//        function (callback) {
-//            api.indexView('keywordAll')
-//                .then(function (result) {
-//                    result["rows"].forEach(function (item) {
-//                        arrKeyword.push(item);
-//                    });
-//                    callback(null, arrKeyword);
-//                });
-//        },
-//        //Handle checking cache
-//        function (arrKeyword, callback) {
-//            let json: any;
-//            for (var i = 0; i < arrKeyword.length; i++) {
-//                if (arrKeyword[i].key.toLowerCase() === query.toLowerCase()) {//check keyword exist in DB?
-//                    if (arrKeyword[i].doc.cache.status === true) {//check keyword was cached?
-//                        //Get list of job's id cached
-//                        api.getData(arrKeyword[i].doc.cache.idCache).then(function (cache) {
-//                            cache.jobs.forEach(function (cacheIdJobs) {
-//                                idTemps.push(cacheIdJobs.idJob);
-//                            });
-//                            callback(null, idTemps);
-//                        });
-//                        return false;
-//                    }else {
-//                        //Data found but wasn't cached
-//                        json = {
-//                            'message': 'No data cached !',
-//                            'status': false
-//                        };
-//                        return callback(true, json);
-//                    }
-//                }else {
-//                    if (i === arrKeyword.length - 1) {//end of loop
-//                        console.log("excute else");
-//                        //Data not found then we'll insert new keyword to database
-//                        //Prepare data
-//                        let data = {
-//                            "content": query,
-//                            "type": "keyword",
-//                            "cache": {
-//                                "status": false,
-//                                "idCache": null
-//                            }
-//                        };
-//                        api.insertData(data); //Call insert function from Project module
-//                        json = {
-//                            'message': 'Data not found !',
-//                            'action': 'insert into keyword table',
-//                            'status': false
-//                        };
-//                        return callback(true, json);
-//                    }
-//                }
-//            }
-//        },
-//        //Get JSON jobs
-//        function (idTemps, callback) {
-//            api.getMultipleData(idTemps, "jobsById").then(function (result) {
-//                result.status = true;
-//                callback(null, result);
-//            });
-//        }
-//    ], function (err, data) {
-//        // Code to execute after everything is done.
-//        if (data.status == false) {
-//            res.json(data);
-//            return res.end();
-//        } else {
-//            //console.log(data);
-//            res.json(data);
-//            return res.end();
-//        }
-//    });
-//}
 function dbSearch(req, res) {
-    var q = req.query.q;
+    let q = req.query.q;
     q = q.toLowerCase();
-    var arrKey = [];
-    var obj = new Object();
-    var rows = [];
-    var json = {
+    let arrKey = [];
+    let obj = new Object();
+    let rows = [];
+    let json = {
         rows: []
     };
-    var i, j;
+    let i, j;
     if (q.indexOf(' ') !== -1) {
         arrKey = (q.split(' '));
         api.searchView('byTitleAndDescription').then(function (result) {
@@ -241,7 +162,7 @@ exports.solrIndex = solrIndex;
 function solrSearch(req, res) {
     var q = encodeURIComponent(req.query.q);
     var data;
-    var result = [];
+    let result = [];
     var z;
     if (q.length == 0 || q == '') {
         q = '*:*';
@@ -262,15 +183,15 @@ exports.solrSearch = solrSearch;
 function saveCache(req, res) {
     var data = req.body;
     var q = req.query.q.toLowerCase();
-    var keyword;
-    var cache;
-    var dt = datetime.create();
-    var fomratted = dt.format('m/d/Y H:M:S');
+    let keyword;
+    let cache;
+    let dt = datetime.create();
+    let fomratted = dt.format('m/d/Y H:M:S');
     console.log(q);
     api.findData(q, 'keywordAll').then(function (rs) {
-        console.log(rs);
+        //console.log(rs);
         if (rs.rows.length != 0) {
-            console.log('vao if');
+            //console.log('vao if');
             keyword = rs.rows[0].doc;
             keyword.count = keyword.count + 1;
             keyword.cache = true;
@@ -293,7 +214,7 @@ function saveCache(req, res) {
             });
         }
         else {
-            var id = guid();
+            let id = guid();
             keyword = {
                 _id: id,
                 content: q,
@@ -301,7 +222,7 @@ function saveCache(req, res) {
                 cache: true,
                 count: 1
             };
-            console.log(keyword);
+            //console.log(keyword);
             api.updateData(keyword).then(function (error, result) {
                 console.log(error);
             });
@@ -324,24 +245,74 @@ function saveCache(req, res) {
 }
 exports.saveCache = saveCache;
 function deleteCache(req, res) {
-    var cacheAt;
-    var now = datetime.create();
-    api.indexView('cacheByCacheAt').then(function (rs) {
-        rs.rows.forEach(function (cache) {
-            cacheAt = datetime.create(cache.key);
-            if (((now.getTime() - cacheAt.getTime()) / 3600000) >= 24) {
-                api.findData(cache.doc.keyword.content, 'keywordAll').then(function (k) {
-                    k.rows[0].doc.cache = false;
-                    api.updateData(k.rows[0].doc.cache);
+    let cacheAt;
+    let now = datetime.create();
+    let q = req.query.q.toLowerCase();
+    api.findData(q, 'keywordAll').then(function (rs) {
+        //if (rs.rows[0].key == ){
+        //console.log(rs.rows.length);
+        //console.log(rs.rows[0].key);
+        if (rs.rows.length != 0) {
+            //console.log('vao if 1');
+            if (rs.rows[0].doc.cache) {
+                //console.log('vao if 2');
+                rs.rows[0].doc.cache = false;
+                api.updateData(rs.rows[0].doc).then(function () {
+                    //console.log('update keyword');
+                    api.findData(rs.rows[0].id, 'cacheByKeyword').then(function (cache) {
+                        //console.log('find cache');
+                        //console.log(cache.rows[0].doc.cacheAt);
+                        cacheAt = datetime.create(cache.rows[0].doc.cacheAt);
+                        //console.log(now);
+                        //console.log(cacheAt);
+                        //console.log(now.getTime());
+                        //console.log(cacheAt.getTime());
+                        //console.log(((now.getTime() - cacheAt.getTime()) / 3600000));
+                        if (((now.getTime() - cacheAt.getTime()) / 3600000) >= 24) {
+                            //console.log('vao if 3');
+                            api.deleteData(cache.rows[0].doc._id, cache.rows[0].doc._rev).then(function () {
+                                console.log('delete');
+                                request.get('http://localhost:8983/solr/search/update?stream.body=<delete><query>*:*</query></delete>&commit=true');
+                                res.json({ "status": true });
+                                res.end();
+                            });
+                        }
+                        else {
+                            res.json({ "status": false });
+                            res.end();
+                        }
+                    });
                 });
-                api.deleteData(cache.doc._id, cache.doc._rev).then(function () {
-                    request.get('http://localhost:8983/solr/search/update?stream.body=<delete><query>*:*</query></delete>&commit=true');
-                    res.end();
-                });
-                ;
             }
-        });
+            else {
+                res.json({ "status": false });
+                res.end();
+            }
+        }
+        else {
+            res.json({ "status": false });
+            res.end();
+        }
+        //                        res.end();
+        //}
     });
+    //api.indexView('cacheByCacheAt').then(function (rs) {
+    //    rs.rows.forEach(function (cache) {
+    //        cacheAt = datetime.create(cache.key);
+    //        if (((now.getTime() - cacheAt.getTime()) / 3600000) >= 24) {
+    //            api.findData(cache.doc.keyword.content, 'keywordAll').then(function (k) {
+    //                k.rows[0].doc.cache = false;
+    //                api.updateData(k.rows[0].doc.cache).then(function () {
+    //                    api.deleteData(cache.doc._id, cache.doc._rev).then(function () {
+    //                        request.get('http://localhost:8983/solr/search/update?stream.body=<delete><query>*:*</query></delete>&commit=true');
+    //                        res.json({"status":true});
+    //                        res.end();
+    //                    });
+    //                });
+    //            });
+    //        }
+    //    });
+    //});
 }
 exports.deleteCache = deleteCache;
 function guid() {

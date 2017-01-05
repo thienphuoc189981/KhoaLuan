@@ -63,16 +63,14 @@
                         <span class="icon-bar"></span>
                     </button>
                     <!-- End Toggle Nav Link For Mobiles -->
-                    <a class="navbar-brand logo" href="index.html"><img src="assets/img/logo-job.png" alt=""></a>
+                    <a class="navbar-brand logo" href="http://localhost:1337"><img src="assets/img/logo-job.png" alt="logo"></a>
                 </div>
                 <!-- brand and toggle menu for mobile End -->
                 <!-- Navbar Start -->
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="login.html"><i class="lnr lnr-enter"></i> Login</a></li>
-                        <li><a href="signup.html"><i class="lnr lnr-user"></i> Signup</a></li>
                         <li class="postadd">
-                            <a class="btn btn-danger btn-post" href="post-ads.html"><span class="fa fa-plus-circle"></span> Post an Ad</a>
+                            <a class="btn btn-danger btn-post" href="http://localhost:1337/post-job"><span class="fa fa-plus-circle"></span> Đăng việc làm</a>
                         </li>
                     </ul>
                 </div>
@@ -96,7 +94,7 @@
                         <form class="search-form" method="get">
                             <div class="col-md-2 col-sm-6 search-col"></div>
                             <div class="col-md-6 col-sm-6 search-col">
-                                <input id = "txtSearch" ng-model="formData.txtSearch" class="form-control keyword" value="java" name="keyword" placeholder="Enter Keyword" type="text" required=""/>
+                                <input id = "txtSearch" ng-model="formData.txtSearch" class="form-control keyword" value="java" name="keyword" placeholder="Nhập từ khóa" type="text" required=""/>
                                 <i class="fa fa-search"></i>
                             </div>   
                             <div class="col-md-1 col-sm-6 search-col"></div>       
@@ -275,7 +273,7 @@
                         </div>
                         <div ng-if="loading == false" class="col-md-4 col-sm-6 search-col pull-right">
                         <div class="input-group input-group-unstyled">
-                          <input type="text" class="form-control keyword" ng-model="searchText" placeholder="Search company" id ="ftCompany" style=" border: 2px;" />
+                          <input type="text" class="form-control keyword" ng-model="searchText" placeholder="Tìm theo công ty" id ="ftCompany" style=" border: 2px;" />
                           <span class="input-group-addon">
                             <i class="fa fa-search"></i>
                           </span>
@@ -330,9 +328,8 @@
                         <a ng-if="loading == true" href="#"><img src="images/loading.gif" alt=""></a>
                        </div>
                     <div ng-if="loading == false" class="post-promo text-center">
-                        <h2> Do you get anything for sell ? </h2>
-                        <h5>Sell your products online FOR FREE. It's easier than you think !</h5>
-                        <a href="post-ads.html" class="btn btn-post btn-danger">Post a Free Ad </a>
+                        <h2><b> Hãy đăng tin tuyển dụng của bạn</b> </h2>
+                        <a href="http://localhost:1337/post-job" class="btn btn-post btn-danger"><span class="fa fa-plus-circle"></span> Đăng việc làm</a>
                     </div>
                 </div>
             </div>
@@ -347,11 +344,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="site-info pull-left">
-                            <p>All copyrights reserved @ 2016 - Design & Development by <a href="http://graygrids.com">Graygrids</a></p>
+                            <p><a href="http://localhost:1337">UIT Jobs Search</a></p>
                         </div>
                         <div class="bottom-social-icons social-icon pull-right">
-                            <a class="facebook" target="_blank" href="https://web.facebook.com/GrayGrids"><i class="fa fa-facebook"></i></a>
-                            <a class="twitter" target="_blank" href="https://twitter.com/GrayGrids"><i class="fa fa-twitter"></i></a>
+                            <a class="facebook" target="_blank" href="https://web.facebook.com"><i class="fa fa-facebook"></i></a>
+                            <a class="twitter" target="_blank" href="https://twitter.com"><i class="fa fa-twitter"></i></a>
                             <a class="dribble" target="_blank" href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a>
                             <a class="flickr" target="_blank" href="https://www.flickr.com/"><i class="fa fa-flickr"></i></a>
                             <a class="youtube" target="_blank" href="https://youtube.com"><i class="fa fa-youtube"></i></a>

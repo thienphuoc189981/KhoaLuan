@@ -13,6 +13,11 @@ function index(req, res) {
 }
 exports.index = index;
 ;
+function search(req, res) {
+    res.sendfile('./views/search.html', { session: req.session });
+}
+exports.search = search;
+;
 //--------app.get('/post-job', routes.postJob);'/post-job'
 function postJob(req, res) {
     //console.log("ads " + req.session.email);
@@ -58,7 +63,7 @@ function insertJob(req, res) {
     json.users = users;
     json.source = "UIT Search";
     api.insertData(json).then(function () {
-        req.flash('success', 'You are successfully posting !');
+        req.flash('success', 'Bạn đã đăng thành công !');
         res.redirect('/manage-jobs');
     });
 }
@@ -160,7 +165,7 @@ function updateUser(req, res) {
         user.rows[0].doc.phone = body.phone;
         api.updateData(user.rows[0].doc).then(function () {
             console.log('success');
-            req.flash('successUpdateUser', 'You are successfully updating !', { maxage: 6000 });
+            req.flash('successUpdateUser', 'Bạn đã cập nhật thành công !', { maxage: 6000 });
             res.redirect('/user-management');
         }).catch(function (err) {
             if (err.name === 'conflict') {

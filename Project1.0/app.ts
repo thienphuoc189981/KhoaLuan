@@ -88,10 +88,11 @@ app.get('/forgot-password', routes.forgotPassword);
 app.get('/user-management', routes.userManagement);
 app.post('/update-user', routes.updateUser);
 
-app.get('/search', function (request, response) { response.sendfile('./views/search.html'); });
-app.get('/searchExtension', function (request, response) {
-    response.sendfile('./views/searchExtension.html');
-});
+//app.get('/search', function (req, res) { res.sendfile('./views/search.html'); });
+app.get('/search', routes.search);
+//app.get('/searchExtension', function (request, response) {
+//    response.sendfile('./views/searchExtension.html');
+//});
 
 //apiRoutes.get('/', routes.index);
 //apiRoutes.get('/add', routes.add);

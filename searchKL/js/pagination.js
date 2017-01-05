@@ -22,8 +22,8 @@ app.factory('Items', ['$http', function ($http) {
             saveCache : function(json,q) {
                 return $http.post('http://localhost:1337/api/saveCache?q='+q, json);
             },
-            deleteCache : function() {
-                return $http.get('http://localhost:1337/api/deleteCache');
+            deleteCache : function(q) {
+                return $http.get('http://localhost:1337/api/deleteCache?q='+q);
             }
         }
 }]);
@@ -33,11 +33,14 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
     $scope.loading = false;
     $scope.doSearch = function() {
         $scope.loading = true;
+        Items.deleteCache($scope.formData.txtSearch)
+        .success(function(){
 
         Items.checkCached($scope.formData.txtSearch)
             .success(function(data) {
               // alert("bbb");
                 //$scope.todos = $scope.todos.status;
+                // console.log(data);
                 if (data.status) {
                     // console.log("sss");
                     var t0 = performance.now();
@@ -59,7 +62,7 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
                     end = begin + $scope.entryLimit;
                     $scope.filtereditems = $scope.items.slice(begin, end);
                     //$scope.$digest();
-                    Items.deleteCache();
+                    
                     var t1 = performance.now();
                     // console.log("Call to Cache took " + (t1 - t0) + " milliseconds.");
                 }else{
@@ -101,7 +104,7 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
                                             Items.solrIndex(dataParse)
                                             .success(function(result) {
                                                 // window.setTimeout(partB,1000);
-                                                setTimeout(display,1500);
+                                                setTimeout(display,2000);
                                                 function display(){
                                                 if (result.status) {
 
@@ -110,7 +113,7 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
                                                     var t3 = performance.now();
                                                     console.log("Call to Solr took " + (t3 - t2) + " milliseconds.");
                                                     // result.push({"q" : $scope.formData.txtSearch})
-                                                    console.log("this is solr " +JSON.stringify(result));
+                                                    // console.log("this is solr " +JSON.stringify(result));
                                                     result.forEach(function(rs){
                                                         // console.log('Location: ' +rs.link);
                                                         rs.title = rs.title[0].replace(/_/g,' ').replace(/" /g,'"').replace(/ "/g,'"').toUpperCase();
@@ -139,7 +142,7 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
                                                 end = begin + $scope.entryLimit;
                                                 $scope.filtereditems = $scope.items.slice(begin, end);
                                                 // $scope.$digest();
-                                                Items.deleteCache();
+                                                // Items.deleteCache();
                                                 Items.saveCache(result, $scope.formData.txtSearch)
                                                     .success(function(data) {
                                                         console.log('da save cache ');
@@ -161,7 +164,7 @@ app.controller('PageCtrl',['Items','$scope','filterFilter', function (Items,$sco
                
                 }
             });
-
+        });
     };
 
                     $scope.currentPage = 1;

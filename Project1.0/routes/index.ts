@@ -17,6 +17,10 @@ export function index(req: express.Request, res: express.Response) {
     res.render('./index', { session: req.session });
 };
 
+export function search(req: express.Request, res: express.Response) {
+    res.sendfile('./views/search.html', { session: req.session });
+};
+
 //--------app.get('/post-job', routes.postJob);'/post-job'
 export function postJob(req: express.Request, res: express.Response) {
     //console.log("ads " + req.session.email);
@@ -60,7 +64,7 @@ export function insertJob(req: express.Request, res: express.Response) {
     json.source = "UIT Search";
 
     api.insertData(json).then(function () {
-        req.flash('success', 'You are successfully posting !');
+        req.flash('success', 'Bạn đã đăng thành công !');
         res.redirect('/manage-jobs');
     });
 };
@@ -164,7 +168,7 @@ export function updateUser(req: express.Request, res: express.Response) {
 
         api.updateData(user.rows[0].doc).then(function () {
             console.log('success');
-            req.flash('successUpdateUser', 'You are successfully updating !', {maxage: 6000});
+            req.flash('successUpdateUser', 'Bạn đã cập nhật thành công !', {maxage: 6000});
             res.redirect('/user-management');
         }).catch(function (err) {
             if (err.name === 'conflict') {

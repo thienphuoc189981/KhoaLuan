@@ -42,7 +42,7 @@
     <!-- Bootstrap Select -->
 
 
-    <link rel="stylesheet" href="assets/css/jquery-ui.css">  
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
     <script src="assets/js/jquery.min.js" type="text/javascript"></script>
     <script src="assets/js/jquery-ui.js" type="text/javascript"></script>
     <script src="js/search.js" type="text/javascript"></script>
@@ -79,16 +79,14 @@
                         <span class="icon-bar"></span>
                     </button>
                     <!-- End Toggle Nav Link For Mobiles -->
-                    <a class="navbar-brand logo" href="index.html"><img src="assets/img/logo.png" alt=""></a>
+                    <a class="navbar-brand logo" href="/"><img src="assets/img/logo.png" alt="logo"></a>
                 </div>
                 <!-- brand and toggle menu for mobile End -->
                 <!-- Navbar Start -->
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="login.html"><i class="lnr lnr-enter"></i> Login</a></li>
-                        <li><a href="signup.html"><i class="lnr lnr-user"></i> Signup</a></li>
                         <li class="postadd">
-                            <a class="btn btn-danger btn-post" href="post-ads.html"><span class="fa fa-plus-circle"></span> Post an Ad</a>
+                            <a class="btn btn-danger btn-post" href="http://localhost:1337/post-job"><span class="fa fa-plus-circle"></span> Đăng việc làm</a>
                         </li>
                     </ul>
                 </div>
@@ -96,7 +94,10 @@
             </div>
         </nav>
         <!-- button install add-on-->
-        <div class="tbtn wow pulse" id="menu" data-wow-iteration="infinite" data-wow-duration="500ms" data-toggle="modal" data-target="#getExtension">
+        <div style="display:none;" class="tbtn wow pulse btn-chrome" id="btnChrome" data-wow-iteration="infinite" data-wow-duration="500ms" data-toggle="modal" data-target="#getExtension">
+            <p><i class="fa fa-puzzle-piece"></i> Extension</p>
+        </div>
+        <div style="display:none;" class="tbtn wow pulse btn-firefox" id="btnAddon" data-wow-iteration="infinite" data-wow-duration="500ms" data-toggle="modal" data-target="#getAddon">
             <p><i class="fa fa-puzzle-piece"></i> Add-on</p>
         </div>
     </div>
@@ -131,17 +132,40 @@
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="row">
-                                    <a href="#"> Are you Sure ?</a>
+                                    <a href="#"> Bạn có muốn cài tiện ích tìm kiếm việc làm ?</a>
                                 </div>
                                 <br />
                                 <div class="row">
-                                    <a class="btn btn-danger btn-sm" href="/SearchJobsUIT.xpi">Yes</a>
-                                    <a class="btn btn-common btn-sm" data-dismiss="modal">No</a>
+                                    <a class="btn btn-danger btn-sm" href="/SearchJobsUIT.crx">Đồng ý</a>
+                                    <a class="btn btn-common btn-sm" data-dismiss="modal">Không</a>
                                 </div>
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-common btn-sm" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-common btn-sm" data-dismiss="modal">Đóng</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal fade" id="getAddon" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="row">
+                                    <a href="#"> Bạn có muốn cài tiện ích tìm kiếm việc làm ?</a>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <a class="btn btn-danger btn-sm" href="/SearchJobsUIT.xpi">Đồng ý</a>
+                                    <a class="btn btn-common btn-sm" data-dismiss="modal">Không</a>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-common btn-sm" data-dismiss="modal">Đóng</button>
                             </div>
                         </div>
 
@@ -375,9 +399,8 @@
                     </div>
 
                     <div class="post-promo text-center">
-                        <h2> Do you get anything for sell ? </h2>
-                        <h5>Sell your products online FOR FREE. It's easier than you think !</h5>
-                        <a href="post-ads.html" class="btn btn-post btn-danger">Post a Free Ad </a>
+                        <h2><b> Hãy đăng tin tuyển dụng của bạn</b> </h2>
+                        <a href="http://localhost:1337/post-job" class="btn btn-post btn-danger"><span class="fa fa-plus-circle"></span> Đăng việc làm</a>
                     </div>
                 </div>
             </div>
@@ -392,11 +415,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="site-info pull-left">
-                            <p>All copyrights reserved @ 2016 - Design & Development by <a href="http://graygrids.com">Graygrids</a></p>
+                            <p><a href="http://localhost:1337">UIT Jobs Search</a></p>
                         </div>
                         <div class="bottom-social-icons social-icon pull-right">
-                            <a class="facebook" target="_blank" href="https://web.facebook.com/GrayGrids"><i class="fa fa-facebook"></i></a>
-                            <a class="twitter" target="_blank" href="https://twitter.com/GrayGrids"><i class="fa fa-twitter"></i></a>
+                            <a class="facebook" target="_blank" href="https://web.facebook.com"><i class="fa fa-facebook"></i></a>
+                            <a class="twitter" target="_blank" href="https://twitter.com"><i class="fa fa-twitter"></i></a>
                             <a class="dribble" target="_blank" href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a>
                             <a class="flickr" target="_blank" href="https://www.flickr.com/"><i class="fa fa-flickr"></i></a>
                             <a class="youtube" target="_blank" href="https://youtube.com"><i class="fa fa-youtube"></i></a>
@@ -416,7 +439,7 @@
         <i class="fa fa-angle-up"></i>
     </a>
 
-    <!-- Main JS  
+    <!-- Main JS
 
     <script type="text/javascript" src="assets/js/jquery-min.js"></script>-->
     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
@@ -424,11 +447,36 @@
     <script type="text/javascript" src="assets/js/material-kit.js"></script>
     <script type="text/javascript" src="assets/js/jquery.parallax.js"></script>
     <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="assets/js/wow.js"></script>
+    <!--<script type="text/javascript" src="assets/js/wow.js"></script>-->
     <script type="text/javascript" src="assets/js/main.js"></script>
     <script type="text/javascript" src="assets/js/jquery.counterup.min.js"></script>
     <script type="text/javascript" src="assets/js/waypoints.min.js"></script>
     <script type="text/javascript" src="assets/js/jasny-bootstrap.min.js"></script>
     <script src="assets/js/bootstrap-select.min.js"></script>
+    <script>
+    function getBrowser() {
+        if (navigator.userAgent.indexOf("Chrome") != -1) {
+            return "Chrome";
+        } else if (navigator.userAgent.indexOf("Firefox") != -1) {
+            return "Firefox";
+        } else {
+            return "unknown";
+        }
+    }
+    $(function () {
+        switch (getBrowser()) {
+            case "Chrome":
+                $(".btn-chrome").show();
+                break;
+            case "Firefox":
+                $(".btn-firefox").show();
+                break;
+            default:
+                $(".nosupp").show();
+                break;
+        }
+    });
+
+    </script>
 </body>
 </html>

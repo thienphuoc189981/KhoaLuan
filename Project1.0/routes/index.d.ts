@@ -1,5 +1,6 @@
 import express = require('express');
 export declare function index(req: express.Request, res: express.Response): void;
+export declare function search(req: express.Request, res: express.Response): void;
 export declare function postJob(req: express.Request, res: express.Response): void;
 export declare function insertJob(req: express.Request, res: express.Response): void;
 export declare function loginPage(req: express.Request, res: express.Response): void;
